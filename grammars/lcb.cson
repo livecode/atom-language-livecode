@@ -191,10 +191,3 @@
   'handler-return':
     'match': '^\\s*return\\b'
     'name': 'keyword.control.lcb'
-
-  'brackets':
-    'begin': '\\['
-    'end': '\\]'
-    'captures':
-      '0':
-        'name': 'punctuation.separator.list'
