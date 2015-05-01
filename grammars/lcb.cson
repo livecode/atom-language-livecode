@@ -36,6 +36,12 @@
     'include': '#define-constant'
   }
   {
+    'include': '#define-metadata'
+  }
+  {
+    'include': '#define-property'
+  }
+  {
     'include': '#define-variable'
   }
   {
@@ -139,16 +145,39 @@
       }
     ]
 
-  'define-variable':
-    'match': '^\\s*(variable)(?:\\s+(\\w*)(?:\\s+(as(?:\\soptional)?)(?:\\s+(\\w*))?)?)?'
+  'define-metadata':
+    'begin': '^\\s*metadata\\b'
+    'end': '\\bis\\b'
+    'captures':
+      '0':
+        'name': 'keyword.control.lcb'
+    'patterns': [
+      {
+        'match': '\\b\\w+\\b'
+        'name': 'entity.name.metadata.lcb'
+      }
+    ]
+
+  'define-property':
+    'match': '^\\s*(property)(\\s*\\w*)?'
     'captures':
       '1':
         'name': 'keyword.control.lcb'
       '2':
-        'name': 'variable.lcb'
+        'name': 'entity.name.property.lcb'
+
+  'define-variable':
+    'match': '^\\s*((?:public|private)\\s+)?(variable)(?:\\s+(\\w*)(?:\\s+(as(?:\\soptional)?)(?:\\s+(\\w*))?)?)?'
+    'captures':
+      '1':
+        'name': 'storage.modifier.lcb'
+      '2':
+        'name': 'storage.type.lcb'
       '3':
-        'name': 'keyword.control.lcb'
+        'name': 'variable.lcb'
       '4':
+        'name': 'keyword.control.lcb'
+      '5':
         'name': 'storage.type.lcb'
 
   'define-handler':
