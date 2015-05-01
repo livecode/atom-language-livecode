@@ -1,0 +1,171 @@
+# If this is your first time writing a language grammar, check out:
+#   - http://manual.macromates.com/en/language_grammars
+
+'scopeName': 'source.lcb'
+'name': 'LiveCode Builder'
+'fileTypes': [
+  'lcb'
+]
+'patterns': [
+  {
+    'include': '#comment-line'
+  }
+  {
+    'include': '#comment-block'
+  }
+  {
+    'include': '#string'
+  }
+  {
+    'include': '#if'
+  }
+  {
+    'include': '#repeat-block'
+  }
+  {
+    'match': '\\s*(next|end)\\s*repeat\\b'
+    'name': 'keyword.control.lcb'
+  }
+  {
+    'include': '#end-block'
+  }
+  {
+    'include': '#define-module'
+  }
+  {
+    'include': '#define-constant'
+  }
+  {
+    'include': '#define-variable'
+  }
+  {
+    'include': '#define-handler'
+  }
+  {
+    'include': '#handler-return'
+  }
+  {
+    'include': '#brackets'
+  }
+  {
+    'match': '\\b(true|false|nothing|any)\\b'
+    'captures':
+      '1':
+        'name': 'constant.language.lcb'
+  }
+  {
+    'match': '\\b([tpskmxr][A-Z]\\w*)\\b'
+    'captures':
+      '1':
+        'name': 'variable.lcb'
+  }
+  {
+    'match': '\\b(returns)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.control.lcb'
+  }
+]
+
+'repository':
+
+  'comment-line':
+    'begin': '--'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.double-dash.lcb'
+    'end': '\\n'
+    'name': 'comment.line.lcb'
+
+  'comment-block':
+    'begin': '/\\*'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.lcb'
+    'end': '\\*/'
+    'name': 'comment.block.lcb'
+
+  'string':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.lcb'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.lcb'
+    'name': 'string.quoted.double.lcb'
+
+  'if':
+    'begin': '^\\s*(else\\s*if|if|else)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.control.lcb'
+    'end': '\\b(then)\\b'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+
+  'end-block':
+    'match': '^\\s*(end(?:\\s*(?:module|library|widget|handler|if|repeat))?)'
+    'name': 'keyword.control.lcb'
+
+  'repeat-block':
+    'match': '^\\s*(repeat)\\b'
+    'name': 'keyword.control.lcb'
+
+  'define-module':
+    'match': '^\\s*(module|library|widget|use)(\\s+[^\\s]*)?\\b'
+    'captures':
+      '1':
+        'name':
+          'keyword.control.lcb'
+      '2':
+        'name':
+          'entity.name.section.module.lcb'
+
+  'define-constant':
+    'begin': '^\\s*constant\\b'
+    'end': '\\bis\\b'
+    'captures':
+      '0':
+        'name': 'keyword.control.lcb'
+    'patterns': [
+      {
+        'match': '\\b\\w+\\b'
+        'name': 'variable.constant.lcb'
+      }
+    ]
+
+  'define-variable':
+    'match': '^\\s*(variable)(?:\\s+(\\w*)(?:\\s+(as(?:\\soptional)?)(?:\\s+(\\w*))?)?)?'
+    'captures':
+      '1':
+        'name': 'keyword.control.lcb'
+      '2':
+        'name': 'variable.lcb'
+      '3':
+        'name': 'keyword.control.lcb'
+      '4':
+        'name': 'storage.type.lcb'
+
+  'define-handler':
+    'match': '^\\s*((?:(?:public|private)\\s+)?handler)(?:\\s+(\\w+))\\b'
+    'captures':
+      '1':
+        'name': 'keyword.control.lcb'
+      '2':
+        'name': 'entity.name.function.lcb'
+
+  'handler-return':
+    'match': '^\\s*return\\b'
+    'name': 'keyword.control.lcb'
+
+  'brackets':
+    'begin': '\\['
+    'end': '\\]'
+    'captures':
+      '0':
+        'name': 'punctuation.separator.list'
