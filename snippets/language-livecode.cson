@@ -1,2 +1,28 @@
 # If you want some example snippets, check out:
 # https://github.com/atom/language-gfm/blob/master/snippets/gfm.cson
+'.source.lcb':
+
+  'module … end module':
+    'prefix': 'module'
+    'body': 'module ${1:/* name */}\n\n\nend module'
+  'library … end library':
+    'prefix': 'library'
+    'body': 'library ${1:/* name */}\n\n\nend library'
+  'widget … end widget':
+    'prefix': 'widget'
+    'body': 'widget ${1:/* name */}\n\n\nend widget'
+
+  'if … end if':
+    'prefix': 'if'
+    'body': 'if ${1:/* condition */} then\n\t${2:/* code */}\nend if'
+  'if … else … end if':
+    'prefix': 'ife'
+    'body': 'if ${1:/* condition */} then\n\t${2:/* code */}\nelse\n\t${3:/* code */}\nend if'
+
+  'repeat':
+    'prefix': 'repeat'
+    'body': 'repeat ${1:/* iterator */}\n\t${2:/*code*/}\nend repeat'
+
+  'handler':
+    'prefix': 'handler'
+    'body': 'handler ${1:/* name */}(${2:/* args */}) returns ${3:/* type */}\n\t${4:/* code */}\nend handler'
