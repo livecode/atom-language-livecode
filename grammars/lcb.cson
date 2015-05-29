@@ -23,7 +23,7 @@
     'include': '#repeat-block'
   }
   {
-    'match': '\\s*(next|end)\\s*repeat\\b'
+    'match': '\\s*(next|exit|end)\\s*repeat\\b'
     'name': 'keyword.control.repeat.lcb'
   }
   {
