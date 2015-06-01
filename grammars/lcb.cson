@@ -178,13 +178,13 @@
       '1':
         'name': 'storage.modifier.access.lcb'
       '2':
-        'name': 'storage.type.variable.lcb'
+        'name': 'storage.type.var.lcb'
       '3':
         'name': 'variable.lcb'
       '4':
         'name': 'keyword.other.as.lcb'
       '5':
-        'name': 'storage.type.lcb'
+        'name': 'entity.name.type.lcb'
 
   'define-handler':
     'match': '^\\s*((?:public|private)\\s+)?(handler)(?:\\s+(\\w+))\\b'
