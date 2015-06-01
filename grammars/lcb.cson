@@ -60,10 +60,16 @@
         'name': 'constant.language.core.lcb'
   }
   {
-    'match': '\\b([tpskmxr][A-Z]\\w*)\\b'
+    'match': '\\b([tpsmxr][A-Z]\\w*)\\b'
     'captures':
       '1':
         'name': 'variable.lcb'
+  }
+  {
+    'match': '\\b(k[A-Z]\\w*)\\b'
+    'captures':
+      '1':
+        'name': 'variable.other.constant.lcb'
   }
   {
     'match': '\\b(returns)\\b'
