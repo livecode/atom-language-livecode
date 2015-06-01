@@ -8,3 +8,40 @@
     'foldEndPattern': '^\\s*end\\b'
     'increaseIndentPattern': '^\\s*(((public\\s*)?handler)|if|repeat|else)\\b'
     'decreaseIndentPattern': '^\\s*(end(\\s*(if|repeat|handler))?|else(\\s*if)?)\\b'
+
+  # Settings for autocomplete plus support
+   'autocomplete':
+     'symbols':
+       'function':
+         'selector': '.function.name'
+         'typePriority': 6
+       'variable':
+         'selector': '.variable'
+       'typePriority': 5
+       'constant':
+         'selector': '.constant.other.variable'
+         'typePriority': 4
+         'suggestions': [
+           'true'
+           'false'
+         ]
+       'type':
+         'selector': '.type.name'
+         'typePriority': 3
+         'suggestions': [
+           'nothing'
+           'any'
+           'Boolean'
+           'Number'
+           'Integer'
+           'Real'
+           'String'
+           'List'
+           'Array'
+         ]
+       'keyword':
+         'selector': '.keyword, .storage'
+         'typePriority': 2
+       '': # Catch-all completion
+         'selector': '.source.lcb'
+         'typePriority': 1

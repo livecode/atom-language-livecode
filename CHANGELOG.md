@@ -1,3 +1,9 @@
+## 0.4.0 - Improvements to completion
+* Greatly-improved autocomplete support
+  * Correctly suggest handler, variable, constant, and type names, and
+    known keywords
+* Minor syntax highlighting bugfixes
+
 ## 0.3.0 - Snippet support
 * Add basic snippets for commonly-used blocks. These work with Atom's new
   built-in autocomplete support.
