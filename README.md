@@ -7,13 +7,24 @@ To find out more about LiveCode, please visit the LiveCode website.
 
 ## Supported languages
 
-Currently, this package supports editing LiveCode Builder source code in `.lcb`
-files.  It provides syntax highlighting and indentation support.
+Currently, this package supports editing:
+
+* LiveCode Builder source code in `.lcb` files
+
+* LiveCode server source code in `.lc` and `.irev` files
+
+The package provides syntax highlighting, highlighting and indentation support
+for all the supported languages.
 
 ## Installation
 
 Install the `language-livecode` package from the "Install Packages and Themes"
 view in Atom's "Settings" window.
+
+## Authors
+
+* Peter Brett
+* Adam Robertson
 
 ## Reporting bugs and contributing
 

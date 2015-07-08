@@ -1,0 +1,177 @@
+".source.iRev":
+  "COOKIE['...']":
+    prefix: "$_"
+    body: "$_COOKIE[\"${1:variable}\"]"
+  Command:
+    prefix: "com"
+    body: '''
+      command ${1:name} ${2:params}
+      	${3:# code...}
+      end ${1}
+      ${0}
+    '''
+  "FILES['...']":
+    prefix: "$_"
+    body: "$_FILES[\"${1:variable}\"]"
+  Function:
+    prefix: "func"
+    body: '''
+      function ${1:name} ${2:params}
+      	${3:# code...}
+      end ${1}
+      ${0}
+    '''
+  "GET['…']":
+    prefix: "$_"
+    body: "$_GET[\"${1:variable}\"]"
+  "GET_BINARY['…']":
+    prefix: "$_"
+    body: "$_GET_BINARY[\"${1:variable}\"]"
+  "GET_RAW['…']":
+    prefix: "$_"
+    body: "$_GET_RAW[\"${1:variable}\"]"
+  If:
+    prefix: "if"
+    body: '''
+      if ${1:# code...} then
+      	${2:# code...}
+      end if
+      ${0}
+    '''
+  "POST['…']":
+    prefix: "$_"
+    body: "$_POST[\"${1:variable}\"]"
+  "POST_BINARY['…']":
+    prefix: "$_"
+    body: "$_POST_BINARY[\"${1:variable}\"]"
+  "POST_RAW['…']":
+    prefix: "$_"
+    body: "$_POST_RAW[\"${1:variable}\"]"
+  Repeat:
+    prefix: "repeat"
+    body: '''
+      repeat ${1:loopform}
+      	${0:# code...}
+      end repeat
+    '''
+  "SERVER['CONTENT_LENGTH']":
+    prefix: "$_"
+    body: "$_SERVER[\"CONTENT_LENGTH\"]"
+  "SERVER['CONTENT_TYPE']":
+    prefix: "$_"
+    body: "$_SERVER[\"CONTENT_TYPE\"]"
+  "SERVER['DOCUMENT_ROOT']":
+    prefix: "$_"
+    body: "$_SERVER[\"DOCUMENT_ROOT\"]"
+  "SERVER['GATEWAY_INTERFACE']":
+    prefix: "$_"
+    body: "$_SERVER[\"GATEWAY_INTERFACE\"]"
+  "SERVER['HTTPS']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTPS\"]"
+  "SERVER['HTTP_ACCEPT']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_ACCEPT\"]"
+  "SERVER['HTTP_ACCEPT_ENCODING']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_ACCEPT_ENCODING\"]"
+  "SERVER['HTTP_ACCEPT_LANGUAGE']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_ACCEPT_LANGUAGE\"]"
+  "SERVER['HTTP_CONNECTION']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_CONNECTION\"]"
+  "SERVER['HTTP_COOKIE']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_COOKIE\"]"
+  "SERVER['HTTP_DNT']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_DNT\"]"
+  "SERVER['HTTP_HOST']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_HOST\"]"
+  "SERVER['HTTP_REFERRER']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_REFERRER\"]"
+  "SERVER['HTTP_USER_AGENT']":
+    prefix: "$_"
+    body: "$_SERVER[\"HTTP_USER_AGENT\"]"
+  "SERVER['PATH_INFO']":
+    prefix: "$_"
+    body: "$_SERVER[\"PATH_INFO\"]"
+  "SERVER['PATH_TRANSLATED']":
+    prefix: "$_"
+    body: "$_SERVER[\"PATH_TRANSLATED\"]"
+  "SERVER['QUERY_STRING']":
+    prefix: "$_"
+    body: "$_SERVER[\"QUERY_STRING\"]"
+  "SERVER['REMOTE_ADDR']":
+    prefix: "$_"
+    body: "$_SERVER[\"REMOTE_ADDR\"]"
+  "SERVER['REMOTE_HOST']":
+    prefix: "$_"
+    body: "$_SERVER[\"REMOTE_HOST\"]"
+  "SERVER['REMOTE_PORT']":
+    prefix: "$_"
+    body: "$_SERVER[\"REMOTE_PORT\"]"
+  "SERVER['REMOTE_USER']":
+    prefix: "$_"
+    body: "$_SERVER[\"REMOTE_USER\"]"
+  "SERVER['REQUEST_METHOD']":
+    prefix: "$_"
+    body: "$_SERVER[\"REQUEST_METHOD\"]"
+  "SERVER['REQUEST_TIME']":
+    prefix: "$_"
+    body: "$_SERVER[\"REQUEST_TIME\"]"
+  "SERVER['REQUEST_URI']":
+    prefix: "$_"
+    body: "$_SERVER[\"REQUEST_URI\"]"
+  "SERVER['SCRIPT_FILENAME']":
+    prefix: "$_"
+    body: "$_SERVER[\"SCRIPT_FILENAME\"]"
+  "SERVER['SCRIPT_NAME']":
+    prefix: "$_"
+    body: "$_SERVER[\"SCRIPT_NAME\"]"
+  "SERVER['SERVER_ADDR']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_ADDR\"]"
+  "SERVER['SERVER_ADMIN']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_ADMIN\"]"
+  "SERVER['SERVER_NAME']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_NAME\"]"
+  "SERVER['SERVER_PORT']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_PORT\"]"
+  "SERVER['SERVER_PROTOCOL']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_PROTOCOL\"]"
+  "SERVER['SERVER_SIGNATURE']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_SIGNATURE\"]"
+  "SERVER['SERVER_SOFTWARE']":
+    prefix: "$_"
+    body: "$_SERVER[\"SERVER_SOFTWARE\"]"
+  Switch:
+    prefix: "switch"
+    body: '''
+      switch ${1:switchExpression}
+      	case ${2:caseValue}
+      		${3:# code...}
+      	break
+      	default
+      	${4:# code...}
+      end switch
+      ${0}
+    '''
+  Try:
+    prefix: "try"
+    body: '''
+      try
+      	${1:# code...}
+      catch ${2:tError}
+      	${3:# code...}
+      end try
+      ${0}
+    '''

@@ -1,0 +1,1470 @@
+".source.iRev":
+  "Accept Charset":
+    prefix: "riagentcharset"
+    body: "rigAcceptCharset()"
+  "Accept Language":
+    prefix: "riagentlang"
+    body: "rigAcceptLang()"
+  "Add Table Row Array":
+    prefix: "ritablerow"
+    body: "rigAddTableRow ${1:array}"
+  "Add Table Row":
+    prefix: "ritablerow"
+    body: "rigAddTableRow \"${1:list}\""
+  "Affected Rows":
+    prefix: "ridbaffect"
+    body: "rigDbAffectedRows()"
+  "Agent Platform":
+    prefix: "riagentplatform"
+    body: "rigAgentPlatform()"
+  "Agent String":
+    prefix: "riagentstring"
+    body: "rigAgentString()"
+  "Alt Message":
+    prefix: "rimailaltmes"
+    body: "rigSet_sAltMessage \"${1:string}\"${0}"
+  "URL Anchor":
+    prefix: "urlanchor"
+    body: "rigAnchor(${1:\"${2:URI}\"${3:, \"${4:Title}\"${5:, ${6:Attributes}}}})${0}"
+  "Array Element":
+    prefix: "arrayel"
+    body: "rigArrayElement(\"${1:indexName}\", ${2:array}${3:, ${4:FALSE}})${0}"
+  "Array Elements":
+    prefix: "arrayels"
+    body: "rigElementsList(${1:array})${0}"
+  "Array Implode":
+    prefix: "arrayimplode"
+    body: '''
+      rigImplode(${1:array}, "${2:glue}")${0}
+      
+    '''
+  "Array Keys":
+    prefix: "arraykeys"
+    body: "rigArrayKeys(${1:array})${0}"
+  "Array Merge":
+    prefix: "arraymerge"
+    body: "rigArrayMerge(${1:arrayA}, ${2:arrayB}${3:, \"${4:firstDelim}\", \"${5:secondDelim}\"})${0}"
+  "Array Splice":
+    prefix: "arraysplice"
+    body: "rigArraySplice(${1:array}, ${2:offset}, ${3:length})${0}"
+  "Array Values":
+    prefix: "arrayvalues"
+    body: "rigArrayValues(${1:array})${0}"
+  "Asset Add Favicon":
+    prefix: "addfav"
+    body: "rigAddFavicon(${1:\"${2:moduleName}\"${3:, ${4:cacheBuster}}})${0}"
+  "Asset CSS Dynamic":
+    prefix: "cssassetdyn"
+    body: "rigDynamicCssAsset(\"${1:cssName}\"${2:, ${3:attribs}${4:, \"${5:moduleName}\"${6:, ${7:cacheBuster}}}})${0}"
+  "Asset CSS":
+    prefix: "cssasset"
+    body: "rigCssAsset(\"${1:cssName}\"${2:, ${3:attribs}${4:, \"${5:moduleName}\"${6:, ${7:cacheBuster}}}})${0}"
+  "Asset Image Data":
+    prefix: "imgdata"
+    body: '''
+      put "${1:picSelector}" into t${2:Array}["${3:class/id}"]
+      put "${4:altText}" into t${2}["alt"]
+      put "${5:0}" into t${2}["width"]
+      put "${6:0}" into t${2}["height"]
+      put rigImageAsset("${7:fileName}", t${2}${8:, "${9:module}"${10:, ${11:cacheBuster}}}) into ${12:var}${0}
+      
+    '''
+  "Asset Image URL":
+    prefix: "imageurl"
+    body: "rigImgAssetURL(\"${1:imageName}\"${2:, \"${3:moduleName}\"${4:, ${5:cacheBuster}}})${0}"
+  "Asset Image":
+    prefix: "imageasset"
+    body: "rigImageAsset(\"${1:imageName}\"${2:, ${3:attribs}${4:, \"${5:moduleName}\"${6:, ${7:cacheBuster}}}})${0}"
+  "Asset JS":
+    prefix: "jsasset"
+    body: "rigJsAsset(\"${1:jsName}\"${2:, \"${3:moduleName}\"${4:, ${5:cacheBuster}}})${0}"
+  "Asset Write Manifest":
+    prefix: "mani"
+    body: "rigWriteManifest \"${1:resourcespath}\", \"${2:name}\"${3:, ${4:absoluteuri}, ${5:network}, ${6:fallback}, \"${7:ignore}\"}${0}"
+  "Assoc to URI":
+    prefix: "riassoctouri"
+    body: "rigAssocToURI(${1:array})${0}"
+  Attach:
+    prefix: "rimailatt"
+    body: "rigMailAttach \"${1:filePath}\"${0}"
+  "Auth Activate":
+    prefix: "authactivate"
+    body: "rigAuthActivate(${1:id}${2:, ${3:code}})${0}"
+  "Auth Change Password":
+    prefix: "authchangepassword"
+    body: "rigAuthChangePassword(${1:identity}, ${2:oldPassword}, ${3:newPassword})${0}"
+  "Auth Clear Forgotten Password Code":
+    prefix: "authclearforgotten"
+    body: "rigAuthClearForgottenPasswordCode(${1:code})${0}"
+  "Auth Clear Login Attempts":
+    prefix: "authclearattempts"
+    body: "rigAuthClearLoginAttempts(${1:identity}${2:, ${3:expirePeriod}})${0}"
+  "Auth Deactivate":
+    prefix: "authdeactivate"
+    body: "rigAuthDeactivate(${1:id})${0}"
+  "Auth Delete User":
+    prefix: "authdeleteuser"
+    body: "rigAuthDeleteUser(${1:id})${0}"
+  "Auth Email Check":
+    prefix: "authemailcheck"
+    body: "rigAuthEmailCheck(${1:email})${0}"
+  "Auth Errors":
+    prefix: "autherrors"
+    body: "rigAuthErrors(${1:${2:prefix}${3:, ${4:suffix}}})${0}"
+  "Auth Fetch Config Item":
+    prefix: "authfetchconfig"
+    body: "rigAuthFetchConfigItem(${1:item}${2:, ${3:index}})${0}"
+  "Auth Forgotten Password Check":
+    prefix: "authforgottenpasswordcheck"
+    body: "rigAuthForgottenPasswordCheck(${1:code})${0}"
+  "Auth Forgotten Password":
+    prefix: "authforgotten"
+    body: "rigAuthForgottenPassword(${1:identity})${0}"
+  "Auth Get Attempts Num":
+    prefix: "authattempts"
+    body: "rigAuthGetAttemptsNum(${1:identity})${0}"
+  "Auth Group":
+    prefix: "authgroup"
+    body: "rigAuthGroup(${1:groupID})${0}"
+  "Auth Groups":
+    prefix: "authgroups"
+    body: "rigAuthGroups()"
+  "Auth Identity Check":
+    prefix: "authidentitycheck"
+    body: "rigAuthEmailCheck(${1:identity})${0}"
+  "Auth In Group":
+    prefix: "authingroup"
+    body: "rigAuthInGroup(${1:group}${2:, ${3:userID}})${0}"
+  "Auth Increase Login Attempts":
+    prefix: "authincreaselogin"
+    body: "rigAuthIncreaseLoginAttempts(${1:identity})${0}"
+  "Auth Is Admin":
+    prefix: "authisadmin"
+    body: "rigAuthIsAdmin(${1:id})${0}"
+  "Auth Is Max Login Exceeded":
+    prefix: "authismaxlogin"
+    body: "rigAuthIsMaxLoginAttemptsExceeded(${1:identity})${0}"
+  "Auth Logged In":
+    prefix: "authloggedin"
+    body: "rigAuthLoggedIn()"
+  "Auth Login":
+    prefix: "authlogin"
+    body: "rigAuthLogin(${1:identity}, ${2:password}${3:, ${4:FALSE}})${0}"
+  "Auth Logout":
+    prefix: "authlogout"
+    body: "rigAuthLogout"
+  "Auth Messages":
+    prefix: "authmessages"
+    body: "rigAuthMessages(${1:${2:prefix}${3:, ${4:suffix}}})${0}"
+  "Auth Register":
+    prefix: "authregister"
+    body: "rigAuthRegister(${1:username}, ${2:password}, ${3:email}${4:, ${5:extraData}${6:, ${7:groupName}}})${0}"
+  "Auth Remove From Group":
+    prefix: "authremovefromgroup"
+    body: "rigAuthRemoveFromGroup(${1:groupIDs}, ${2:userID})${0}"
+  "Auth Reset Password":
+    prefix: "authresetpassword"
+    body: "rigAuthResetPassword(${1:identity}, ${2:newPassword})${0}"
+  "Auth Set Error Delimiters":
+    prefix: "authseterrordel"
+    body: "rigAuthSetErrorDelimiters ${1:startDelimiter}, ${2:endDelimiter}${0}"
+  "Auth Set Message Delimiters":
+    prefix: "authsetmessagedel"
+    body: "rigAuthSetMessageDelimiters ${1:startDelimiter}, ${2:endDelimiter}${0}"
+  "Auth Update":
+    prefix: "authupdate"
+    body: "rigAuthUpdate(${1:id}, ${2:data})${0}"
+  "Auth User Groups":
+    prefix: "authusergroups"
+    body: "rigAuthUserGroups(${1:id})${0}"
+  "Auth User":
+    prefix: "authuser"
+    body: "rigAuthUser(${1:id})${0}"
+  "Auth Username Check":
+    prefix: "authusernamecheck"
+    body: "rigAuthUsernameCheck(${1:username})${0}"
+  "Auth Users":
+    prefix: "authusers"
+    body: "rigAuthUsers(${1:groupIDs})${0}"
+  "BCC Array":
+    prefix: "rimailbcc"
+    body: "rigMailBcc ${1:addressesArray}${0}"
+  BCC:
+    prefix: "rimailbcc"
+    body: "rigMailBcc \"${1:address(list)}\"${0}"
+  "CC Array":
+    prefix: "rimailcc"
+    body: "rigMailCC ${1:addressesArray}${0}"
+  CC:
+    prefix: "rimailcc"
+    body: "rigMailCC \"${1:address(list)}\"${0}"
+  Cache:
+    prefix: "rioutcache"
+    body: "rigOutputCache ${1:minutesToCache} ${0}"
+  "Calendar Library":
+    prefix: "rical"
+    body: "rigLoaderLoadLibrary \"Calendar\"${1:, ${2:prefs}}${0}"
+  "Captcha Hash":
+    prefix: "ricapthash"
+    body: "rigGetCaptchaHash()"
+  "Captcha Init":
+    prefix: "ricaptinit"
+    body: "rigInitCaptcha ${1:configArray}${0}"
+  "Captcha Library":
+    prefix: "ricaptcha"
+    body: "rigLoaderLoadLibrary \"Captcha\""
+  "Captcha Math":
+    prefix: "ricaptmath"
+    body: "rigCaptchaMathProblem(${1:numberOfOperators})${0}"
+  "Captcha Number":
+    prefix: "ricaptnum"
+    body: "rigGetCaptchaNum()"
+  "Captcha Style":
+    prefix: "ricaptstyle"
+    body: "rigCaptchaStyle()"
+  "Captcha Validate":
+    prefix: "ricaptvalid"
+    body: "rigValidCaptchaUserInput(${1:captchaInput}, ${2:hiddenFieldValue})${0}"
+  Captcha:
+    prefix: "ricapt"
+    body: "rigCaptcha()"
+  "Clear Table Vars":
+    prefix: "ritableclear"
+    body: "rigClearTableVars"
+  Clear:
+    prefix: "riimgclear"
+    body: "rigImgClear"
+  "Get Config Item":
+    prefix: "riconfigget"
+    body: "rigFetchConfigItem(\"${1:item}\"${2:, \"${3:index}\"})${0}"
+  "Config Load File":
+    prefix: "riloadconfig"
+    body: "rigLoadConfigFile(\"${1:configFile}\"${2:, ${3:noCollisions}${4:, ${5:suppressErrors}}})${0}"
+  "Cookie Delete Params":
+    prefix: "deletecookieparams"
+    body: "rigDeleteCookie \"${1:name}\" ${3:, \"${6:domain}\"${7:, \"${8:path}\"${9:, \"${10:prefix}\"}}}${0}"
+  "Cookie Delete":
+    prefix: "deletecookie"
+    body: "rigDeleteCookie ${1:attribs}${0}"
+  "Cookie Get":
+    prefix: "getcookie"
+    body: "rigGetCookie(\"${1:name}\"${2:, ${3:filter}})${0}"
+  "Cookie Set Array":
+    prefix: "cookie"
+    body: "rigSetCookie ${1:attribs}${0}"
+  "Cookie Set Params":
+    prefix: "cookieparams"
+    body: "rigSetCookie \"${1:name}\", \"${2:value}\"${3:, ${4:seconds}${5:, \"${6:domain}\"${7:, \"${8:path}\"${9:, \"${10:prefix}\"${11:, ${12:replace}}}}}}${0}"
+  "Cookie Set":
+    prefix: "cookie"
+    body: "rigSetCookie \"${1:name}\", \"${2:value}\"${3:, ${4:expire}, \"${5:domain}\", \"${6:path}\", \"${7:prefix}\", ${8:overwrite}, ${9:secure}}${0}"
+  Cookie:
+    prefix: "riinputcookie"
+    body: "rigVarCookie(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
+  "Count All Results":
+    prefix: "ridbcount"
+    body: "rigDbCountAllResults(\"${1:table}\")${0}"
+  "Count All":
+    prefix: "ridbcount"
+    body: "rigDbCountAll(\"${1:table}\")${0}"
+  "Create New Command":
+    prefix: "ricom"
+    body: '''
+      /*----------------------------------------------------------------------
+      --| COMMAND ${1:handlerName}
+      --|
+      --| Author: ${2:$TM_FULLNAME}
+      --| Version:  1.0
+      --| Created: ${3:`date "+%d-%m-%Y"`}
+      --| Last Mod: ${3}
+      --| Requires: ${4:--}
+      --|
+      --| Summary: ${5:description}
+      --| 
+      --| Format:  ${1} ${6:params}
+      --|
+      --| Parameters: ${7:--}
+      --|
+      --| Return: ${8:empty}
+      ----------------------------------------------------------------------*/
+      
+      command ${1} ${9:params}
+      	${10:# code...}
+      end ${1}
+      ${0}
+    '''
+  "Create New Controller":
+    prefix: "ricont"
+    body: '''
+      <?rev
+      
+      global gControllerHandlers, gData
+      
+      put "${1:controllerName},index" into gControllerHandlers
+      
+      
+      command ${1}
+      	${0:# code...}
+      end ${1}
+      
+      
+      command index
+      	# SET PAGE TITLE
+      	put "${2:YourPageTitle}" into gData["pageTitle"]
+      
+      	# LOAD THE VIEW FILE
+      	get rigLoadView("${1:controllerName}View")
+      end index
+      
+      
+      
+      
+      --| END OF ${1}.lc
+      --| Location: ./system/application/controllers/${1}.lc
+      ----------------------------------------------------------------------
+    '''
+  "Create New Function":
+    prefix: "rifunc"
+    body: '''
+      /*----------------------------------------------------------------------
+      --| FUNCTION ${1:functionName}
+      --|
+      --| Author: ${2:$TM_FULLNAME}
+      --| Version:  1.0
+      --| Created: ${3:`date "+%d-%m-%Y"`}
+      --| Last Mod: ${3}
+      --| Requires: ${4:--}
+      --|
+      --| Summary: ${5:description}
+      --| 
+      --| Format:  ${1}(${6:params})
+      --|
+      --| Parameters: ${7:--}
+      --|
+      --| Return: ${8:returnType}
+      ----------------------------------------------------------------------*/
+      
+      function ${1} ${9:params}
+      	${10:# code...}
+      end ${1}
+      ${0}
+    '''
+  "Create New Model":
+    prefix: "rimodel"
+    body: '''
+      <?rev
+      put gBASEPATH into gBASEPATH
+      
+      if gBASEPATH is "gBASEPATH" then
+      	put "No direct script access allowed."
+      	exit to top
+      end if
+      
+      
+      ${0}
+      
+      
+      
+      --| END OF ${1:modelName}.lc
+      --| Location:  ./system/application/models/${1}.lc
+      ----------------------------------------------------------------------
+    '''
+  "Create Pagination Links":
+    prefix: "ripaglinks"
+    body: "rigCreatePaginationLinks()"
+  "DB Cache Delete All":
+    prefix: "ridbcache"
+    body: "rigDbCacheDeleteAll${1: \"${2:fileToExclude}\"}${0}"
+  "DB Cache Delete":
+    prefix: "ridbcache"
+    body: "rigDbCacheDelete \"${1:controller}\", \"${2:method}\"${0}"
+  "DB Cache Off":
+    prefix: "ridbcache"
+    body: "rigDbCacheOff()"
+  "DB Cache On":
+    prefix: "ridbcache"
+    body: "rigDbCacheOn()"
+  "DB Close Parenthesis":
+    prefix: "ridbclosepar"
+    body: "rigDbCloseParenthesis"
+  "DB Escape Like Str":
+    prefix: "ridbescape"
+    body: "rigEscapeLikeStr(${1:string})${0}"
+  "DB Escape Str":
+    prefix: "ridbescape"
+    body: "rigEscapeStr(${1:data})${0}"
+  "DB Escape":
+    prefix: "ridbescape"
+    body: "rigDbEscape(${1:string})${0}"
+  "DB Open Parenthesis":
+    prefix: "ridbopenpar"
+    body: "rigDbOpenParenthesis"
+  "DB Prefix":
+    prefix: "ridbpre"
+    body: "rigDbPrefix(\"${1:table}\")${0}"
+  "Data Array Value":
+    prefix: "gd"
+    body: "gData[\"${1:key}\"]"
+  "Database Library":
+    prefix: "ridb"
+    body: "get rigLoadDatabase(${1: \"${2:groupName}\"${3:, ${4:returnID}${5:, ${6:enableActiveRec}}}})${0}"
+  "Date Days in Month":
+    prefix: "daysinmonth"
+    body: "rigDaysInMonth(${1:month}, ${2:year})${0}"
+  "Date GMT to Local":
+    prefix: "gmttolocal"
+    body: "rigGmtToLocal(${1:time}${2:, ${3:timeZone}}${4:, ${5:DST}})${0}"
+  "Date Human to Timestamp":
+    prefix: "humantotst"
+    body: "rigHumanToTimestamp(${1:datestring})${0}"
+  "Date Local to GMT":
+    prefix: "localtogmt"
+    body: "rigLocalToGMT(${1:time})${0}"
+  "Date Mdate":
+    prefix: "mdate"
+    body: "rigMdate(${1:datestring}${2:, ${3:time}})${0}"
+  "Date MySQL to Seconds":
+    prefix: "mysqltosecs"
+    body: "rigMysqlTimeToSeconds(${1:mysqlTime})${0}"
+  "Date Now":
+    prefix: "now"
+    body: "rigNow()"
+  "Date Standard Date":
+    prefix: "stdate"
+    body: "rigStandardDate(${1:format}, ${2:time})${0}"
+  "Date Timespan":
+    prefix: "timesp"
+    body: "rigTimespan(${1:seconds}, ${2:time})${0}"
+  "Date Timestamp to Human":
+    prefix: "tsttohuman"
+    body: "rigTimestampToHuman(${1:time}${2:, ${3:showSecs}}${4:, ${5:format}})${0}"
+  "Date Timezone Menu":
+    prefix: "tzonemenu"
+    body: "rigTimezoneMenu(${1:default}${2:, ${3:class}}${4:, ${5:name}})${0}"
+  "Date Timezones":
+    prefix: "tzone"
+    body: "rigTimezones(${1:timeZone})${0}"
+  Debugger:
+    prefix: "rimaildeb"
+    body: "rigPrintMailDebugger()"
+  Decode:
+    prefix: "riencryptdec"
+    body: "rigDecode(${1:encryptedString})${0}"
+  "Delete Array":
+    prefix: "ridbdel"
+    body: "rigDbDelete(${1:tablesArray})${0}"
+  "File Delete":
+    prefix: "filedel"
+    body: "rigDeleteFiles(\"${1:path}\"${2:, ${3:bool}${4:, \"${5:exclude}\"}})${0}"
+  Delete:
+    prefix: "ridbdel"
+    body: "rigDbDelete(\"${1:table}\"${2:, ${3:where}})${0}"
+  "Display Image Errors":
+    prefix: "riimgerrors"
+    body: "rigDisplayImgErrors(${1:\"${2:openingTag}\", \"${3:closingTag}\"})${0}"
+  Distinct:
+    prefix: "ridbdist"
+    body: "rigDbDistinct"
+  Distroy:
+    prefix: "risesdistroy"
+    body: "rigSessDestroy"
+  "Do Exception":
+    prefix: "comexcept"
+    body: "rigDoException ${1:contexts}, \"${2:currentFile}\", \"${3:currentMethod}\"${0}"
+  "Download Force":
+    prefix: "dld"
+    body: "rigForceDownload \"${1:fileName}\", ${2:data}${0}"
+  "Elapsed Time Total Cached":
+    prefix: "ribenchet"
+    body: "{{g_ElapsedTime_}}"
+  "Elapsed Time Total":
+    prefix: "ribenchet"
+    body: "rigElapsedTime()${0:}"
+  "Elapsed Time":
+    prefix: "ribenchet"
+    body: "rigElapsedTime(\"${1:start}\", \"${2:end}\")${0:}"
+  "Email Initialize":
+    prefix: "rimailconf"
+    body: "rigInitializeMail ${1:configArray}${0}"
+  "Email Library":
+    prefix: "rimail"
+    body: "rigLoaderLoadLibrary \"Email\""
+  "Email Send":
+    prefix: "sendemail"
+    body: "rigSendEmail(\"${1:recipient}\", \"${2:subject}\", \"${3:message}\", \"${4:sender}\"${7:, \"${8:cc}\"${9:, \"${10:bcc}\"}})${0}"
+  "Email Valid":
+    prefix: "validemail"
+    body: '''
+      rigValidEmail("${1:address}")${0}
+      
+    '''
+  "Empty Table":
+    prefix: "ridbempty"
+    body: "rigDbEmptyTable(\"${1:table}\")${0}"
+  "Enable Profiler":
+    prefix: "rioutprof"
+    body: "rigEnableProfiler ${1:bool}${0}"
+  Encode:
+    prefix: "riencryptenc"
+    body: "rigEncode(${1:message}${2:, ${3:key}})${0}"
+  "Encrypt Library":
+    prefix: "riencrypt"
+    body: "rigLoaderLoadLibrary \"Encrypt\""
+  "Fetch Segment Routed":
+    prefix: "riurifetch"
+    body: "rigFetchRsegment(${1:segmentNumber}${2:, ${3:defaultValue}})${0}"
+  "Fetch Segment":
+    prefix: "riurifetch"
+    body: "rigFetchSegment(${1:segmentNumber}${2:, ${3:defaultValue}})${0}"
+  "Field Data":
+    prefix: "ridbfielddata"
+    body: "rigDbFieldData(\"${1:table}\")${0}"
+  "Field Exists":
+    prefix: "ridbfieldex"
+    body: "rigDbFieldExists(\"${1:field}\", \"${2:table}\")${0}"
+  "File Upload Data":
+    prefix: "riupdata"
+    body: '''
+      rigUploadData()
+      
+    '''
+  "File Upload Display Error":
+    prefix: "riuperror"
+    body: '''
+      rigDisplayUploadErrors(${1:"<${2:p}>", "</${3:p}>"})${0}
+      
+    '''
+  "File Upload Do":
+    prefix: "ridoup"
+    body: "rigDoUpload \"${1:fieldname}\"${0}"
+  "File Uploading Library":
+    prefix: "riupload"
+    body: "rigLoaderLoadLibrary \"Upload\""
+  "Flash Data":
+    prefix: "risesflash"
+    body: "rigSessFlashdata(\"${1:item}\")${0}"
+  "Flush Cache":
+    prefix: "ridbcache"
+    body: "rigDbFlushCache"
+  "Form Button Array":
+    prefix: "formbtn"
+    body: "rigFormButton(${1:attributes})${0}"
+  "Form Button":
+    prefix: "formbtn"
+    body: "rigFormButton(\"${1:name}\", \"${2:content}\"${3:, ${4:additionalData}})${0}"
+  "Form Checkbox Array":
+    prefix: "formcheckbox"
+    body: "rigFormCheckbox(${1:attributes})${0}"
+  "Form Checkbox":
+    prefix: "formcheckbox"
+    body: "rigFormCheckbox(\"${1:name}\", ${2:value}, ${3:bool}${4:, ${5:additionalData}})${0}"
+  "Form Close":
+    prefix: "formclose"
+    body: "rigFormClose(${1:data})${0}"
+  "Form Drop Down":
+    prefix: "formdropdown"
+    body: "rigFormDropDown(\"${1:name}\", ${2:options}, ${3:selectedValues}${4:, ${5:additionalData}})${0}"
+  "Form Error":
+    prefix: "riformvalerror"
+    body: "rigFormError(\"${1:fieldname}\"${2:, \"${3:delimStart}\", \"${4:delimEnd}\"})${0}"
+  "Form Field Set Close":
+    prefix: "formfieldsetclose"
+    body: "rigFormFieldsetClose(${1:\"${2:dataBelow}\"})${0}"
+  "Form Field Set":
+    prefix: "formfieldset"
+    body: "rigFormFieldset(\"${1:legend}\"${2:, ${3:attributes}})${0}"
+  "Form Hidden Array":
+    prefix: "formhidden"
+    body: "rigFormHidden(${1:dataArray})${0}"
+  "Form Hidden":
+    prefix: "formhidden"
+    body: "rigFormHidden(\"${1:name}\", \"${2:value}\")${0}"
+  "Form Input":
+    prefix: "forminput"
+    body: "rigFormInput(${1:nameValueArray}${2:, ${3:additionalData}})${0}"
+  "Form Label":
+    prefix: "formlabel"
+    body: "rigFormLabel(\"${1:label}\", \"${2:for}\"${3:, ${4:attributes}})${0}"
+  "Form Mail Replace":
+    prefix: "formmailrep"
+    body: "rigFormMailReplace()"
+  "Form Mail":
+    prefix: "formmail"
+    body: "rigFormMail(\"${1:filePath}\", ${2:substitutionArray}${3:, \"${4:prefix}\"${5:, \"${6:suffix}\"}})${0}"
+  "Form Multiselect":
+    prefix: "formmultisel"
+    body: "rigFormMultiselect(\"${1:name}[]\", ${2:options}, ${3:selectedValues}${4:, ${5:additionalData}})${0}"
+  "Form Open Multipart":
+    prefix: "formopenmulti"
+    body: "rigFormOpenMultiPart(\"${1:URI}\"${2:, ${3:attributes}${4:, ${5:hidden}}})${0}"
+  "Form Open":
+    prefix: "formopen"
+    body: "rigFormOpen(\"${1:URI}\"${2:, ${3:attributes}${4:, ${5:hidden}}})${0}"
+  "Form Password":
+    prefix: "formpass"
+    body: "rigFormPassword(${1:nameValueArray}${2:, ${3:additionalData}})${0}"
+  "Form Prep":
+    prefix: "formprep"
+    body: "rigFormPrep(${1:data})${0}"
+  "Form Radio":
+    prefix: "formradio"
+    body: "rigFormRadio(\"${1:name}\", ${2:value}, ${3:bool}${4:, ${5:additionalData}})${0}"
+  "Form Reset":
+    prefix: "formreset"
+    body: "rigResetButton(\"${1:name}\", \"${2:value}\")${0}"
+  "Form Set Checkbox":
+    prefix: "formsetcheckbox"
+    body: "rigSetCheckbox(\"${1:name}[]\", \"${2:value}\"${3:, ${4:bool}})${0}"
+  "Form Set Radio":
+    prefix: "formsetradio"
+    body: "rigSetRadio(\"${1:name}\", \"${2:value}\"${3:, ${4:bool}})${0}"
+  "Form Set Select":
+    prefix: "formsetselect"
+    body: "rigSetSelect(\"${1:name}\", \"${2:value}\"${3:, ${4:bool}})${0}"
+  "Form Set Value":
+    prefix: "formsetvalue"
+    body: "rigSetValue(\"${1:name}\", \"${2:value}\")${0}"
+  "Form Submit":
+    prefix: "formsubmit"
+    body: "rigSubmitButton(\"${1:name}\", \"${2:value}\")${0}"
+  "Form Text Area":
+    prefix: "formtextarea"
+    body: "rigFormTextarea(${1:nameValueArray}${2:, ${3:additionalData}})${0}"
+  "Form Upload":
+    prefix: "formupload"
+    body: "rigFormUpload(${1:nameValueArray}${2:, ${3:additionalData}})${0}"
+  "Form Validation Library":
+    prefix: "riformval"
+    body: "rigLoaderLoadLibrary \"Formvalidation\""
+  From:
+    prefix: "ridbfrom"
+    body: "rigDbFrom \"${1:table}\"${0}"
+  GET:
+    prefix: "riinputget"
+    body: "rigVarGet(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
+  "GET POST":
+    prefix: "riinputgetpost"
+    body: "rigVarGetPost(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
+  "Galleria Data Dynamic":
+    prefix: "galleriadatadyn"
+    body: "rigDynamicGalleriaData(${1:metadata}${2:, ${3:options}${4:, \"${5:id}\"${6:, \"${7:varname}\"${8:, ${9:cachebuster}}}}})${0}"
+  "Galleria Data":
+    prefix: "galleriadata"
+    body: "rigGalleriaData(\"${1:path}\"${2:, ${3:options}${4:, \"${5:id}\"${6:, \"${7:varname}\"${8:, ${9:cachebuster}${10:, ${11:replacefile}${12:, ${13:returnreference}}}}}}})${0}"
+  "Generate Table":
+    prefix: "ritablegen"
+    body: "rigGenerateTable(${1:dataArray})${0}"
+  Generate:
+    prefix: "ricalgen"
+    body: "rigCalGenerate(${1: ${2:jear}, ${3:month}${4:, ${5:data}}})${0}"
+  "File Directory Info ":
+    prefix: "filedirinfo"
+    body: "rigGetDirFileInfo(\"${1:path}\"${2:, ${3:bool}${4:, ${5:bool}}})${0}"
+  "File Info":
+    prefix: "fileinfo"
+    body: "rigGetFileInfo(\"${1:path}\"${2:, \"${3:what}\"})${0}"
+  "File Names":
+    prefix: "filenames"
+    body: "rigGetFileNames(\"${1:path}\"${2:, ${3:bool}${4:, ${5:bool}}})${0}"
+  "File Mime":
+    prefix: "filemime"
+    body: "rigGetMimeByExtension(\"${1:file}\")${0}"
+  "Get Output":
+    prefix: "rioutget"
+    body: "rigGetOutput()"
+  "Get Where":
+    prefix: "ridbget"
+    body: "rigDbGetWhere(\"${1:table}\", ${2:whereArray}${3:, ${4:limit}, ${5:offset}})${0}"
+  Get:
+    prefix: "ridbget"
+    body: "rigDbGet(\"${1:table}\"${2:, ${3:limit}, ${4:offset}})${0}"
+  "Group By Array":
+    prefix: "ridbgroup"
+    body: "rigDbGroupBy ${1:array}${0}"
+  "Group By":
+    prefix: "ridbgroup"
+    body: "rigDbGroupBy \"${1:field}\"${0}"
+  "HTML Doc Type":
+    prefix: "htmldoc"
+    body: "rigHtmlDocType(${1: \"${2:type}\"})${0}"
+  "HTML Heading":
+    prefix: "htmlhead"
+    body: "rigHtmlHeading(\"${1:data}\", ${2:number})${0}"
+  "HTML Img":
+    prefix: "htmlimg"
+    body: "rigHtmlImg(\"${1:image}\"${2:, ${3:addIndex}})${0}"
+  "HTML Img Array":
+    prefix: "htmlimg"
+    body: "rigHtmlImg(${1:attributesArray}${2:, ${3:bool}})${0}"
+  "HTML Line Breaks":
+    prefix: "htmlbr"
+    body: "rigHtmlBr(${1:number})${0}"
+  "HTML Link Tag Array":
+    prefix: "htmllink"
+    body: "rigHtmlLinkTag(${1:attributesArray})${0}"
+  "HTML Link Tag":
+    prefix: "htmllink"
+    body: "rigHtmlLinkTag(\"${1:href}\", \"${2:rel}\", \"${3:type}\"${4:, \"${5:title}\", \"${6:media}\", ${7:bool}})${0}"
+  "HTML Meta Array":
+    prefix: "htmlmeta"
+    body: "rigHtmlMeta(${1:numberedArray})${0}"
+  "HTML Meta":
+    prefix: "htmlmeta"
+    body: "rigHtmlMeta(\"${1:name}\", \"${2:content}\"${3:, \"${4:type}\"})${0}"
+  "HTML Nbs":
+    prefix: "htmlnbs"
+    body: "rigHtmlNbs(${1:number})${0}"
+  "HTML Ordered List":
+    prefix: "htmlol"
+    body: "rigHtmlOL(${1:list}${2:, ${3:attributesArray}})${0}"
+  "HTML Table Library":
+    prefix: "ritable"
+    body: "rigLoaderLoadLibrary \"Table\""
+  "HTML Unordered List":
+    prefix: "htmlul"
+    body: "rigHtmlUL(${1:list}${2:, ${3:attributesArray}})${0}"
+  "Having Array":
+    prefix: "ridbhaving"
+    body: "rigDbHaving ${1:array}${0}"
+  Having:
+    prefix: "ridbhaving"
+    body: "rigDbHaving \"${1:field}\", \"${2:value}\"${3:, ${4:escaping}}${0}"
+  "IP Address":
+    prefix: "riinputip"
+    body: "rigIpAddress()"
+  Crop:
+    prefix: "riimgcrop"
+    body: "rigImageCrop()"
+  "Image Manipulation Library":
+    prefix: "riimg"
+    body: "rigLoaderLoadLibrary \"Image\"${1:, ${2:configArray}}${0}"
+  Resize:
+    prefix: "riimgresize"
+    body: "rigImageResize()"
+  Rotate:
+    prefix: "riimgrotate"
+    body: "rigImageRotate()"
+  "Pagination Initialize":
+    prefix: "ripaginit"
+    body: "rigInitializePagination ${1:configArray}${0}"
+  "File Upload Initialize":
+    prefix: "riuploadconf"
+    body: "rigInitializeUpload ${1:configArray}${0}"
+  Insert:
+    prefix: "ridbins"
+    body: "rigDbInsert(\"${1:table}\"${2:${3:, ${4:array}}${5:, ${6:lastInsertID}}})${0}"
+  Insertstring:
+    prefix: "ridbins"
+    body: "rigDbInsertString(\"${1:table}\", ${2:array})${0}"
+  "Is Browser":
+    prefix: "riagentisbrowser"
+    body: "rigIsBrowser()"
+  "Is Mobile":
+    prefix: "riagentismobile"
+    body: "rigIsMobile()"
+  "Is Referral":
+    prefix: "riagentisreferral"
+    body: "rigIsReferral()"
+  "Is Robot":
+    prefix: "riagentisrobot"
+    body: "rigIsRobot()"
+  Join:
+    prefix: "ridbjoin"
+    body: "rigDbJoin \"${1:table}\", \"${2:condition}\"${3:, \"${4:option}\"}${0}"
+  "Jquery Add Statement":
+    prefix: "rijqaddstatement"
+    body: "rigJQaddStatement ${1:statement}${0}"
+  "Jquery Ajax Form":
+    prefix: "rijqajaxform"
+    body: "rigJQajaxForm ${1:submitBtnSelector}, ${2:selectorList}, ${3:postURI}${4:, ${5:preventDefault}}${6:, ${7:dataToLoadURI}}${8:, ${9:dataContainerSelector}}${0}"
+  "Jquery Ajax":
+    prefix: "rijqajax"
+    body: "rigJQajax ${1:ajaxOptions}${2:, ${3:setUpOnly}}${0}"
+  "Jquery AjaxR":
+    prefix: "rijqajaxr"
+    body: "rigJQajaxR(${1:ajaxOptions}${2:, ${3:setUpOnly}})${0}"
+  "Jquery Alert":
+    prefix: "rijqalert"
+    body: "rigJQalert ${1:alert}${0}"
+  "Jquery AlertR":
+    prefix: "rijqalertr"
+    body: "rigJQalertR(${1:alert})${0}"
+  "Jquery Animate":
+    prefix: "rijqanimate"
+    body: "rigJQanimate ${1:selector}, ${2:properties}${3:, ${4:duration}}${5:, ${6:easing}}${7:, ${8:callback}}${0}"
+  "Jquery AnimateR":
+    prefix: "rijqanimater"
+    body: "rigJQanimate(${1:selector}, ${2:properties}${3:, ${4:duration}}${5:, ${6:easing}}${7:, ${8:callback}})${0}"
+  "Jquery CB":
+    prefix: "rijqcb"
+    body: "rigJQcb"
+  "Jquery Call Function":
+    prefix: "rijqcallfunction"
+    body: "rigJQcallFunction ${1:selector}${2:, ${3:functionName}}${4:, ${5:funtionArguments}}${0}"
+  "Jquery Close":
+    prefix: "rijqclose"
+    body: "rigJQclose"
+  "Jquery Condition":
+    prefix: "rijqcondition"
+    body: "rigJQcondition ${1:condition}, ${2:ifAction}${3:, ${4:elseAction}}${0}"
+  "Jquery ConditionR":
+    prefix: "rijqconditionr"
+    body: "rigJQconditionR(${1:condition}, ${2:ifAction}${3:, ${4:elseAction}})${0}"
+  "Jquery Confirm":
+    prefix: "rijqconfirm"
+    body: "rigJQconfirm ${1:varName}, ${2:question}, ${3:global}${0}"
+  "Jquery ConfirmR":
+    prefix: "rijqconfirmr"
+    body: "rigJQconfirmR(${1:varName}, ${2:question}, ${3:global})${0}"
+  "Jquery Each Close":
+    prefix: "rijqeachclose"
+    body: "rigJQeachClose"
+  "Jquery Each CloseR":
+    prefix: "rijqeachcloser"
+    body: "rigJQeachCloseR()"
+  "Jquery Each Open":
+    prefix: "rijqeachopen"
+    body: "rigJQeachOpen ${1:selector}${2:, ${3:collection}}, ${4:callback}${0}"
+  "Jquery Each OpenR":
+    prefix: "rijqeachopenr"
+    body: "rigJQeachOpenR(${1:selector}${2:, ${3:collection}}, ${4:callback})${0}"
+  "Jquery Effect":
+    prefix: "rijqeffect"
+    body: "rigJQeffect ${1:selector}, ${2:effect}${3:, ${4:duration}}${5:, ${6:callback}}${0}"
+  "Jquery EffectR":
+    prefix: "rijqeffectr"
+    body: "rigJQeffectR(${1:selector}, ${2:effect}${3:, ${4:duration}}${5:, ${6:callback}})${0}"
+  "Jquery Event Alert":
+    prefix: "rijqeventalert"
+    body: "rigJQeventAlert ${1:selector}, ${2:event}, ${3:alert}${4:, ${5:preventDefault}}${6:, ${7:eventData}}${0}"
+  "Jquery Event Anim":
+    prefix: "rijqeventanim"
+    body: "rigJQeventAnim ${1:triggerSelector}, ${2:targetSelector}, ${3:event}, ${4:properties}${5:, ${6:duration}}${7:, ${8:easing}}${9:, ${10:callback}}${0}"
+  "Jquery Event Close":
+    prefix: "rijqeventclose"
+    body: "rigJQeventClose"
+  "Jquery Event Effect":
+    prefix: "rijqeventeffect"
+    body: "rigJQeventEffect ${1:triggerSelector}, ${2:targetSelector}, ${3:event}, ${4:effect}${5:, ${6:parameter}}${7:, ${8:preventDefault}}${9:, ${10:callback}}${0}"
+  "Jquery Event Open":
+    prefix: "rijqeventopen"
+    body: "rigJQeventOpen ${1:selector}, ${2:event}${3:, ${4:preventDefault}}${5:, ${6:eventData}}${7:, ${8:eventObject}}${9:, ${10:functionArguments}}${0}"
+  "Jquery Function Close":
+    prefix: "rijqfunctionclose"
+    body: "rigJQfunctionClose"
+  "Jquery Function Open":
+    prefix: "rijqfunctionopen"
+    body: "rigJQfunctionOpen ${1:name}${2:, ${3:arguments}}${0}"
+  "Jquery Library":
+    prefix: "rijquery"
+    body: "rigLoaderLoadLibrary \"Jquery\"${1:, ${2:settings}}${0}"
+  "Jquery Open":
+    prefix: "rijqopen"
+    body: "rigJQopen"
+  "Jquery Prompt":
+    prefix: "rijqprompt"
+    body: "rigJQprompt ${1:varName}, ${2:prompt}${3:, ${4:default}}${5:, ${6:global}}${0}"
+  "Jquery PromptR":
+    prefix: "rijqpromptr"
+    body: "rigJQpromptR(${1:varName}, ${2:prompt}${3:, ${4:default}}${5:, ${6:global}})${0}"
+  "Jquery Set":
+    prefix: "rijqset"
+    body: "rigJQset ${1:selector}, ${2:method}, ${3:propertyValues}${4:, ${5:function}}${6:, ${7:toggleClassSwitch}}${0}"
+  "Jquery SetR":
+    prefix: "rijqsetr"
+    body: "rigJQsetR(${1:selector}, ${2:method}, ${3:propertyValues}${4:, ${5:function}}${6:, ${7:toggleClassSwitch}})${0}"
+  "Jquery Source":
+    prefix: "rijqsource"
+    body: "rigJQuerySource()"
+  "Jquery Var":
+    prefix: "rijqvar"
+    body: "rigJQvar ${1:vars}${0}"
+  "Jquery XH Request":
+    prefix: "rijqxhrequest"
+    body: "rigJQxhRequest ${1:type}${2:, ${3:URI}}${4:, ${5:data}}${6:, ${7:callback}}${8:, ${9:dataType}}${10:, ${11:selector}}${0}"
+  "Jquery XH RequestR":
+    prefix: "rijqxhrequestr"
+    body: "rigJQxhRequestR(${1:type}${2:, ${3:URI}}${4:, ${5:data}}${6:, ${7:callback}}${8:, ${9:dataType}}${10:, ${11:selector}})${0}"
+  "Keep Flash Data":
+    prefix: "riseskeepflash"
+    body: "rigKeepSessFlashdata \"${1:item}\"${0}"
+  "Known Fonts":
+    prefix: "riimgfonts"
+    body: "rigIMknownFonts()"
+  "Lang Text Line":
+    prefix: "langline"
+    body: "rigLangLine(\"${1:key}\"${2:, \"${3:form_item_id}\"})${0}"
+  "Language Line":
+    prefix: "rilangline"
+    body: "rigLangLangLine(\"${1:languageKey}\")${0}"
+  "Last Query":
+    prefix: "ridblast"
+    body: "rigDbLastQuery()"
+  "Like Array":
+    prefix: "ridblike"
+    body: "rigDbLike ${1:array}${0}"
+  Like:
+    prefix: "ridblike"
+    body: "rigDbLike \"${1:field}\", \"${2:match}\"${3:, \"${4:wildcardPosition}\"}${0}"
+  Limit:
+    prefix: "ridblimit"
+    body: "rigDbLimit ${1:limit}${2:, ${3:offset}}${0}"
+  "List Fields":
+    prefix: "ridbfields"
+    body: "rigDbListFields(\"${1:table}\")${0}"
+  "List Tables":
+    prefix: "ridbtables"
+    body: "rigDbListTables()"
+  "Load Array Helper":
+    prefix: "arrayhelper"
+    body: "rigLoadHelper \"array\"${0}"
+  "Load Asset Helper":
+    prefix: "assethelper"
+    body: "rigLoadHelper \"asset\"${0}"
+  "Load Config":
+    prefix: "riloadconfig"
+    body: "rigLoadConfig \"${1:fileName}\"${0}"
+  "Load Cookie Helper":
+    prefix: "cookiehelper"
+    body: "rigLoadHelper \"cookie\"${0}"
+  "Load Database":
+    prefix: "riloaddb"
+    body: "get rigLoadDatabase(${1: \"${2:groupName}\"${3:, ${4:returnID}${5:, ${6:enableActiveRec}}}})${0}"
+  "Load Date Helper":
+    prefix: "datehelper"
+    body: "rigLoadHelper \"date\"${0}"
+  "Load Download Helper":
+    prefix: "dldhelper"
+    body: "rigLoadHelper \"download\"${0}"
+  "Load Email Helper":
+    prefix: "emailhelper"
+    body: "rigLoadHelper \"email\"${0}"
+  "Load File Helper":
+    prefix: "filehelper"
+    body: "rigLoadHelper \"file\"${0}"
+  "Load File":
+    prefix: "riloadfile"
+    body: "rigLoadFile(\"${1:filepath/filename}\"${2:, ${3:returnData}})${0}"
+  "Load Form Helper":
+    prefix: "formhelper"
+    body: "rigLoadHelper \"form\"${0}"
+  "Load Form-Mail Helper":
+    prefix: "formmailhelper"
+    body: "rigLoadHelper \"formmail\"${0}"
+  "Load Galleria Plugin":
+    prefix: "galleriaplugin"
+    body: "rigLoadPlugin \"galleria\"${0}"
+  "Load HTML Helper":
+    prefix: "htmlhelper"
+    body: "rigLoadHelper \"html\"${0}"
+  "Load Helper":
+    prefix: "riloadhelper"
+    body: "rigLoadHelper \"${1:name}\"${0}"
+  "Load Language":
+    prefix: "riloadlang"
+    body: "rigLoadLanguage \"${1:fileName}\", \"${2:language}\"${0}"
+  "Load Language Helper":
+    prefix: "langhelper"
+    body: "rigLoadHelper \"language\"${0}"
+  "Load Library":
+    prefix: "riloadlib"
+    body: "rigLoaderLoadLibrary \"${1:libraryName}\"${2:, ${3:configArray}}${0}"
+  "Load Markdown Plugin":
+    prefix: "mdplugin"
+    body: "rigLoadPlugin \"markdown\"${0}"
+  "Load Model":
+    prefix: "riloadmodel"
+    body: "rigLoadModel \"${1:model}\"${0}"
+  "Load Plugin":
+    prefix: "riloadplugin"
+    body: "rigLoadPlugin \"${1:name}\"${0}"
+  "Load QuerytoJSON Plugin":
+    prefix: "querytojsonplugin"
+    body: "rigLoadPlugin \"querytojson\"${0}"
+  "Load Queryvalues Plugin":
+    prefix: "queryvaluesplugin"
+    body: "rigLoadPlugin \"queryvalues\"${0}"
+  "Load Scaffolding":
+    prefix: "riloadscaf"
+    body: "rigLoadScaffolding \"${1:table}\"${0}"
+  "Load Sitelinks Plugin":
+    prefix: "sitelinksplugin"
+    body: "rigLoadPlugin \"sitelinks\"${0}"
+  "Load Stack":
+    prefix: "riloadstack"
+    body: "rigLoadStack \"${1:stackName}\"${2:, ${3:configArray}${4:, \"${5:front}\"}}${0}"
+  "Load String Helper":
+    prefix: "stringhelper"
+    body: "rigLoadHelper \"string\"${0}"
+  "Load URL Helper":
+    prefix: "urlhelper"
+    body: "rigLoadHelper \"url\"${0}"
+  "Load View":
+    prefix: "riloadview"
+    body: "rigLoadView(\"${1:view}\"${2:, ${3:returnData}})${0}"
+  "Load XML Helper":
+    prefix: "xmlhelper"
+    body: "rigLoadHelper \"xml\"${0}"
+  "Log Message":
+    prefix: "comlog"
+    body: "rigLogMessage \"${1:level}\", \"${2:message}\"${3:, ${4:displayError}}${0}"
+  "Make Table Columns":
+    prefix: "ritablecol"
+    body: "rigMakeTableColumns(${1:dataArray}, ${2:colNumber})${0}"
+  Mark:
+    prefix: "ribenchmark"
+    body: "rigTimeMark \"${1:mark}\"${0:}"
+  "Markdown Available":
+    prefix: "mdavailable"
+    body: "rigMarkdownAvailable()"
+  "Markdown Version":
+    prefix: "mdversion"
+    body: "rigMarkdownVersion()"
+  Markdown:
+    prefix: "md"
+    body: "rigMarkdown(${1:tMDstring}${2:, ${3:TRUE}})${0}"
+  Message:
+    prefix: "rimailmes"
+    body: "rigMailMessage \"${1:string}\"${0}"
+  "New Settings":
+    prefix: "riimgnew"
+    body: "rigImageNewSettings ${1:settingsArray}"
+  "Not Like":
+    prefix: "ridblike"
+    body: "rigDbNotLike \"${1:field}\", \"${2:match}\"${3:, \"${4:wildcardPosition}\"}${0}"
+  "Number of Fields":
+    prefix: "ridbnumfields"
+    body: "rigNumFields()"
+  "Number of Rows":
+    prefix: "ridbnumrows"
+    body: "rigNumRows()"
+  "Or Having Array":
+    prefix: "ridbhaving"
+    body: "rigDbOrHaving ${1:field}${0}"
+  "Or Having":
+    prefix: "ridbhaving"
+    body: "rigDbOrHaving \"${1:field}\", \"${2:value}\"${3:, ${4:escaping}}${0}"
+  "Or Like":
+    prefix: "ridblike"
+    body: "rigDbOrLike \"${1:field}\", \"${2:match}\"${3:, \"${4:wildcardPosition}\"}${0}"
+  "Or Not Like":
+    prefix: "ridblike"
+    body: "rigDbOrNotLike \"${1:field}\", \"${2:match}\"${3:, \"${4:wildcardPosition}\"}${0}"
+  "Or Where Array":
+    prefix: "ridborwhere"
+    body: "rigDbOrWhere ${1:array}${0}"
+  "Or Where Custom String":
+    prefix: "ridborwhere"
+    body: "rigDbOrWhere ${1:string}, \"\"${2:, ${3:protect}}${0}"
+  "Or Where Custom":
+    prefix: "ridborwhere"
+    body: "rigDbOrWhere \"${1:key} ${2:operator}\", ${3:value}${0}"
+  "Or Where In":
+    prefix: "ridbwherein"
+    body: "rigDbWhereIn \"${1:field}\", ${2:itemsArray}${0}"
+  "Or Where Not In":
+    prefix: "ridbwherenotin"
+    body: "rigDbOrWhereNotIn \"${1:field}\", ${2:itemsArray}${0}"
+  "Or Where":
+    prefix: "ridborwhere"
+    body: "rigDbOrWhere \"${1:key}\", ${2:value}${0}"
+  "Order By String":
+    prefix: "ridborder"
+    body: "rigDbOrderBy \"${1:string}\"${0}"
+  "Order By":
+    prefix: "ridborder"
+    body: "rigDbOrderBy \"${1:field}\", \"${2:direction}\"${0}"
+  "Output Cache":
+    prefix: "outcache"
+    body: "rigOutputCache ${1:numberMinutes}${0}"
+  POST:
+    prefix: "riinputpost"
+    body: "rigVarPost(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
+  "Pagination Library":
+    prefix: "ripagination"
+    body: "rigLoaderLoadLibrary \"Pagination\""
+  Platform:
+    prefix: "ridbplat"
+    body: "rigDbPlatform()"
+  "Protect Identifiers":
+    prefix: "ridbprotect"
+    body: "rigProtectIdentifiers(\"${1:name}\"${2:, ${3:prefixing}})${0}"
+  "Query Binding Array":
+    prefix: "ridbquery"
+    body: "rigDbQuery(\"${1:query}\", ${2:array})${0}"
+  "Query Binding List":
+    prefix: "ridbquery"
+    body: "rigDbQuery(\"${1:query}\", ${2:list})${0}"
+  Query:
+    prefix: "ridbquery"
+    body: "rigDbQuery(\"${1:query}\")${0}"
+  QuerytoJSON:
+    prefix: "querytojson"
+    body: "rigQueryToJSON(${1:queryResultArray}${2:, ${3:fieldNamesArray}})${0}"
+  Queryvalues:
+    prefix: "queryvalues"
+    body: "rigQueryValues(${1:result}${2:, \"${3:keyValueDelimiter}\"${4:, \"${5:recordDelimiter}\"}${6:, ${7:fieldNames}}})${0}"
+  "Array Random Element":
+    prefix: "arrayrand"
+    body: "rigArrayRandElement(${1:array})${0}"
+  "File Read Binary":
+    prefix: "filereadbin"
+    body: "rigReadBinFile(\"${1:path}\")${0}"
+  "File Read":
+    prefix: "fileread"
+    body: "rigReadFile(\"${1:path}\")${0}"
+  Referrer:
+    prefix: "riagentreferrer"
+    body: "rigReferrer()"
+  ReplyTo:
+    prefix: "rimailreply"
+    body: "rigReplyTo \"${1:address}\", \"${2:name}\"${0}"
+  Result:
+    prefix: "ridbresult"
+    body: "rigDBresult()"
+  "Row Current":
+    prefix: "ridbrow"
+    body: "rigDbCurrentRow()"
+  "Row First":
+    prefix: "ridbrow"
+    body: "rigDbFirstRow()"
+  "Row Last":
+    prefix: "ridbrow"
+    body: "rigDbLastRow()"
+  "Row Next":
+    prefix: "ridbrow"
+    body: "rigDbNextRow()"
+  "Row Previous":
+    prefix: "ridbrow"
+    body: "rigDbPreviousRow()"
+  Row:
+    prefix: "ridbrow"
+    body: "rigDbRow(${1:${2:rowNumber}})${0}"
+  "Sanitize Filename":
+    prefix: "riinputsani"
+    body: "rigSanitizeFilename(${1:fileName}${2:, ${3:relativePath}})${0}"
+  "Segment Array Routed":
+    prefix: "riuriarray"
+    body: "rigRSegmentArray()"
+  "Segment Array":
+    prefix: "riuriarray"
+    body: "rigSegmentArray()"
+  "Select Avg":
+    prefix: "ridbsel"
+    body: "rigSelectAvg \"${1:field}\"${2:, \"${3:resultName}\"}${0}"
+  "Select Max":
+    prefix: "ridbsel"
+    body: "rigSelectMax \"${1:field}\"${2:, \"${3:resultName}\"}${0}"
+  "Select Min":
+    prefix: "ridbsel"
+    body: "rigSelectMin \"${1:field}\"${2:, \"${3:resultName}\"}${0}"
+  "Select Sum":
+    prefix: "ridbsel"
+    body: "rigSelectSum \"${1:field}\"${2:, \"${3:resultName}\"}${0}"
+  Select:
+    prefix: "ridbsel"
+    body: "rigDbSelect \"${1:list}\"${2:, ${3:backticks}}${0}"
+  Send:
+    prefix: "rimailsend"
+    body: "rigMailSend()"
+  Server:
+    prefix: "riinputserver"
+    body: "rigVarServer(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
+  "Session Library":
+    prefix: "risession"
+    body: "rigLoaderLoadLibrary \"Session\""
+  "Set Checkbox":
+    prefix: "riformvalsetcheck"
+    body: "rigSetCheckbox(\"${1:checkbox}[]\", \"${2:value}\"${3:, ${4:default}})${0}"
+  "Set Cipher":
+    prefix: "riencryptciph"
+    body: "rigSetCipher \"${1:name}\", ${2:keyLength} ${0}"
+  "Set Empty Cel Value":
+    prefix: "ritableempty"
+    body: "rigSetEmptyCellVal \"${1:value}\""
+  "Set Error Delimiters":
+    prefix: "riformvalerdelim"
+    body: "rigSetErrorDelimiters \"${1:delimStart}\", \"${2:delimEnd}\"${0}"
+  "Set Flash Data Array":
+    prefix: "risessetflash"
+    body: "rigSetSessFlashdata ${1:dataArray}${0}"
+  "Set Flash Data":
+    prefix: "risessetflash"
+    body: "rigSetSessFlashdata \"${1:name}\", \"${2:value}\"${0}"
+  "Set Header":
+    prefix: "rioutheader"
+    body: "rigSetHeader \"${1:header}\"${0}"
+  "Set Item":
+    prefix: "riconfigset"
+    body: "rigSetConfigItem \"${1:item}\", \"${2:value}\"${0}"
+  "Set Message":
+    prefix: "riformvalmes"
+    body: "rigSetMessage \"${1:rule}\", \"${2:errorMessage}\"${0}"
+  "Set Output":
+    prefix: "rioutset"
+    body: "rigSetOutput ${1:data}${0}"
+  "Set Prefilled Values":
+    prefix: "riprefilled"
+    body: "rigSetPrefilledValues ${1:arrayOrList}${0}"
+  "Set Radio":
+    prefix: "riformvalsetradio"
+    body: "rigSetRadio(\"${1:radio}\", \"${2:value}\"${3:, ${4:default}})${0}"
+  "Set Rules Array":
+    prefix: "riformvalrules"
+    body: "rigSetRules ${1:rulesDataArray}${0}"
+  "Set Rules":
+    prefix: "riformvalrules"
+    body: "rigSetRules \"${1:fieldName}\", \"${2:lang:}${3:humanName}\", \"${4:rules}\"${0}"
+  "Set Select":
+    prefix: "riformvalsetsel"
+    body: "rigSetSelect(\"${1:selectMenu}\", \"${2:value}\"${3:, ${4:default}})${0}"
+  "Set Status Header":
+    prefix: "rioutstatus"
+    body: "rigSetStatusHeader ${1:code}, \"${2:text}\"${0}"
+  "Set Table Caption":
+    prefix: "ritablecapt"
+    body: "rigSetTableCaption \"${1:caption}\""
+  "Set Table Heading Array":
+    prefix: "ritablehead"
+    body: "rigSetTableHeading ${1:array}${2:, ${3:bool}}${0}"
+  "Set Table Heading":
+    prefix: "ritablehead"
+    body: "rigSetTableHeading \"${1:list}\"${2:, ${3:bool}}${0}"
+  "Set Table Template":
+    prefix: "ritabletemp"
+    body: "rigSetTableTemplate ${1:array}"
+  "Set User Data Array":
+    prefix: "risesset"
+    body: "rigSetSessUserdata ${1:dataArray}${0}"
+  "Set User Data":
+    prefix: "risesset"
+    body: "rigSetSessUserdata \"${1:name}\", \"${2:value}\"${0}"
+  "Set Value":
+    prefix: "riformvalvalue"
+    body: "rigSetValue(\"${1:fieldName}\", \"${2:value}\")${0}"
+  "Show 404":
+    prefix: "comshow404"
+    body: "rigShow404 \"${1:page}\"${0}"
+  "Show Error":
+    prefix: "comshowerror"
+    body: "rigShowError \"${1:message}\"${2:, ${3:statusCode}}${0}"
+  "Simple Query":
+    prefix: "ridbsimplequery"
+    body: "rigDbSimpleQuery(\"${1:query}\")${0}"
+  "Site URL":
+    prefix: "riconfigsite"
+    body: "rigSiteURL()"
+  Sitelinks:
+    prefix: "sitelinks"
+    body: "rigSiteLinks(${1:links}, \"${2:currentPage}\", \"${3:seperator}\", \"${4:selector}\")${0}"
+  "Slash Segment Routed":
+    prefix: "riurislash"
+    body: "rigSlashRsegment(${1:segmentNumber}${2:, \"${3:where}\"})${0}"
+  "Slash Segment":
+    prefix: "riurislash"
+    body: "rigSlashSegment(${1:segmentNumber}${2:, \"${3:where}\"})${0}"
+  "Start Cache":
+    prefix: "ridbcache"
+    body: "rigDbStartCache"
+  "Stop Cache":
+    prefix: "ridbcache"
+    body: "rigDbStopCache"
+  "String Alternator":
+    prefix: "stringalter"
+    body: "rigAlternator(${1:parameters})${0}"
+  "String Quotes to Entities":
+    prefix: "stringquotesent"
+    body: "rigQuotesToEntities(${1:string})${0}"
+  "String Random":
+    prefix: "stringrand"
+    body: "rigRandomString(\"${1:type}\", ${2:number})${0}"
+  "String Reduce Double Slashes":
+    prefix: "stringredds"
+    body: "rigReduceDoubleSlashes(${1:string})${0}"
+  "String Reduce Multiples":
+    prefix: "stringredmulti"
+    body: "rigReduceMultiples(${1:string}, \"${2:char}\"${3:, ${4:bool}})${0}"
+  "String Repeater":
+    prefix: "stringrepeat"
+    body: "rigRepeater(${1:string}, ${2:number})${0}"
+  "String Strip Quotes":
+    prefix: "stringstripq"
+    body: "rigStripQuotes(${1:string})${0}"
+  "String Trim Slashes":
+    prefix: "stringtrims"
+    body: "rigTrimSlashes(${1:string})${0}"
+  Subject:
+    prefix: "rimailsub"
+    body: "rigMailSubject \"${1:string}\"${0}"
+  "File Symbolic Permissions":
+    prefix: "filesperm"
+    body: "rigSymbolicPermissions(${1:octalValue})${0}"
+  "System URL":
+    prefix: "riconfigsys"
+    body: "rigSystemURL()"
+  "Table Exists":
+    prefix: "ridbtableex"
+    body: "rigDbTableExists(\"${1:table}\")${0}"
+  "To Array":
+    prefix: "rimailto"
+    body: "rigMailTo ${1:addressesArray}${0}"
+  To:
+    prefix: "rimailto"
+    body: "rigMailTo \"${1:address(list)}\"${0}"
+  "Total Segments Routed":
+    prefix: "riuritotal"
+    body: "rigTotalRsegments()"
+  "Total Segments":
+    prefix: "riuritotal"
+    body: "rigTotalSegments()"
+  "Transaction Begin":
+    prefix: "ridbtransbegin"
+    body: "rigTransBegin()"
+  "Transaction Commit":
+    prefix: "ridbtranscom"
+    body: "rigTransCommit"
+  "Transaction Complete":
+    prefix: "ridbtrans"
+    body: "rigTransComplete()"
+  "Transaction Off":
+    prefix: "ridbtrans"
+    body: "rigDbTransOff"
+  "Transaction Rollback":
+    prefix: "ridbtransback"
+    body: "rigTransRollback"
+  "Transaction Start":
+    prefix: "ridbtrans"
+    body: "rigDbTransStart${1: ${2:testMode}}${0}"
+  "Transaction Status":
+    prefix: "ridbtrans"
+    body: "rigDbTransStatus()"
+  "Transaction Strict":
+    prefix: "ridbtrans"
+    body: "rigDbTransStrict ${1:bool}"
+  Truncate:
+    prefix: "ridbtrunc"
+    body: "rigDbTruncate(\"${1:table}\")${0}"
+  "URI String Routed":
+    prefix: "riuristring"
+    body: "rigRuriString()"
+  "URI String":
+    prefix: "riuristring"
+    body: "rigUriString()"
+  "URI to Assoc Routed":
+    prefix: "riuritoassoc"
+    body: "rigRuriToAssoc(${1:offset}${2:, ${3:defaultSegmentsList}})${0}"
+  "URI to Assoc":
+    prefix: "riuritoassoc"
+    body: "rigUriToAssoc(${1:offset}${2:, ${3:defaultSegmentsList}})${0}"
+  "URL Anchor Popup":
+    prefix: "urlanchor"
+    body: "rigAnchor(${1:\"${2:URI}\"${3:, \"${4:Title}\"${5:, ${6:Attributes}}}})${0}"
+  "URL Autolink":
+    prefix: "urlautolink"
+    body: "rigAutoLink(${1:string}, \"${2:type}\"${3:, ${4:bool}})${0}"
+  "URL Base URL":
+    prefix: "urlbase"
+    body: "rigBaseURL()${0}"
+  "URL Current URI":
+    prefix: "urlcurrenturi"
+    body: "rigCurrentURIstring()${0}"
+  "URL Current URL":
+    prefix: "urlcurrent"
+    body: "rigCurrentURL()${0}"
+  "URL Index":
+    prefix: "urlindex"
+    body: "rigIndexPage()${0}"
+  "URL Mail to Safe":
+    prefix: "urlmailsafe"
+    body: "rigSafeMailToLink(${1:\"${2:address}\"${3:, \"${4:text}\"${5:, ${6:Attributes}}}})${0}"
+  "URL Mail to":
+    prefix: "urlmail"
+    body: "rigMailToLink(${1:\"${2:address}\"${3:, \"${4:text}\"${5:, ${6:Attributes}}}})${0}"
+  "URL Redirect":
+    prefix: "urlredir"
+    body: "rigRedirect \"${1:URI}\"${2:, \"${3:refresh}\"${4:, ${5:responseCode}}}${0}"
+  "URL Site URL Array":
+    prefix: "urlsite"
+    body: "rigASiteURL(${1:segmentsArray})${0}"
+  "URL Site URL":
+    prefix: "urlsite"
+    body: "rigASiteURL(\"${1:URI}\")${0}"
+  "URL URL Prep":
+    prefix: "urlprep"
+    body: "rigUrlPrep(${1:URL})${0}"
+  "URL URL Title":
+    prefix: "urltitle"
+    body: "rigUrlTitle(${1:title}${2:, \"${3:underscore}\"${4:, ${5:bool}}})${0}"
+  "Unset User Data Array":
+    prefix: "risesunset"
+    body: "rigUnsetSessUserdata ${1:itemsArray}${0}"
+  "Unset User Data":
+    prefix: "risesunset"
+    body: "rigUnsetSessUserdata \"${1:item}\"${0}"
+  Update:
+    prefix: "ridbupdate"
+    body: "rigDbUpdate(\"${1:table}\", ${2:data}${3:, ${4:where}})${0}"
+  Updatestring:
+    prefix: "ridbupdate"
+    body: "rigDbUpdateString(\"${1:table}\", ${2:data}, ${3:where})${0}"
+  "User Agent Library":
+    prefix: "riagent"
+    body: "rigLoaderLoadLibrary \"Useragent\""
+  "User Agent":
+    prefix: "riinputagent"
+    body: "rigUserAgent()"
+  "User Data":
+    prefix: "risesget"
+    body: "rigSessUserdata(\"${1:item}\")${0}"
+  "Valid IP":
+    prefix: "riinputvalip"
+    body: "rigValidIP(${1:ip}${2:, \"${3:IPv}\"})${0}"
+  "Validation Errors":
+    prefix: "riformvalerrors"
+    body: "rigValidationErrors(${1:\"${2:delimStart}\", \"${3:delimEnd}\"})${0}"
+  "Validation Run":
+    prefix: "riformvalrun"
+    body: "rigFormValidRun(${1:\"${2:ruleGroup}\"})${0}"
+  "Values Set Array":
+    prefix: "ridbval"
+    body: "rigDbValuesSet(${1:array})${0}"
+  "Values Set":
+    prefix: "ridbval"
+    body: "rigDbValuesSet(\"${1:field}\", ${2:value}${3:, ${4:escaping}})${0}"
+  Version:
+    prefix: "ridbversion"
+    body: "rigDbVersion()"
+  Watermark:
+    prefix: "riimgwater"
+    body: "rigImageWatermark()"
+  "Where Array":
+    prefix: "ridbwhere"
+    body: "rigDbWhere ${1:array}${0}"
+  "Where Custom String":
+    prefix: "ridbwhere"
+    body: "rigDbWhere ${1:string}, \"\"${2:, ${3:protect}}${0}"
+  "Where Custom":
+    prefix: "ridbwhere"
+    body: "rigDbWhere \"${1:key} ${2:operator}\", ${3:value}${0}"
+  "Where In":
+    prefix: "ridbwherein"
+    body: "rigDbWhereIn \"${1:field}\", ${2:itemsArray}${0}"
+  "Where Not In":
+    prefix: "ridbwherenotin"
+    body: "rigDbWhereNotIn \"${1:field}\", ${2:itemsArray}${0}"
+  Where:
+    prefix: "ridbwhere"
+    body: "rigDbWhere \"${1:key}\", ${2:value}${0}"
+  "File Write":
+    prefix: "filewrite"
+    body: "rigWriteFile(\"${1:path}\", ${2:data})${0}"
+  "XML Convert":
+    prefix: "xmlconv"
+    body: "rigXmlConvert(${1:string})${0}"
+  "XSS Clean":
+    prefix: "riinputxss"
+    body: "rigXssClean(${1:data}${2:, ${3:imageTest}})${0}"
+".text.html, .source.iRev":
+  "Data Array Value Merge":
+    prefix: "gdmerge"
+    body: "[[gData[\"${1:key}\"] ]]"
