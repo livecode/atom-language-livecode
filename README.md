@@ -1,16 +1,24 @@
 # LiveCode Language package for Atom
 
-This is a language package for Atom that provides support for editing LiveCode
-source code.
+This is a language package for Atom that provides:
 
-To find out more about LiveCode, please visit the LiveCode website.
+* support for editing LiveCode source code.
+* Livecode language 
+* Livecode and regIgniter snippets
+ 
+The revIgniter snippets and Livecode language was converted 
+from the TextMate bundles available on the regIgniter website: 
+http://revigniter.com/
+
+To find out more about LiveCode, please visit the LiveCode website:
+http://livecode.com/
+
 
 ## Supported languages
 
 Currently, this package supports editing:
 
 * LiveCode Builder source code in `.lcb` files
-
 * LiveCode server source code in `.lc` and `.irev` files
 
 The package provides syntax highlighting, highlighting and indentation support
