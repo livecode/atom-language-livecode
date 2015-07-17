@@ -32,6 +32,7 @@ view in Atom's "Settings" window.
 ## Authors
 
 * Peter Brett
+* Ralf Bitter
 * Adam Robertson
 
 ## Reporting bugs and contributing
