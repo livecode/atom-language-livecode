@@ -1,3 +1,5 @@
+## 0.5.1 - Minor documentation updates
+
 ## 0.5.0 - Added LiveCode server support
 * Merged with the "revigniter-livecode" package for Atom
   * Added support for LiveCode server script files (`.lc` and `.irev`)
