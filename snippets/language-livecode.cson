@@ -26,3 +26,5 @@
   'handler':
     'prefix': 'handler'
     'body': 'handler ${1:/* name */}(${2:/* args */}) returns ${3:/* type */}\n\t${4:/* code */}\nend handler'
+
+# add snippet below
