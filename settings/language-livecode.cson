@@ -703,3 +703,13 @@
       "$_POST_RAW"
     ]
     commentStart: "-- "
+
+    # LiveCode Script
+    #################
+
+    ".source.livecodescript":
+      'editor':
+        'increaseIndentPattern': "(^on\\s+?.+)|(^command\\s+?.+)|(^function\\s+?.+)|(\\s*if\\s+?.+)|(\\s*else)|(\\s*repeat\\s+?.+)|(switch\\s+?.+)|(case\\s+?.+)|(\\s*(?<!end )try$)|(\\s*catch\\s+?.+)"
+        'decreaseIndentPattern': "(\\s*end\\s+?.+)|(\\s*break$)|(\\s*else$)|(\\s*catch\\s+?.+)"
+        'tabLength': 3
+        'foldEndPattern': '^\\s*end\\b'
