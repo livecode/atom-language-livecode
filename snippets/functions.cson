@@ -1,0 +1,865 @@
+".source.livecodescript":
+	'abs':
+		prefix: 'abs'
+		body: 'abs(${1:number})'
+	'acos':
+		prefix: 'acos'
+		body: 'acos(${1:number})'
+	'aliasReference':
+		prefix: 'aliasReference'
+		body: 'aliasReference(${1:aliasPath})'
+	'annuity':
+		prefix: 'annuity'
+		body: 'annuity(${1:interestRate}, ${2:numberOfPeriods})'
+	'arrayDecode':
+		prefix: 'arrayDecode'
+		body: 'arrayDecode(${1:encodedArray})'
+	'arrayEncode':
+		prefix: 'arrayEncode'
+		body: 'arrayEncode(${1:array}, ${2:version})'
+	'asin':
+		prefix: 'asin'
+		body: 'asin(${1:number})'
+	'atan':
+		prefix: 'atan'
+		body: 'atan(${1:number})'
+	'atan2':
+		prefix: 'atan2'
+		body: 'atan2(${1:yCoordinate}, ${2:xCoordinate})'
+	'average':
+		prefix: 'average'
+		body: 'average(${1:numbersList})'
+	'averageDeviation':
+		prefix: 'averageDeviation'
+		body: 'averageDeviation(${1:numbersList})'
+	'base64Decode':
+		prefix: 'base64Decode'
+		body: 'base64Decode(${1:encodedData})'
+	'base64Encode':
+		prefix: 'base64Encode'
+		body: 'base64Encode(${1:data})'
+	'baseConvert':
+		prefix: 'baseConvert'
+		body: 'baseConvert(${1:number}, ${2:originalBase}, ${3:destinationBase})'
+	'binaryDecode':
+		prefix: 'binaryDecode'
+		body: 'binaryDecode(${1:formatsList}, ${2:data}, ${3:variablesList})'
+	'binaryEncode':
+		prefix: 'binaryEncode'
+		body: 'binaryEncode(${1:formatsList}, ${2:dataStringList})'
+	'byteOffset':
+		prefix: 'byteOffset'
+		body: 'byteOffset(${1:bytesToFind}, ${2:binaryStringToSearch}, ${3:bytesToSkip})'
+	'byteToNum':
+		prefix: 'byteToNum'
+		body: 'byteToNum(${1:byte})'
+	'ceil':
+		prefix: 'ceil'
+		body: 'ceil(${1:number})'
+	'charToNum':
+		prefix: 'charToNum'
+		body: 'charToNum(${1:character})'
+	'codepointOffset':
+		prefix: 'codepointOffset'
+		body: 'codepointOffset(${1:stringToFind}, ${2:stringToSearch}, ${3:codepointsToSkip})'
+	'codepointToNum':
+		prefix: 'codepointToNum'
+		body: 'codepointToNum(${1:unicodeCodepoint}, ${2:propertyName})'
+	'codepointToNum':
+		prefix: 'codepointToNum'
+		body: 'codepointToNum(${1:unicodeCodepoint})'
+	'codeunitOffset':
+		prefix: 'codeunitOffset'
+		body: 'codeunitOffset(${1:stringToFind}, ${2:stringToSearch}, ${3:codeunitsToSkip})'
+	'commandArguments':
+		prefix: 'commandArguments'
+		body: 'commandArguments(${1:index})'
+	'compound':
+		prefix: 'compound'
+		body: 'compound(${1:interestPerPeriod}, ${2:numberOfPeriods})'
+	'compress':
+		prefix: 'compress'
+		body: 'compress(${1:data})'
+	'controlAtLoc':
+		prefix: 'controlAtLoc'
+		body: 'controlAtLoc(${1:loc})'
+	'controlAtScreenLoc':
+		prefix: 'controlAtScreenLoc'
+		body: 'controlAtScreenLoc(${1:loc})'
+	'copyResource':
+		prefix: 'copyResource'
+		body: 'copyResource(${1:file}, ${2:destinationFile}, ${3:resType}, ${4:{resID}, ${5:newID})'
+	'cos':
+		prefix: 'cos'
+		body: 'cos(${1:angle})'
+	'long date':
+		prefix: 'long date'
+		body: 'long date'
+	'abbrreviated date':
+		prefix: 'abbrreviated date'
+		body: 'abbrreviated date'
+	'short english date':
+		prefix: 'short english date'
+		body: 'short english date'
+	'system date':
+		prefix: 'system date'
+		body: 'system date'
+	'internet date':
+		prefix: 'internet date'
+		body: 'internet date'
+	'internet english date':
+		prefix: 'internet english date'
+		body: 'internet english date'
+	'system date':
+		prefix: 'system date'
+		body: 'system date'
+	'long dateFormat':
+		prefix: 'long dateFormat'
+		body: 'long dateFormat'
+	'abbrreviated dateFormat':
+		prefix: 'abbrreviated dateFormat'
+		body: 'abbrreviated dateFormat'
+	'short   english dateFormat':
+		prefix: 'short   english dateFormat'
+		body: 'short   english dateFormat'
+	'system dateFormat':
+		prefix: 'system dateFormat'
+		body: 'system dateFormat'
+	'decompress':
+		prefix: 'decompress'
+		body: 'decompress(${1:gzippedString})'
+	'deleteRegistry':
+		prefix: 'deleteRegistry'
+		body: 'deleteRegistry(${1:keyPath})'
+	'deleteResource':
+		prefix: 'deleteResource'
+		body: 'deleteResource(${1:file}, ${2:resourceType}, ${3:{resourceID})'
+	'exists':
+		prefix: 'exists'
+		body: 'exists(${1:object})'
+	'exp':
+		prefix: 'exp'
+		body: 'exp(${1:number})'
+	'exp1':
+		prefix: 'exp1'
+		body: 'exp1(${1:number})'
+	'exp10':
+		prefix: 'exp10'
+		body: 'exp10(${1:number})'
+	'exp2':
+		prefix: 'exp2'
+		body: 'exp2(${1:number})'
+	'extents':
+		prefix: 'extents'
+		body: 'extents(${1:array})'
+	'detailed files':
+		prefix: 'detailed files'
+		body: 'detailed files'
+	'long files':
+		prefix: 'long files'
+		body: 'long files'
+	'floor':
+		prefix: 'floor'
+		body: 'floor(${1:number})'
+	'flushEvents':
+		prefix: 'flushEvents'
+		body: 'flushEvents(${1:eventType})'
+	'detailed folders':
+		prefix: 'detailed folders'
+		body: 'detailed folders'
+	'long folders':
+		prefix: 'long folders'
+		body: 'long folders'
+	'fontLanguage':
+		prefix: 'fontLanguage'
+		body: 'fontLanguage(${1:fontName})'
+	'fontNames ':
+		prefix: 'fontNames '
+		body: 'fontNames (${1:printer})'
+	'fontSizes':
+		prefix: 'fontSizes'
+		body: 'fontSizes(${1:fontName})'
+	'fontStyles ':
+		prefix: 'fontStyles '
+		body: 'fontStyles (${1:fontName}, ${2:fontSize})'
+	'format':
+		prefix: 'format'
+		body: 'format(${1:baseString}, ${2:valuesList})'
+	'geometricMean':
+		prefix: 'geometricMean'
+		body: 'geometricMean(${1:numbersList})'
+	'getResource':
+		prefix: 'getResource'
+		body: 'getResource(${1:filePath}, ${2:resourceType}, ${3:{resourceName})'
+	'getResources':
+		prefix: 'getResources'
+		body: 'getResources(${1:filePath}, ${2:resourceType})'
+	'globalLoc':
+		prefix: 'globalLoc'
+		body: 'globalLoc(${1:point})'
+	'harmonicMean':
+		prefix: 'harmonicMean'
+		body: 'harmonicMean(${1:numbersList})'
+	'hasMemory':
+		prefix: 'hasMemory'
+		body: 'hasMemory(${1:bytes})'
+	'hostAddress':
+		prefix: 'hostAddress'
+		body: 'hostAddress(${1:host:port})'
+	'hostAddressToName':
+		prefix: 'hostAddressToName'
+		body: 'hostAddressToName(${1:IPAddress})'
+	'hostNameToAddress':
+		prefix: 'hostNameToAddress'
+		body: 'hostNameToAddress(${1:domainName}, ${2:callback})'
+	'intersect':
+		prefix: 'intersect'
+		body: 'intersect(${1:object}, ${2:object}, ${3:threshold})'
+	'iphoneDoNotBackupFile':
+		prefix: 'iphoneDoNotBackupFile'
+		body: 'iphoneDoNotBackupFile(${1:filename})'
+	'isNumber':
+		prefix: 'isNumber'
+		body: 'isNumber(${1:value})'
+	'ISOToMac':
+		prefix: 'ISOToMac'
+		body: 'ISOToMac(${1:ISOString})'
+	'itemOffset':
+		prefix: 'itemOffset'
+		body: 'itemOffset(${1:itemToFind}, ${2:stringToSearch}, ${3:itemsToSkip})'
+	'keys':
+		prefix: 'keys'
+		body: 'keys(${1:arrayName})'
+	'length':
+		prefix: 'length'
+		body: 'length(${1:string})'
+	'libURLErrorData':
+		prefix: 'libURLErrorData'
+		body: 'libURLErrorData(${1:url})'
+	'libURLFormData':
+		prefix: 'libURLFormData'
+		body: 'libURLFormData(${1:key_1}, ${2:value_1}, ${3:...}, ${4:key_n}, ${5:value_n})'
+	'libURLftpCommand':
+		prefix: 'libURLftpCommand'
+		body: 'libURLftpCommand(${1:ftpCommandLine}, ${2:host:port}, ${3:username}, ${4:password})'
+	'libURLMultipartFormAddPart':
+		prefix: 'libURLMultipartFormAddPart'
+		body: 'libURLMultipartFormAddPart(${1:formdata}, ${2:partname}, ${3:value}, ${4:MIMEtype}, ${5:encoding})'
+	'libURLMultipartFormData':
+		prefix: 'libURLMultipartFormData'
+		body: 'libURLMultipartFormData(${1:formdata}, ${2:key_1}, ${3:value_1}, ${4:...}, ${5:key_n}, ${6:value_n})'
+	'libURLMultipartFormData':
+		prefix: 'libURLMultipartFormData'
+		body: 'libURLMultipartFormData(${1:formdata}, ${2:array})'
+	'libURLMultipartFormData':
+		prefix: 'libURLMultipartFormData'
+		body: 'libURLMultipartFormData(${1:formdata})'
+	'lineOffset':
+		prefix: 'lineOffset'
+		body: 'lineOffset(${1:lineToFind}, ${2:stringToSearch}, ${3:linesToSkip})'
+	'listRegistry':
+		prefix: 'listRegistry'
+		body: 'listRegistry(${1:parentKey})'
+	'ln':
+		prefix: 'ln'
+		body: 'ln(${1:number})'
+	'ln1':
+		prefix: 'ln1'
+		body: 'ln1(${1:number})'
+	'localLoc':
+		prefix: 'localLoc'
+		body: 'localLoc(${1:globalPoint})'
+	'log10':
+		prefix: 'log10'
+		body: 'log10(${1:number})'
+	'log2':
+		prefix: 'log2'
+		body: 'log2(${1:number})'
+	'longFilePath':
+		prefix: 'longFilePath'
+		body: 'longFilePath(${1:filePath})'
+	'macToISO':
+		prefix: 'macToISO'
+		body: 'macToISO(${1:macString})'
+	'matchChunk':
+		prefix: 'matchChunk'
+		body: 'matchChunk(${1:string}, ${2:regularExpression}, ${3:positionVarsList})'
+	'matchText':
+		prefix: 'matchText'
+		body: 'matchText(${1:string}, ${2:regularExpression}, ${3:foundTextVarsList})'
+	'matrixMultiply':
+		prefix: 'matrixMultiply'
+		body: 'matrixMultiply(${1:firstArray}, ${2:secondArray})'
+	'max':
+		prefix: 'max'
+		body: 'max(${1:numbersList})'
+	'MCISendString':
+		prefix: 'MCISendString'
+		body: 'MCISendString(${1:MCICommand})'
+	'md5Digest':
+		prefix: 'md5Digest'
+		body: 'md5Digest(${1:dataString})'
+	'measureText':
+		prefix: 'measureText'
+		body: 'measureText(${1:text}, ${2:objectreference}, ${3:mode})'
+	'measureUnicodeText':
+		prefix: 'measureUnicodeText'
+		body: 'measureUnicodeText(${1:unicodeText}, ${2:objectreference}, ${3:mode})'
+	'median':
+		prefix: 'median'
+		body: 'median(${1:numbersList})'
+	'merge':
+		prefix: 'merge'
+		body: 'merge(${1:stringToEvaluate})'
+	'min':
+		prefix: 'min'
+		body: 'min(${1:numbersList})'
+	'mobileAdGetTopLeft ':
+		prefix: 'mobileAdGetTopLeft '
+		body: 'mobileAdGetTopLeft (${1:adName})'
+	'mobileAdGetVisible':
+		prefix: 'mobileAdGetVisible'
+		body: 'mobileAdGetVisible(${1:ad})'
+	'mobileBuildInfo':
+		prefix: 'mobileBuildInfo'
+		body: 'mobileBuildInfo(${1:propertyName})'
+	'mobileCameraFeatures':
+		prefix: 'mobileCameraFeatures'
+		body: 'mobileCameraFeatures(${1:camera})'
+	'mobileControlGet ':
+		prefix: 'mobileControlGet '
+		body: 'mobileControlGet (${1:idOrName}, ${2:property})'
+	'mobileGetNotificationDetails':
+		prefix: 'mobileGetNotificationDetails'
+		body: 'mobileGetNotificationDetails(${1:notificationID})'
+	'mobileNextSoundOnChannel':
+		prefix: 'mobileNextSoundOnChannel'
+		body: 'mobileNextSoundOnChannel(${1:channel})'
+	'mobilePurchaseError':
+		prefix: 'mobilePurchaseError'
+		body: 'mobilePurchaseError(${1:purchaseID})'
+	'mobilePurchaseGet':
+		prefix: 'mobilePurchaseGet'
+		body: 'mobilePurchaseGet(${1:purchaseID}, ${2:propertyName})'
+	'mobilePurchaseState':
+		prefix: 'mobilePurchaseState'
+		body: 'mobilePurchaseState(${1:purchaseID})'
+	'mobileSensorAvailable':
+		prefix: 'mobileSensorAvailable'
+		body: 'mobileSensorAvailable(${1:sensor})'
+	'mobileSensorReading':
+		prefix: 'mobileSensorReading'
+		body: 'mobileSensorReading(${1:sensor}, ${2:detailed})'
+	'mobileSoundChannelVolume':
+		prefix: 'mobileSoundChannelVolume'
+		body: 'mobileSoundChannelVolume(${1:channel})'
+	'mobileSoundOnChannel':
+		prefix: 'mobileSoundOnChannel'
+		body: 'mobileSoundOnChannel(${1:channel})'
+	'mobileStoreProductProperty ':
+		prefix: 'mobileStoreProductProperty '
+		body: 'mobileStoreProductProperty (${1:productID}, ${2:propertyName})'
+	'mobileStorePurchaseError ':
+		prefix: 'mobileStorePurchaseError '
+		body: 'mobileStorePurchaseError (${1:purchaseID})'
+	'long monthNames':
+		prefix: 'long monthNames'
+		body: 'long monthNames'
+	'abbreviated monthNames':
+		prefix: 'abbreviated monthNames'
+		body: 'abbreviated monthNames'
+	'short english monthNames':
+		prefix: 'short english monthNames'
+		body: 'short english monthNames'
+	'system monthNames':
+		prefix: 'system monthNames'
+		body: 'system monthNames'
+	'internet english monthNames':
+		prefix: 'internet english monthNames'
+		body: 'internet english monthNames'
+	'system monthNames':
+		prefix: 'system monthNames'
+		body: 'system monthNames'
+	'mouse':
+		prefix: 'mouse'
+		body: 'mouse(${1:buttonNumber})'
+	'nativeCharToNum':
+		prefix: 'nativeCharToNum'
+		body: 'nativeCharToNum(${1:nativeCharacter})'
+	'normalizeText':
+		prefix: 'normalizeText'
+		body: 'normalizeText(${1:text}, ${2:normalForm})'
+	'number of card parts':
+		prefix: 'number of card parts'
+		body: 'number of card parts of ${1:controls}}'
+	'cd parts':
+		prefix: 'cd parts'
+		body: 'cd parts of ${1:controls}}'
+	'background parts':
+		prefix: 'background parts'
+		body: 'background parts of ${1:controls}}'
+	'bkgnd parts':
+		prefix: 'bkgnd parts'
+		body: 'bkgnd parts of ${1:controls}}'
+	'bg {<objectType> parts':
+		prefix: 'bg {<objectType> parts'
+		body: 'bg {<objectType> parts of ${1:controls}}'
+	'number of {<objectType> |':
+		prefix: 'number of {<objectType> |'
+		body: 'number of {<objectType> | of ${1:group}'
+	'parts |':
+		prefix: 'parts |'
+		body: 'parts | of ${1:group}'
+	'controls} {in |':
+		prefix: 'controls} {in |'
+		body: 'controls} {in | of ${1:group}'
+	'number of {backgrounds |':
+		prefix: 'number of {backgrounds |'
+		body: 'number of {backgrounds | of ${1:stack}'
+	'groups}  {in |':
+		prefix: 'groups}  {in |'
+		body: 'groups}  {in | of ${1:stack}'
+	'of} <card> {in |':
+		prefix: 'of} <card> {in |'
+		body: 'of} <card> {in | of ${1:stack}'
+	'number of {characters |':
+		prefix: 'number of {characters |'
+		body: 'number of {characters | of ${1:string}'
+	'items |':
+		prefix: 'items |'
+		body: 'items | of ${1:string}'
+	'words |':
+		prefix: 'words |'
+		body: 'words | of ${1:string}'
+	'lines} {in |':
+		prefix: 'lines} {in |'
+		body: 'lines} {in | of ${1:string}'
+	'numToByte':
+		prefix: 'numToByte'
+		body: 'numToByte(${1:numericValue})'
+	'numToChar':
+		prefix: 'numToChar'
+		body: 'numToChar(${1:ASCIIValue})'
+	'numToCodepoint':
+		prefix: 'numToCodepoint'
+		body: 'numToCodepoint(${1:number})'
+	'numToNativeChar':
+		prefix: 'numToNativeChar'
+		body: 'numToNativeChar(${1:ASCIIValue})'
+	'offset':
+		prefix: 'offset'
+		body: 'offset(${1:charsToFind}, ${2:stringToSearch}, ${3:charsToSkip})'
+	'paragraphOffset':
+		prefix: 'paragraphOffset'
+		body: 'paragraphOffset(${1:stringToFind}, ${2:stringToSearch}, ${3:paragraphsToSkip})'
+	'param':
+		prefix: 'param'
+		body: 'param(${1:parameterNumber})'
+	'peerAddress':
+		prefix: 'peerAddress'
+		body: 'peerAddress(${1:host:port})'
+	'populationStandardDeviation':
+		prefix: 'populationStandardDeviation'
+		body: 'populationStandardDeviation(${1:numbersList})'
+	'populationVariance':
+		prefix: 'populationVariance'
+		body: 'populationVariance(${1:numbersList})'
+	'queryRegistry':
+		prefix: 'queryRegistry'
+		body: 'queryRegistry(${1:keyPath}, ${2:typeVariable})'
+	'random':
+		prefix: 'random'
+		body: 'random(${1:upperLimit})'
+	'randomBytes':
+		prefix: 'randomBytes'
+		body: 'randomBytes(${1:byteCount})'
+	'replaceText':
+		prefix: 'replaceText'
+		body: 'replaceText(${1:stringToChange}, ${2:matchExpression}, ${3:replacementString})'
+	'revBrowserCallScript':
+		prefix: 'revBrowserCallScript'
+		body: 'revBrowserCallScript(${1:instanceId}, ${2:functionName}, ${3:parameter1}, ${4:parameter2}, ${5:...}, ${6:parameterN})'
+	'revBrowserExecuteScript':
+		prefix: 'revBrowserExecuteScript'
+		body: 'revBrowserExecuteScript(${1:instanceId}, ${2:script})'
+	'revBrowserGet':
+		prefix: 'revBrowserGet'
+		body: 'revBrowserGet(${1:instanceId}, ${2:propertyName})'
+	'XBrowser_Get':
+		prefix: 'XBrowser_Get'
+		body: 'XBrowser_Get(${1:propertyName}, ${2:instanceId})'
+	'revBrowserOpen':
+		prefix: 'revBrowserOpen'
+		body: 'revBrowserOpen(${1:windowId}, ${2:url})'
+	'revBrowserOpenCef':
+		prefix: 'revBrowserOpenCef'
+		body: 'revBrowserOpenCef(${1:windowId}, ${2:url})'
+	'revCurrentRecord':
+		prefix: 'revCurrentRecord'
+		body: 'revCurrentRecord(${1:recordSetID})'
+	'revCurrentRecordIsFirst':
+		prefix: 'revCurrentRecordIsFirst'
+		body: 'revCurrentRecordIsFirst(${1:recordSetID})'
+	'revCurrentRecordIsLast':
+		prefix: 'revCurrentRecordIsLast'
+		body: 'revCurrentRecordIsLast(${1:recordSetID})'
+	'revDatabaseColumnCount':
+		prefix: 'revDatabaseColumnCount'
+		body: 'revDatabaseColumnCount(${1:recordSetID})'
+	'revDatabaseColumnIsNull':
+		prefix: 'revDatabaseColumnIsNull'
+		body: 'revDatabaseColumnIsNull(${1:recordSetID}, ${2:columnNumber})'
+	'revDatabaseColumnLengths':
+		prefix: 'revDatabaseColumnLengths'
+		body: 'revDatabaseColumnLengths(${1:recordSetID})'
+	'revDatabaseColumnNamed':
+		prefix: 'revDatabaseColumnNamed'
+		body: 'revDatabaseColumnNamed(${1:recordSetID}, ${2:columnName}, ${3:holderVariable})'
+	'revDatabaseColumnNames':
+		prefix: 'revDatabaseColumnNames'
+		body: 'revDatabaseColumnNames(${1:recordSetOrConnectionId}, ${2:tableName})'
+	'revDatabaseColumnNumbered':
+		prefix: 'revDatabaseColumnNumbered'
+		body: 'revDatabaseColumnNumbered(${1:recordSetID}, ${2:columnNumber}, ${3:variable})'
+	'revDatabaseColumnTypes':
+		prefix: 'revDatabaseColumnTypes'
+		body: 'revDatabaseColumnTypes(${1:recordSetID})'
+	'revDatabaseConnectResult':
+		prefix: 'revDatabaseConnectResult'
+		body: 'revDatabaseConnectResult(${1:databaseID})'
+	'revDatabaseCursors':
+		prefix: 'revDatabaseCursors'
+		body: 'revDatabaseCursors(${1:databaseID})'
+	'revDatabaseID':
+		prefix: 'revDatabaseID'
+		body: 'revDatabaseID(${1:recordSetID})'
+	'revDatabaseTableNames':
+		prefix: 'revDatabaseTableNames'
+		body: 'revDatabaseTableNames(${1:databaseID})'
+	'revDatabaseType':
+		prefix: 'revDatabaseType'
+		body: 'revDatabaseType(${1:databaseID})'
+	'revDataFromQuery':
+		prefix: 'revDataFromQuery'
+		body: 'revDataFromQuery(${1:columnDelim}, ${2:rowDelim}, ${3:databaseID}, ${4:SQLQuery}, ${5:varsList})'
+	'revdb_closecursor':
+		prefix: 'revdb_closecursor'
+		body: 'revdb_closecursor(${1:recordSetID})'
+	'revdb_commit':
+		prefix: 'revdb_commit'
+		body: 'revdb_commit(${1:databaseID})'
+	'revdb_disconnect':
+		prefix: 'revdb_disconnect'
+		body: 'revdb_disconnect(${1:databaseID})'
+	'revdb_execute':
+		prefix: 'revdb_execute'
+		body: 'revdb_execute(${1:databaseID}, ${2:SQLQuery}, ${3:variablesList})'
+	'revdb_movefirst':
+		prefix: 'revdb_movefirst'
+		body: 'revdb_movefirst(${1:recordSetID})'
+	'revdb_movelast':
+		prefix: 'revdb_movelast'
+		body: 'revdb_movelast(${1:recordSetID})'
+	'revdb_movenext':
+		prefix: 'revdb_movenext'
+		body: 'revdb_movenext(${1:recordSetID})'
+	'revdb_moveprev':
+		prefix: 'revdb_moveprev'
+		body: 'revdb_moveprev(${1:recordSetID})'
+	'revdb_rollback':
+		prefix: 'revdb_rollback'
+		body: 'revdb_rollback(${1:databaseID})'
+	'revLoadedStacks':
+		prefix: 'revLoadedStacks'
+		body: 'revLoadedStacks(${1:whichStacks})'
+	'revMacFromUnixPath':
+		prefix: 'revMacFromUnixPath'
+		body: 'revMacFromUnixPath(${1:unixPathname}, ${2:convertOSX})'
+	'revNumberOfRecords':
+		prefix: 'revNumberOfRecords'
+		body: 'revNumberOfRecords(${1:recordSetID})'
+	'revOpenDatabase':
+		prefix: 'revOpenDatabase'
+		body: 'revOpenDatabase(${1:\"mysql\"}, ${2:host:port}, ${3:databaseName}, ${4:userName}, ${5:password}, ${6:useSSL}, ${7:socket}, ${8:timeout}, ${9:autoReconnect})'
+	'revOpenDatabase':
+		prefix: 'revOpenDatabase'
+		body: 'revOpenDatabase(${1:\"odbc\"}, ${2:host:port}, ${3:databaseName}, ${4:userName}, ${5:password}, ${6:cursorType})'
+	'revOpenDatabase':
+		prefix: 'revOpenDatabase'
+		body: 'revOpenDatabase(${1:\"sqlite\"}, ${2:filepath}, ${3:sqliteOptions})'
+	'revOpenDatabase':
+		prefix: 'revOpenDatabase'
+		body: 'revOpenDatabase(${1:\"postgresql\"}, ${2:host:port}, ${3:databaseName}, ${4:userName}, ${5:password})'
+	'revOpenDatabase':
+		prefix: 'revOpenDatabase'
+		body: 'revOpenDatabase(${1:\"oracle\"}, ${2:host:port}, ${3:databaseName}, ${4:userName}, ${5:password})'
+	'revQueryDatabase':
+		prefix: 'revQueryDatabase'
+		body: 'revQueryDatabase(${1:databaseID}, ${2:SQLQuery}, ${3:{variablesList})'
+	'revQueryIsAtEnd':
+		prefix: 'revQueryIsAtEnd'
+		body: 'revQueryIsAtEnd(${1:recordSetID})'
+	'revQueryIsAtStart':
+		prefix: 'revQueryIsAtStart'
+		body: 'revQueryIsAtStart(${1:recordSetID})'
+	'revQueryResult':
+		prefix: 'revQueryResult'
+		body: 'revQueryResult(${1:recordSetID})'
+	'revSpeechVoices':
+		prefix: 'revSpeechVoices'
+		body: 'revSpeechVoices(${1:voiceGender})'
+	'revUnixFromMacPath':
+		prefix: 'revUnixFromMacPath'
+		body: 'revUnixFromMacPath(${1:macPathname}, ${2:convertOSX})'
+	'revXMLAttribute':
+		prefix: 'revXMLAttribute'
+		body: 'revXMLAttribute(${1:treeID}, ${2:node}, ${3:attributeName})'
+	'revXMLAttributes':
+		prefix: 'revXMLAttributes'
+		body: 'revXMLAttributes(${1:treeID}, ${2:node}, ${3:valueDelim}, ${4:attributeDelim})'
+	'revXMLAttributeValues':
+		prefix: 'revXMLAttributeValues'
+		body: 'revXMLAttributeValues(${1:treeID}, ${2:startNode}, ${3:childName}, ${4:attributeName}, ${5:delimiter}, ${6:depth})'
+	'revXMLChildContents':
+		prefix: 'revXMLChildContents'
+		body: 'revXMLChildContents(${1:treeID}, ${2:startNode}, ${3:tagDelim}, ${4:nodeDelim}, ${5:includePathDetails}, ${6:depth})'
+	'revXMLChildNames':
+		prefix: 'revXMLChildNames'
+		body: 'revXMLChildNames(${1:treeID}, ${2:startNode}, ${3:nameDelim}, ${4:childName}, ${5:includeChildCount}, ${6:incText})'
+	'revXMLCreateTree':
+		prefix: 'revXMLCreateTree'
+		body: 'revXMLCreateTree(${1:XMLText}, ${2:dontParseBadData}, ${3:createTree}, ${4:sendMessages})'
+	'revXMLCreateTreeFromFile':
+		prefix: 'revXMLCreateTreeFromFile'
+		body: 'revXMLCreateTreeFromFile(${1:filePath}, ${2:parseBadData}, ${3:createTree}, ${4:sendMessages})'
+	'revXMLCreateTreeFromFileWithNamespaces':
+		prefix: 'revXMLCreateTreeFromFileWithNamespaces'
+		body: 'revXMLCreateTreeFromFileWithNamespaces(${1:filePath}, ${2:parseBadData}, ${3:createTree}, ${4:sendMessages})'
+	'revXMLCreateTreeWithNamespaces':
+		prefix: 'revXMLCreateTreeWithNamespaces'
+		body: 'revXMLCreateTreeWithNamespaces(${1:XMLText}, ${2:dontParseBadData}, ${3:createTree}, ${4:sendMessages})'
+	'revXMLDataFromXPathQuery':
+		prefix: 'revXMLDataFromXPathQuery'
+		body: 'revXMLDataFromXPathQuery(${1:pDocID}, ${2:pXPathExpression}, ${3:charDelimiter}, ${4:lineDelimiter})'
+	'revXMLEvaluateXPath':
+		prefix: 'revXMLEvaluateXPath'
+		body: 'revXMLEvaluateXPath(${1:pDocID}, ${2:pXPathExpression}, ${3:charDelimiter})'
+	'revXMLFirstChild':
+		prefix: 'revXMLFirstChild'
+		body: 'revXMLFirstChild(${1:treeID}, ${2:parentNode}, ${3:incText})'
+	'revXMLMatchingNode':
+		prefix: 'revXMLMatchingNode'
+		body: 'revXMLMatchingNode(${1:treeID}, ${2:startNode}, ${3:childName}, ${4:attributeName}, ${5:attributeValue}, ${6:depth}, ${7:caseSensitive})'
+	'revXMLNextSibling':
+		prefix: 'revXMLNextSibling'
+		body: 'revXMLNextSibling(${1:treeID}, ${2:siblingNode}, ${3:incText})'
+	'revXMLNodeContents':
+		prefix: 'revXMLNodeContents'
+		body: 'revXMLNodeContents(${1:treeID}, ${2:node})'
+	'revXMLNumberOfChildren':
+		prefix: 'revXMLNumberOfChildren'
+		body: 'revXMLNumberOfChildren(${1:treeID}, ${2:startNode}, ${3:childName}, ${4:depth})'
+	'revXMLParent':
+		prefix: 'revXMLParent'
+		body: 'revXMLParent(${1:treeID}, ${2:childNode})'
+	'revXMLPreviousSibling':
+		prefix: 'revXMLPreviousSibling'
+		body: 'revXMLPreviousSibling(${1:treeID}, ${2:siblingNode}, ${3:incText})'
+	'revXMLRootNode':
+		prefix: 'revXMLRootNode'
+		body: 'revXMLRootNode(${1:treeID})'
+	'revXMLRPC_CreateRequest':
+		prefix: 'revXMLRPC_CreateRequest'
+		body: 'revXMLRPC_CreateRequest(${1:host}, ${2:port}, ${3:path}, ${4:protocol})'
+	'revXMLRPC_Error':
+		prefix: 'revXMLRPC_Error'
+		body: 'revXMLRPC_Error(${1:XML-RPCdocument})'
+	'revXMLRPC_Execute':
+		prefix: 'revXMLRPC_Execute'
+		body: 'revXMLRPC_Execute(${1:XML-RPCdocument})'
+	'revXMLRPC_GetHost':
+		prefix: 'revXMLRPC_GetHost'
+		body: 'revXMLRPC_GetHost(${1:XML-RPCdocument})'
+	'revXMLRPC_GetParam':
+		prefix: 'revXMLRPC_GetParam'
+		body: 'revXMLRPC_GetParam(${1:XML-RPCdocument}, ${2:paramnumber}, ${3:type})'
+	'revXMLRPC_GetParamCount':
+		prefix: 'revXMLRPC_GetParamCount'
+		body: 'revXMLRPC_GetParamCount(${1:XML-RPCdocument})'
+	'revXMLRPC_GetParamNode':
+		prefix: 'revXMLRPC_GetParamNode'
+		body: 'revXMLRPC_GetParamNode(${1:XML-RPCdocument}, ${2:paramnumber})'
+	'revXMLRPC_GetParamType':
+		prefix: 'revXMLRPC_GetParamType'
+		body: 'revXMLRPC_GetParamType(${1:XML-RPCdocument}, ${2:paramnumber})'
+	'revXMLRPC_GetPath':
+		prefix: 'revXMLRPC_GetPath'
+		body: 'revXMLRPC_GetPath(${1:XML-RPCdocument})'
+	'revXMLRPC_GetPort':
+		prefix: 'revXMLRPC_GetPort'
+		body: 'revXMLRPC_GetPort(${1:XML-RPCdocument})'
+	'revXMLRPC_GetProtocol':
+		prefix: 'revXMLRPC_GetProtocol'
+		body: 'revXMLRPC_GetProtocol(${1:XML-RPCdocument})'
+	'revXMLRPC_GetRequest':
+		prefix: 'revXMLRPC_GetRequest'
+		body: 'revXMLRPC_GetRequest(${1:XML-RPCdocument})'
+	'revXMLRPC_GetResponse':
+		prefix: 'revXMLRPC_GetResponse'
+		body: 'revXMLRPC_GetResponse(${1:XML-RPCdocument})'
+	'revXMLRPC_GetSocket':
+		prefix: 'revXMLRPC_GetSocket'
+		body: 'revXMLRPC_GetSocket(${1:XML-RPCdocument})'
+	'revXMLText':
+		prefix: 'revXMLText'
+		body: 'revXMLText(${1:treeID}, ${2:startNode}, ${3:formatted})'
+	'revXMLTree':
+		prefix: 'revXMLTree'
+		body: 'revXMLTree(${1:treeID}, ${2:startNode}, ${3:nodeDelim}, ${4:padding}, ${5:includeChildCount}, ${6:depth})'
+	'revXMLValidateDTD':
+		prefix: 'revXMLValidateDTD'
+		body: 'revXMLValidateDTD(${1:treeID}, ${2:DTDText})'
+	'revZipDescribeItem':
+		prefix: 'revZipDescribeItem'
+		body: 'revZipDescribeItem(${1:archivePath}, ${2:itemName})'
+	'revZipEnumerateItems':
+		prefix: 'revZipEnumerateItems'
+		body: 'revZipEnumerateItems(${1:archivePath})'
+	'round':
+		prefix: 'round'
+		body: 'round(${1:number}, ${2:precision})'
+	'selectedButton of card background':
+		prefix: 'selectedButton of card background'
+		body: 'selectedButton of card background of ${1:familyNumber}'
+	'selectedText':
+		prefix: 'selectedText'
+		body: 'selectedText(${1:field})'
+	'sentenceOffset':
+		prefix: 'sentenceOffset'
+		body: 'sentenceOffset(${1:stringToFind}, ${2:stringToSearch}, ${3:sentencesToSkip})'
+	'setRegistry':
+		prefix: 'setRegistry'
+		body: 'setRegistry(${1:keyPath}, ${2:value}, ${3:type})'
+	'setResource':
+		prefix: 'setResource'
+		body: 'setResource(${1:destinationFile}, ${2:resourceType}, ${3:resID}, ${4:resName}, ${5:flagsList}, ${6:data})'
+	'sha1Digest':
+		prefix: 'sha1Digest'
+		body: 'sha1Digest(${1:data})'
+	'shell':
+		prefix: 'shell'
+		body: 'shell(${1:commandLine})'
+	'shortFilePath':
+		prefix: 'shortFilePath'
+		body: 'shortFilePath(${1:filePath})'
+	'sin':
+		prefix: 'sin'
+		body: 'sin(${1:angleInRadians})'
+	'specialFolderPath':
+		prefix: 'specialFolderPath'
+		body: 'specialFolderPath(${1:folderIdentifier})'
+	'sqrt':
+		prefix: 'sqrt'
+		body: 'sqrt(${1:number})'
+	'standardDeviation':
+		prefix: 'standardDeviation'
+		body: 'standardDeviation(${1:numbersList})'
+	'statRound':
+		prefix: 'statRound'
+		body: 'statRound(${1:number}, ${2:precision})'
+	'sum':
+		prefix: 'sum'
+		body: 'sum(${1:numbersList})'
+	'tan':
+		prefix: 'tan'
+		body: 'tan(${1:angleInRadians})'
+	'textDecode':
+		prefix: 'textDecode'
+		body: 'textDecode(${1:binaryData}, ${2:encoding})'
+	'textEncode':
+		prefix: 'textEncode'
+		body: 'textEncode(${1:stringToEncode}, ${2:encoding})'
+	'textHeightSum':
+		prefix: 'textHeightSum'
+		body: 'textHeightSum(${1:object})'
+	'long time':
+		prefix: 'long time'
+		body: 'long time'
+	'abbrreviated time':
+		prefix: 'abbrreviated time'
+		body: 'abbrreviated time'
+	'short english time':
+		prefix: 'short english time'
+		body: 'short english time'
+	'system time':
+		prefix: 'system time'
+		body: 'system time'
+	'tokenOffset':
+		prefix: 'tokenOffset'
+		body: 'tokenOffset(${1:stringToFind}, ${2:stringToSearch}, ${3:tokensToSkip})'
+	'toLower':
+		prefix: 'toLower'
+		body: 'toLower(${1:stringToConvert})'
+	'toUpper':
+		prefix: 'toUpper'
+		body: 'toUpper(${1:stringToConvert})'
+	'transpose':
+		prefix: 'transpose'
+		body: 'transpose(${1:array})'
+	'truewordOffset':
+		prefix: 'truewordOffset'
+		body: 'truewordOffset(${1:stringToFind}, ${2:stringToSearch}, ${3:truewordsToSkip})'
+	'trunc':
+		prefix: 'trunc'
+		body: 'trunc(${1:number})'
+	'uniDecode':
+		prefix: 'uniDecode'
+		body: 'uniDecode(${1:stringToDecode}, ${2:language})'
+	'uniEncode':
+		prefix: 'uniEncode'
+		body: 'uniEncode(${1:stringToEncode}, ${2:language})'
+	'URLDecode':
+		prefix: 'URLDecode'
+		body: 'URLDecode(${1:formString})'
+	'URLEncode':
+		prefix: 'URLEncode'
+		body: 'URLEncode(${1:formString})'
+	'URLStatus':
+		prefix: 'URLStatus'
+		body: 'URLStatus(${1:url})'
+	'uuid ':
+		prefix: 'uuid '
+		body: 'uuid (${1:type}, ${2:namespace}, ${3:name})'
+	'value':
+		prefix: 'value'
+		body: 'value(${1:expression}, ${2:object})'
+	'variance':
+		prefix: 'variance'
+		body: 'variance(${1:numbersList})'
+	'long weekdayNames':
+		prefix: 'long weekdayNames'
+		body: 'long weekdayNames'
+	'abbrreviated weekdayNames':
+		prefix: 'abbrreviated weekdayNames'
+		body: 'abbrreviated weekdayNames'
+	'short english weekdayNames':
+		prefix: 'short english weekdayNames'
+		body: 'short english weekdayNames'
+	'system weekdayNames':
+		prefix: 'system weekdayNames'
+		body: 'system weekdayNames'
+	'internet weekdayNames':
+		prefix: 'internet weekdayNames'
+		body: 'internet weekdayNames'
+	'internet english weekdayNames':
+		prefix: 'internet english weekdayNames'
+		body: 'internet english weekdayNames'
+	'system weekdayNames':
+		prefix: 'system weekdayNames'
+		body: 'system weekdayNames'
+	'within':
+		prefix: 'within'
+		body: 'within(${1:object}, ${2:point})'
+	'wordOffset':
+		prefix: 'wordOffset'
+		body: 'wordOffset(${1:wordToFind}, ${2:stringToSearch}, ${3:wordsToSkip})'
