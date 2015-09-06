@@ -6,17 +6,19 @@
 'fileTypes': [
   'livecodescript'
 ]
+'patterns': [
+  {
+    include: "#language"
+  }
+]
 repository:
   constants:
     patterns: [
       {
         match: "(?i)\\b(SIX|TEN|FORMFEED|NINE|ZERO|NONE|SPACE|FOUR|FALSE|COLON|CRLF|PI|COMMA|ENDOFFILE|EOF|EIGHT|FIVE|QUOTE|EMPTY|ONE|TRUE|((?<=\\w\\s)RETURN)|CR|LINEFEED|RIGHT|BACKSLASH|NULL|SEVEN|TAB|THREE|TWO)\\b"
-        name: "constant.language.iRev"
+        name: "constant.language.livecodescript"
       }
     ]
-  "function-call":
-    match: "[A-Za-z_][A-Za-z_0-9]*(?=\\s*\\()"
-    name: "meta.function-call.livecodescript"
   language:
     patterns: [
       {
@@ -71,7 +73,7 @@ repository:
             name: "entity.name.function.livecodescript"
           "3":
             name: "variable.parameter.livecodescript"
-        match: "(?:^\\s*)((?i)function)\\s+([A-Za-z_0-9-]+)(\\s+[A-Za-z_0-9-]+,*?\\s+.*)*"
+        match: "((?i)function)\\s+([A-Za-z_0-9-]+)(\\s+[A-Za-z_0-9-]+,*?\\s+.*)*"
         name: "meta.function.livecodescript"
       }
       {
@@ -91,7 +93,7 @@ repository:
             name: "entity.name.command.livecodescript"
           "3":
             name: "variable.parameter.livecodescript"
-        match: "(?:^\\s*)((?i)command|on)\\s+([A-Za-z_0-9-]+)(\\s+[A-Za-z_0-9-]+,*?\\s+.*)*"
+        match: "((?i)before|after|command|on)\\s+([A-Za-z_0-9-]+)(\\s+[A-Za-z_0-9-]+,*?\\s+.*)*"
         name: "meta.command.livecodescript"
       }
       {
