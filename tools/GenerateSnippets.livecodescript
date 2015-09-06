@@ -7,7 +7,7 @@ end preOpenStack
 
 on mouseUp
    if the short name of the target is "Generate Snippets" then
-      
+
       # functions
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/function"
       put quote & ".source.livecodescript" & quote &":" & cr into theSnippets
@@ -18,21 +18,21 @@ on mouseUp
             delete word 1 of theSyntax
             replace "[" with empty in theSyntax
             replace "]" with empty in theSyntax
-            
+
             -- parameters
             put empty into theFunctionName
             put empty into theParameters
             if theSyntax contains "(" then
                get MatchText(theSyntax,"(?i)^(.*)\((.*)\)",theFunctionName,theParameters)
-               
+
                if theParameters is empty then
                   next repeat
                end if
-               
+
                put theFunctionName into thePrefix
-               
+
                put theFunctionName&"(" into theBody
-               
+
                if theParameters is not empty then
                   replace "<" with "" in theParameters
                   replace ">" with "" in theParameters
@@ -46,11 +46,11 @@ on mouseUp
                else
                   put ")" after theBody
                end if
-               
+
                AddSnippet theSnippets, theFunctionName, theFunctionName, theBody
-               
+
             else
-               
+
                if theSyntax contains "of" then
                   put word 2 to -4 of theSyntax into theOptions
                   put word -3 of theSyntax into theFunctionName
@@ -63,7 +63,7 @@ on mouseUp
                   put word 2 to -2 of theSyntax into theOptions
                   put word -1 of theSyntax into theFunctionName
                end if
-               
+
                if theOptions contains "|" then
                   split theOptions with "|"
                   repeat with theIndex = 1 to the number of elements of theOptions
@@ -83,7 +83,7 @@ on mouseUp
          end repeat
       end repeat
       put theSnippets into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/snippets/functions.cson")
-      
+
       # messages
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/message"
       put quote & ".source.livecodescript" & quote &":" & cr into theSnippets
@@ -100,7 +100,7 @@ on mouseUp
             split theParameters by comma
             repeat with theIndex = 1 to the number of elements of theParameters
                if theParameters[theIndex] contains "|" then
-                  -- unfortunately some of the syntax definitions describe a set of possible values 
+                  -- unfortunately some of the syntax definitions describe a set of possible values
                   -- or parameter types and this simplifies things considerably...
                   put "Value" into theParameter
                else
@@ -112,13 +112,13 @@ on mouseUp
             if the last char of theSyntax is comma then
                delete the last char of theSyntax
             end if
-            
+
             put theSyntax & cr & tab & "${1:/* code */ }" & cr & "end" && theMessageName into theBody
             AddSnippet theSnippets, theMessageName & " ... end " & theMessageName, theMessageName, theBody
          end repeat
       end repeat
       put theSnippets into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/snippets/messages.cson")
-      
+
       # commands
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/command"
       put quote & ".source.livecodescript" & quote &":" & cr into theSnippets
@@ -137,7 +137,7 @@ on mouseUp
                replace ">" with "" in theSyntax
                put word 1 to 3 of theSyntax into thePrefix
                replace space with empty in thePrefix
-               
+
                split theParameters with "<"
                repeat with theIndex = 1 to the number of elements of theParameters
                   if theIndex is 1 then
@@ -152,8 +152,8 @@ on mouseUp
          end repeat
       end repeat
       put theSnippets into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/snippets/commands.cson")
-      
-      
+
+
    end if
 end mouseUp
 
@@ -194,7 +194,7 @@ function ParseOptionalSyntax pSyntaxDefinition
             end if
          end if
       end repeat
-      
+
       if foundEndChar <> 0 then
          -- we found some optional syntax so we need to split the syntax defintion into two
          put pSyntaxDefinition into theOption1
@@ -207,14 +207,14 @@ function ParseOptionalSyntax pSyntaxDefinition
          return theOption1 & cr & theOption2
       end if
    end if
-   
+
    return pSyntaxDefinition
 end ParseOptionalSyntax
 
 function ParseVariationSyntax pSyntaxDefinition
    put 0 into foundStartChar
    put 0 into foundEndChar
-   
+
    put offset("{",pSyntaxDefinition,foundStartChar) into foundStartChar
    if foundStartChar <> 0 then
       put offset("}",pSyntaxDefinition,foundEndChar) into foundEndChar
@@ -222,7 +222,7 @@ function ParseVariationSyntax pSyntaxDefinition
          exit repeat
       end if
       put char foundStartChar+1 to foundEndChar-1 of pSyntaxDefinition into theVariations
-      
+
       if foundEndChar <> 0 then
          -- we found an array of variable syntax
          set the itemDelimiter to "|"
@@ -240,7 +240,7 @@ end ParseVariationSyntax
 function ParseCommandSyntaxDefinition pSyntaxDefinition
    local theSyntaxes
    replace "..." with "" in pSyntaxDefinition
-   
+
    put ParseOptionalSyntax(pSyntaxDefinition) into theSyntaxes
    repeat for each line theSyntax in theSyntaxes
       put ParseVariationSyntax(theSyntax) & cr after theParsedSyntaxes
@@ -249,37 +249,19 @@ function ParseCommandSyntaxDefinition pSyntaxDefinition
 end ParseCommandSyntaxDefinition
 
 command AddSnippet @pSnippets, pName, pPrefix, pBody
-   replace quote with "\"&quote in pBody 
-   
+   replace quote with "\"&quote in pBody
+
    if the number of lines of pBody > 1 then
       put "'''" & cr before pBody
       put cr & "'''" after pBody
-      
+
       repeat with theIndex = 2 to the number of lines of pBody
          put tab & tab before line theIndex of pBody
       end repeat
    else
       put "'" & pBody & "'" into pBody
    end if
-   
+
    put tab & "'" & pName & "'" & ":" & cr & tab & tab & "prefix: " & "'" & pPrefix & \
          "'" & cr & tab & tab & "body: " & pBody & cr after pSnippets
 end AddSnippet
-
-function RecurseSyntax pArray
-   if pArray is not an array then
-      return pArray
-   else
-      p
-      put RecurseSyntax(pArray[1]) into theParentSyntaxes
-      repeat with X = 2 to the number of elements of pArray
-         put RecurseSyntax(pArray[X]) into theChildSyntaxes
-         repeat for each line theParentSyntax in theParentSyntaxes
-            repeat for each line theChildSyntax in theChildSyntaxes
-               put theParentSyntax & theChildSyntax & cr after theSyntaxes
-            end repeat
-         end repeat
-      end repeat
-   end if
-   return theSyntaxes
-end RecurseSyntax
