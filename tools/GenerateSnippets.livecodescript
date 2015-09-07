@@ -7,32 +7,37 @@ end preOpenStack
 
 on mouseUp
    if the short name of the target is "Generate Snippets" then
-
       # functions
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/function"
-      put quote & ".source.livecodescript" & quote &":" & cr into theSnippets
+      put  tab & "# GENERATED SNIPPETS START" & cr & \
+            tab & "autocomplete:" & cr & \	
+            tab & tab & "symbols:" & cr & \
+            tab & tab & tab & "builtins:" & cr & \
+            tab & tab & tab & tab & "suggestions: [" into theSnippets
+      
       repeat for each line theFile in the files
          put url ("file:"&theFile) into theDoc
+         put GetDescription(theDoc) into theDescription
          filter theDoc with "Syntax: *"
          repeat for each line theSyntax in theDoc
             delete word 1 of theSyntax
             replace "[" with empty in theSyntax
             replace "]" with empty in theSyntax
-
+            
             -- parameters
             put empty into theFunctionName
             put empty into theParameters
             if theSyntax contains "(" then
                get MatchText(theSyntax,"(?i)^(.*)\((.*)\)",theFunctionName,theParameters)
-
+               
                if theParameters is empty then
                   next repeat
                end if
-
+               
                put theFunctionName into thePrefix
-
+               
                put theFunctionName&"(" into theBody
-
+               
                if theParameters is not empty then
                   replace "<" with "" in theParameters
                   replace ">" with "" in theParameters
@@ -46,11 +51,11 @@ on mouseUp
                else
                   put ")" after theBody
                end if
-
-               AddSnippet theSnippets, theFunctionName, theFunctionName, theBody
-
+               
+               AddSnippet theSnippets, theFunctionName, theFunctionName, theBody, "function", theDescription, theFile
+               
             else
-
+               
                if theSyntax contains "of" then
                   put word 2 to -4 of theSyntax into theOptions
                   put word -3 of theSyntax into theFunctionName
@@ -63,7 +68,7 @@ on mouseUp
                   put word 2 to -2 of theSyntax into theOptions
                   put word -1 of theSyntax into theFunctionName
                end if
-
+               
                if theOptions contains "|" then
                   split theOptions with "|"
                   repeat with theIndex = 1 to the number of elements of theOptions
@@ -72,7 +77,7 @@ on mouseUp
                      if theOptions[theIndex] is not empty then
                         put space after theOptions[theIndex]
                      end if
-                     AddSnippet theSnippets, theOptions[theIndex] & theFunctionName, theOptions[theIndex] & theFunctionName, theOptions[theIndex] & theFunctionName & theParameter
+                     AddSnippet theSnippets, theOptions[theIndex] & theFunctionName, theOptions[theIndex] & theFunctionName, theOptions[theIndex] & theFunctionName & theParameter, "function", theDescription, theFile
                   end repeat
                else
                   if theParameter is empty then
@@ -82,13 +87,12 @@ on mouseUp
             end if
          end repeat
       end repeat
-      put theSnippets into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/snippets/functions.cson")
-
+      
       # messages
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/message"
-      put quote & ".source.livecodescript" & quote &":" & cr into theSnippets
       repeat for each line theFile in the files
          put url ("file:"&theFile) into theDoc
+         put GetDescription(theDoc) into theDescription
          filter theDoc with "Syntax: *"
          repeat for each line theSyntax in theDoc
             delete word 1 of theSyntax
@@ -112,18 +116,17 @@ on mouseUp
             if the last char of theSyntax is comma then
                delete the last char of theSyntax
             end if
-
+            
             put theSyntax & cr & tab & "${1:/* code */ }" & cr & "end" && theMessageName into theBody
-            AddSnippet theSnippets, theMessageName & " ... end " & theMessageName, theMessageName, theBody
+            AddSnippet theSnippets, theMessageName & " ... end " & theMessageName, theMessageName, theBody, "message", theDescription, theFile
          end repeat
       end repeat
-      put theSnippets into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/snippets/messages.cson")
-
+      
       # commands
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/command"
-      put quote & ".source.livecodescript" & quote &":" & cr into theSnippets
       repeat for each line theFile in the files
          put url ("file:"&theFile) into theDoc
+         put GetDescription(theDoc) into theDescription
          filter theDoc with "Syntax: *"
          repeat for each line theSyntaxDefinition in theDoc
             delete word 1 of theSyntaxDefinition
@@ -137,7 +140,7 @@ on mouseUp
                replace ">" with "" in theSyntax
                put word 1 to 3 of theSyntax into thePrefix
                replace space with empty in thePrefix
-
+               
                split theParameters with "<"
                repeat with theIndex = 1 to the number of elements of theParameters
                   if theIndex is 1 then
@@ -147,15 +150,35 @@ on mouseUp
                      put "${"&theIndex-1&":"&theParameters[theIndex][1]&"}"&theParameters[theIndex][2] after theBody
                   end if
                end repeat
-               AddSnippet theSnippets, theSyntax, thePrefix, theBody
+               AddSnippet theSnippets, theSyntax, thePrefix, theBody, "command", theDescription, theFile
             end repeat
          end repeat
       end repeat
-      put theSnippets into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/snippets/commands.cson")
-
-
+      
+      put cr & tab & tab & tab & tab & "]" & cr & \
+            tab&"# GENERATED SNIPPETS END" & cr after theSnippets
+      
+      put url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/settings/language-livecode.cson") into theCSON
+      put offset("# GENERATED SNIPPETS START",theCSON) into theStart
+      put offset("# GENERATED SNIPPETS END",theCSON) into theEnd
+      add length("# GENERATED SNIPPETS END") to theEnd
+      if theStart > 0 and theEnd > 0 then
+         put theSnippets into char theStart to theEnd of theCSON
+      else if theStart > 0 then
+         put theSnippets into char theStart to -1 of theCSON
+         -- put cr&theSnippets after theCSON
+      end if
+      put theCSON into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/settings/language-livecode.cson")
    end if
 end mouseUp
+
+function GetDescription pDoc
+   filter pDoc with "Summary: *"
+   put word 2 to -1 of line 1 of pDoc into pDoc
+   replace "'" with "\'" in pDoc
+   replace quote with "\"&quote in pDoc
+   return pDoc
+end GetDescription
 
 function ParseOptionalSyntax pSyntaxDefinition
    put 0 into foundStartChar
@@ -248,20 +271,36 @@ function ParseCommandSyntaxDefinition pSyntaxDefinition
    return theParsedSyntaxes
 end ParseCommandSyntaxDefinition
 
-command AddSnippet @pSnippets, pName, pPrefix, pBody
+command AddSnippet @pSnippets, pName, pPrefix, pBody, pType, pDescription, pFile
+   put tab & tab & tab & tab & tab into tTabLevel
+   
+   put tTabLevel&"{" & cr into theSnippet
+   
    replace quote with "\"&quote in pBody
-
+   
    if the number of lines of pBody > 1 then
       put "'''" & cr before pBody
       put cr & "'''" after pBody
-
+      
       repeat with theIndex = 2 to the number of lines of pBody
-         put tab & tab before line theIndex of pBody
+         put tTabLevel & tab before line theIndex of pBody
       end repeat
    else
       put "'" & pBody & "'" into pBody
    end if
-
-   put tab & "'" & pName & "'" & ":" & cr & tab & tab & "prefix: " & "'" & pPrefix & \
-         "'" & cr & tab & tab & "body: " & pBody & cr after pSnippets
+   
+   # I assume this is based on the lcdoc filename... hope so
+   set the itemDelimiter to "."
+   put "https://livecode.com/resources/api/#livecode_script/"&item 1 of pFile into theMoreURL
+   
+   put tTabLevel & tab & "type: '" & pType & "'" & cr after theSnippet
+   put tTabLevel & tab & "rightLabel: '" & pName & "'" & cr after theSnippet
+   put tTabLevel & tab & "snippet: " & pBody & cr after theSnippet
+   put tTabLevel & tab & "description: '" & pDescription & "'" & cr after theSnippet
+   put tTabLevel & tab & "descriptionMoreURL: '" & theMoreURL & "'" & cr after theSnippet
+   
+   put tTabLevel&"}" after theSnippet
+   
+   put cr & theSnippet after pSnippets
+   
 end AddSnippet
