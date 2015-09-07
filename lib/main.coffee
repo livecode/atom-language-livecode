@@ -41,4 +41,4 @@ module.exports =
                 filePath: filePath
                 range: helpers.rangeFromLineNumber(textEditor, match[1]-1)
                 text: match[2]
-              return messages
+            return messages
