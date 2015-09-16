@@ -21,7 +21,7 @@ module.exports =
   provideLinter: ->
     helpers = require('atom-linter')
     provider =
-      grammarScopes: ['source.livecodescript']
+      grammarScopes: ['source.livecodescript', 'source.iRev']
       scope: 'file'
       lintOnFly: true
       lint: (textEditor) =>
@@ -31,14 +31,16 @@ module.exports =
           parameters.push('-ui')
           stackfile = @linterPath
           parameters.push(stackfile)
+          scope = '-scope=' + textEditor.getRootScopeDescriptor()
+          parameters.push(scope)
           text = textEditor.getText()
           return helpers.exec(command, parameters, {stdin: text}).then (output) ->
-            regex = /(\d+),(.*)/g
+            regex = /(\d+),(\d+),(.*)/g
             messages = []
             while((match = regex.exec(output)) isnt null)
               messages.push
                 type: "Error"
                 filePath: filePath
-                range: helpers.rangeFromLineNumber(textEditor, match[1]-1)
-                text: match[2]
+                range: [[match[1]-1, match[2]-0],[match[1]-1, textEditor.getBuffer().lineLengthForRow(match[1]-1)]]
+                text: match[3]
             return messages

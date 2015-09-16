@@ -1,39 +1,44 @@
 ﻿script "Linter"
 
+local sErrorsList
+
 on startup
   try
-    read from stdin until empty
-    put it into theScript
+    local tScope
+    repeat for each element theArgument in the commandArguments
+      if theArgument begins with "-scope" then
+         split theArgument with "="
+         put theArgument[2] into tScope
+      end if
+    end repeat
 
-    local isScriptOnly = false
-    if word 1 of theScript is "script" then
-      put true into isScriptOnly
-    end if
+    read from stdin until empty
+    put it into tScript
 
     put the filename of me into theFilename
     set the itemDelimiter to slash
     put "scriptErrors.txt" into item -1 of theFilename
-    put url ("file:"&theFilename) into theErrorsList
+    put url ("file:"&theFilename) into sErrorsList
+    split sErrorsList with return
 
     create script only stack "TestScript"
 
-    if isScriptOnly then
-      delete line 1 of theScript
-    end if
+    if tScope is empty or tScope is ".source.livecodescript" then
+      local tLineOffset = 0
 
-    set the script of stack "TestScript" to theScript
-
-    put the result into theErrors
-    set the itemDelimiter to comma
-
-    repeat for each line theError in theErrors
-      if theError is not empty then
-        if isScriptOnly then
-          add 1 to item 2 of theError
-        end if
-        write item 2 of theError, line (item 1 of theError) of theErrorsList & linefeed to stdout
+      -- check for script only
+      if word 1 of tScript is "script" then
+        put 1 into tLineOffset
       end if
-    end repeat
+
+      if tLineOffset is 1 then
+        delete line 1 of tScript
+      end if
+
+      LintScript tScript, tLineOffset
+    else if tScope is ".source.iRev" then
+
+    end if
 
     write linefeed to stdout
   catch e
@@ -42,3 +47,16 @@ on startup
 
   quit
 end startup
+
+command LintScript pScript, pLineOffset
+  set the script of stack "TestScript" to pScript
+
+  put the result into theErrors
+  set the itemDelimiter to comma
+
+  repeat for each line theError in theErrors
+    if theError is not empty then
+      write item 2 of theError + pLineOffset, item 3 of theError, sErrorsList[item 1 of theError] & linefeed to stdout
+    end if
+  end repeat
+end LintScript
