@@ -4,8 +4,8 @@ module.exports =
   config:
     executablePath:
       type: 'string'
-      title: 'LiveCode Standalone Engine Path'
-      default: 'livecode' # Let OS's $PATH handle the rest
+      title: 'LiveCode Server Engine Path'
+      default: 'livecode-server' # Let OS's $PATH handle the rest
 
   activate: ->
     @subscriptions = new CompositeDisposable
@@ -13,7 +13,7 @@ module.exports =
       (executablePath) =>
         @executablePath = executablePath
     path = require 'path'
-    @linterPath = path.join(__dirname, '..', 'tools', 'Linter.livecodescript')
+    @linterPath = path.join(__dirname, '..', 'tools', 'Linter.lc')
 
   deactivate: ->
     @subscriptions.dispose()
@@ -28,7 +28,6 @@ module.exports =
           filePath = textEditor.getPath()
           command = @executablePath
           parameters = []
-          parameters.push('-ui')
           stackfile = @linterPath
           parameters.push(stackfile)
           scope = '-scope=' + textEditor.getRootScopeDescriptor()

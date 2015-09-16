@@ -6,7 +6,7 @@
 'fileTypes': [
   'livecodescript'
 ]
-'firstLineMatch': '^#!.*\\b(livecode|/usr/bin/env livecode)|^#\\s*-\\*-[^*]*mode:\\s*livecodescript[^*]*-\\*-'
+'firstLineMatch': '^#!.*\\b(livecode)|^#\\s*-\\*-[^*]*mode:\\s*livecodescript[^*]*-\\*-'
 'patterns': [
   {
     include: "#language"
