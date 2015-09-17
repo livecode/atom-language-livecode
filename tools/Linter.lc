@@ -6,15 +6,19 @@ local sLastLine
 Lint
 
 command Lint
-  local tScope
+  local tScope, theArgument
   repeat for each element theArgument in the commandArguments
     if theArgument begins with "-scope" then
        split theArgument with "="
        put theArgument[2] into tScope
+   else if theArgument begins with "-explicitVariables" then
+      split theArgument with "="
+      set the explicitVariables to theArgument[2]
     end if
   end repeat
 
   read from stdin until empty
+  local tScript
   put it into tScript
 
   put the scriptParsingErrors into sErrorsList
@@ -36,10 +40,13 @@ command Lint
 
     set the script of stack "TestScript" to tScript
 
+    local theErrors
     put the result into theErrors
     split theErrors with return
+    local tIndex
     repeat with tIndex = 1 to the number of elements in theErrors
       if theErrors[tIndex] is not empty then
+        local tMessage
         put sErrorsList[item 1 of theErrors[tIndex]] into tMessage
         if tMessage is not empty then
           if item 4 of theErrors[tIndex] is not empty then
@@ -51,6 +58,7 @@ command Lint
     end repeat
   else if tScope is ".source.iRev" then
     -- write out to a temporary file and include
+    local tFile
     put the temporary folder & slash & uuid() into tFile
     -- can't lint a whole web app...
     replace "include" with "# include" in tScript
@@ -67,14 +75,14 @@ command Lint
 end Lint
 
 command scriptExecutionError pStack, pFiles
-  local tHint, tFile
-  --write 1,1,line 2 of pStack & linefeed to stdout
   split pStack with return
+  local tIndex
   repeat with tIndex = 2 to the number of elements in pStack
     if item 1 of pStack[tIndex] is 730 then
       exit repeat
     end if
     if item 2 of pStack[tIndex] is not 0 and item 2 of pStack[tIndex] is not sLastLine then
+      local tMessage
       put sErrorsList[item 1 of pStack[tIndex]] into tMessage
       if tMessage is not empty then
         if item 4 of pStack[tIndex] is not empty then
@@ -86,6 +94,7 @@ command scriptExecutionError pStack, pFiles
   end repeat
 
   -- cleanup
+  local tFile
   set the itemDelimiter to slash
   repeat for each line tFile in pFiles
     if item -1 of tFile is "Linter.lc" then

@@ -48,7 +48,7 @@ script compilation errors on the fly.
 Dependencies:
 
  * The [linter package](https://atom.io/packages/linter) needs to be installed
- * LiveCode Server engine for the platform it is being run on must be accessible
+ * LiveCode 7.1+ Server engine for the platform it is being run on must be accessible
 
 The default setting assumes you have installed the LiveCode Server engine somewhere
 on the current `$PATH` with the name `livecode-server`. However, you can enter any
@@ -57,6 +57,9 @@ path or name you choose via the package settings.
 For LiveCode Server the linter will only check for errors within the scope of
 the file being edited. If for example a variable re-declarition error is caused
 by the inclusion of another file that error won't be detected.
+
+The linter supports an optional explicit variables mode which can be turned on
+via the package settings.
 
 ## Authors
 
