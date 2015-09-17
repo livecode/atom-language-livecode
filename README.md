@@ -45,6 +45,8 @@ for Atom.
 This package provides a linter for LiveCode Script and Server to highlight and describe
 script compilation errors on the fly.
 
+![Linter In Action](http://ecove.on-rev.com/linter.gif)
+
 Dependencies:
 
  * The [linter package](https://atom.io/packages/linter) needs to be installed
