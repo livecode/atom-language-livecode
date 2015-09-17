@@ -26,10 +26,10 @@
   'handler':
     'prefix': 'handler'
     'body': 'handler ${1:/* name */}(${2:/* args */}) returns ${3:/* type */}\n\t${4:/* code */}\nend handler'
-    
-    'lcbtemplate':
-   'prefix': 'lcbt'
-   'body': '-- declaring extension as widget, followed by identifier\n
+
+  'lcbtemplate':
+    'prefix': 'lcbt'
+    'body': '-- declaring extension as widget, followed by identifier\n
    widget community.livecode.username.identifier\n
    use com.livecode.canvas\n
    use com.livecode.widget\n
@@ -62,4 +62,3 @@
    end handler\n
    \n
    end widget'
-
