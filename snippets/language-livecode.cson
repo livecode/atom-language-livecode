@@ -26,3 +26,40 @@
   'handler':
     'prefix': 'handler'
     'body': 'handler ${1:/* name */}(${2:/* args */}) returns ${3:/* type */}\n\t${4:/* code */}\nend handler'
+    
+    'lcbtemplate':
+   'prefix': 'lcbt'
+   'body': '-- declaring extension as widget, followed by identifier\n
+   widget community.livecode.username.identifier\n
+   use com.livecode.canvas\n
+   use com.livecode.widget\n
+   use com.livecode.engine\n
+   metadata title is "title"\n
+   metadata author is "author"\n
+   metadata version is "1.0.0"\n
+   \n
+   -- property yourProperty 	get mYourVariable	set yourSetCommand
+   \n
+   \n
+   public handler OnLoad(in pProperties as Array)\n
+   -- your code here\n
+   put pProperties["myProperty"] into mMyVariable\n
+   end handler\n
+   \n
+   public handler OnSave(out rProperties as Array)\n
+   -- your code here\n
+   put the empty array into rProperties\n
+ 	 put mMyVariable into rProperties["myProperty"]\n
+ 	 return rProperties\n
+   end handler\n
+   \n
+   public handler OnCreate()\n
+   -- your code here\n
+   end handler\n
+   \n
+   public handler OnPaint()\n
+   -- your code here\n
+   end handler\n
+   \n
+   end widget'
+
