@@ -42,15 +42,16 @@ for Atom.
 
 ## Script Error Checking
 
-This package provides a linter for LiveCode Script and Server to highlight and describe
-script compilation errors on the fly.
+This package provides a linter for LiveCode Script, LiveCode Server and LiveCode
+Builder to highlight and describe script compilation errors on the fly.
 
 ![Linter In Action](http://ecove.on-rev.com/linter.gif)
 
 Dependencies:
 
  * The [linter package](https://atom.io/packages/linter) needs to be installed
- * LiveCode 7.1+ Server engine for the platform it is being run on must be accessible
+ * LiveCode 7.1+ Server engine for the platform it is being run on must be
+ accessible
 
 The default setting assumes you have installed the LiveCode Server engine somewhere
 on the current `$PATH` with the name `livecode-server`. However, you can enter any
@@ -62,6 +63,27 @@ by the inclusion of another file that error won't be detected.
 
 The linter supports an optional explicit variables mode which can be turned on
 via the package settings.
+
+### LiveCode Builder Linting
+
+Linting of LiveCode Builder files should be considered experimental. This is
+particularly the case for projects that have complex interdependencies between
+files.
+
+In order to lint LiveCode Builder files ensure the following:
+
+ * lc-compile can be found at the location specified in settings
+ * You have appropriately set the module paths to a directory with the standard
+`*.lci` files provided by LiveCode. You may add further paths delimited by `;`
+
+The default settings assume you have a clone of the LiveCode repo in
+your home directory named livecode and you have built a debug build.
+
+In the process of linting the LiveCode Builder file a `*.lci` file is created in
+a directory named `.lci` next to the file being edited. In the case of files
+that have dependencies you may receive a dependency error if you edit a
+file with the dependency before those it depends on because it won't be able to
+fine the appropriate `*.lci` file in the `.lci` directory.
 
 ## Authors
 
