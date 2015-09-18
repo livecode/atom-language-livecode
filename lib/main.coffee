@@ -13,6 +13,19 @@ module.exports =
       title: 'Explicit Variables'
       default: 'false'
       description: 'Get errors on undeclared variables'
+    lcCompilePath:
+      type: 'string'
+      title: 'Compiler Path For LiveCode Builder'
+      default: 'lc-compile' # Let OS's $PATH handle the rest
+      description: 'Where is your lc-compile installed? ' +
+        'Default assumes it\'s on $PATH'
+    modulePaths:
+      type: 'string'
+      title: 'Module Paths For LiveCode Builder'
+      default: '~/livecode/_build/mac/Debug/modules/lci/'
+      description: 'Where are the modules installed? ' +
+        'Default is where they should be after building ' +
+        'a debug build of LiveCode on a mac.'
 
   activate: ->
     @subscriptions = new CompositeDisposable
@@ -22,6 +35,12 @@ module.exports =
     @subscriptions.add atom.config.observe 'language-livecode.explicitVars',
       (explicitVars) =>
         @explicitVars = explicitVars
+    @subscriptions.add atom.config.observe 'language-livecode.lcCompilePath',
+      (lcCompilePath) =>
+        @lcCompilePath = lcCompilePath
+    @subscriptions.add atom.config.observe 'language-livecode.modulePaths',
+      (modulePaths) =>
+        @modulePaths = modulePaths
     path = require 'path'
     @linterPath = path.join(__dirname, '..', 'tools', 'Linter.lc')
 
@@ -31,7 +50,7 @@ module.exports =
   provideLinter: ->
     helpers = require('atom-linter')
     provider =
-      grammarScopes: ['source.livecodescript', 'source.iRev']
+      grammarScopes: ['source.livecodescript', 'source.iRev', 'source.lcb']
       scope: 'file'
       lintOnFly: true
       lint: (textEditor) =>
@@ -44,6 +63,10 @@ module.exports =
         parameters.push(scope)
         explicitVariables = '-explicitVariables=' + @explicitVars
         parameters.push(explicitVariables)
+        lcCompile = '-lcCompile=' + @lcCompilePath
+        parameters.push(lcCompile)
+        lcCompileModulePaths = '-modulePaths=' + @modulePaths
+        parameters.push(lcCompileModulePaths)
         text = textEditor.getText()
         return helpers.exec(command, parameters, {stdin: text}).then (output) ->
           regex = /(\d+),(\d+),(.*)/g
