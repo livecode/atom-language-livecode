@@ -16,16 +16,28 @@ module.exports =
     lcCompilePath:
       type: 'string'
       title: 'Compiler Path For LiveCode Builder'
-      default: 'lc-compile' # Let OS's $PATH handle the rest
+      default: switch
+        when process.platform == 'darwin'
+        then '~/livecode/_build/mac/Debug/lc-compile'
+        when process.platform == 'linux'
+        then '~/livecode/build-linux-x86_64/livecode/out/Debug/lc-compile'
+        when process.platform == 'win32'
+        then '~/livecode/_build/Win32/Debug/lc-compile.exe'
       description: 'Where is your lc-compile installed? ' +
         'Default assumes it\'s on $PATH'
     modulePaths:
       type: 'string'
       title: 'Module Paths For LiveCode Builder'
-      default: '~/livecode/_build/mac/Debug/modules/lci/'
+      default: switch
+        when process.platform == 'darwin'
+        then '~/livecode/_build/mac/Debug/modules/lci/'
+        when process.platform == 'linux'
+        then '~/livecode/build-linux-x86_64/livecode/out/Debug/modules/lci/'
+        when process.platform == 'win32'
+        then '~/livecode/_build/Win32/Debug/modules/lci/'
       description: 'Where are the modules installed? ' +
         'Default is where they should be after building ' +
-        'a debug build of LiveCode on a mac.'
+        'a debug build of LiveCode. Delimit paths with `;`.'
 
   activate: ->
     @subscriptions = new CompositeDisposable
