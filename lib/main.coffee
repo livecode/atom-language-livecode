@@ -1,4 +1,4 @@
-{CompositeDisposable} = require 'atom'
+{BufferedProcess, CompositeDisposable} = require 'atom'
 
 module.exports =
   config:
@@ -29,7 +29,6 @@ module.exports =
     @subscriptions.dispose()
 
   provideLinter: ->
-    helpers = require('atom-linter')
     provider =
       grammarScopes: ['source.livecodescript', 'source.iRev']
       scope: 'file'
@@ -45,7 +44,7 @@ module.exports =
         explicitVariables = '-explicitVariables=' + @explicitVars
         parameters.push(explicitVariables)
         text = textEditor.getText()
-        return helpers.exec(command, parameters, {stdin: text}).then (output) ->
+        return @exec(command, parameters, {stdin: text}).then (output) ->
           regex = /(\d+),(\d+),(.*)/g
           messages = []
           while((match = regex.exec(output)) isnt null)
@@ -59,3 +58,19 @@ module.exports =
               ]
               text: match[3]
           return messages
+
+  exec: (command, args = [], options = {}) ->
+    return new Promise (resolve, reject) ->
+      data = stdout: [], stderr: []
+      stdout = (output) -> data.stdout.push(output.toString())
+      stderr = (output) -> data.stderr.push(output.toString())
+      exit = ->
+        resolve(data.stdout.join(''))
+      handleError = (errorObject) ->
+        errorObject.handle()
+        resolve('')
+      spawnedProcess = new BufferedProcess({command, args, options, stdout, stderr, exit})
+      spawnedProcess.onWillThrowError(handleError)
+      if options.stdin
+        spawnedProcess.process.stdin.write(options.stdin.toString())
+        spawnedProcess.process.stdin.end() # We have to end it or the programs will keep waiting forever
