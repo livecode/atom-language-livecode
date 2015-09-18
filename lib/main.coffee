@@ -79,6 +79,8 @@ module.exports =
         parameters.push(lcCompile)
         lcCompileModulePaths = '-modulePaths=' + @modulePaths
         parameters.push(lcCompileModulePaths)
+        editorFilePath = '-filepath=' + filePath
+        parameters.push(editorFilePath)
         text = textEditor.getText()
         return helpers.exec(command, parameters, {stdin: text}).then (output) ->
           regex = /(\d+),(\d+),(.*)/g

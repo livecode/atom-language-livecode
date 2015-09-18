@@ -8,7 +8,7 @@ local sTempFile
 Lint
 
 command Lint
-  local tScope, tLCCompile, tModulePaths, theArgument
+  local tScope, tLCCompile, tModulePaths, theArgument, tFilename, tLCIDirectory
 
   local tIndex
   repeat for each element theArgument in the commandArguments
@@ -30,6 +30,13 @@ command Lint
         break
       case "-lcCompile"
         put theArgument[2] into tLCCompile
+        break
+      case "-filepath"
+        set the itemDelimiter to slash
+        put item -1 of theArgument[2] into tFilename
+        put item 1 to -2 of theArgument[2] & "/.lci" into tLCIDirectory
+        put " --modulepath " & tLCIDirectory before tModulePaths
+        set the itemDelimiter to comma
         break
     end switch
   end repeat
@@ -86,8 +93,10 @@ command Lint
       include sTempFile
     break
     case ".source.lcb"
+      if there is not a folder tLCIDirectory then
+        create folder tLCIDirectory
+      end if
       SaveToTempFile tScript
-      local tProcess
       put shell(tLCCompile & tModulePaths & " -- " & sTempFile) into tErrors
       split tErrors with return
       repeat with tIndex = 1 to the number of elements of tErrors
