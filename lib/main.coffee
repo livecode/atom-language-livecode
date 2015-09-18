@@ -24,6 +24,7 @@ module.exports =
         @explicitVars = explicitVars
     path = require 'path'
     @linterPath = path.join(__dirname, '..', 'tools', 'Linter.lc')
+    @notified = false
 
   deactivate: ->
     @subscriptions.dispose()
@@ -68,6 +69,15 @@ module.exports =
         resolve(data.stdout.join(''))
       handleError = (errorObject) ->
         errorObject.handle()
+        if !@notified
+          atom.notifications.addWarning(
+            'Please check you have LiveCode Server installed correctly',
+            {
+              detail: 'LiveCode Server is required for linting your files\n' +
+              'edit the location in the package settings'
+            }
+            )
+          @notified = true
         resolve('')
       spawnedProcess = new BufferedProcess({command, args, options, stdout, stderr, exit})
       spawnedProcess.onWillThrowError(handleError)
