@@ -70,7 +70,7 @@ command Lint
       split tErrors with return
       repeat with tIndex = 1 to the number of elements in tErrors
         if tErrors[tIndex] is not empty then
-          split tErrors with ","
+          split tErrors[tIndex] with ","
           local tMessage
           put sErrorsList[tErrors[tIndex][1]] into tMessage
           if tMessage is not empty then
