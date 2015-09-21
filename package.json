@@ -8,9 +8,6 @@
     "atom": "*"
   },
   "main": "./lib/main",
-  "dependencies": {
-    "atom-linter": "^3.0.0"
-  },
   "providedServices": {
     "linter": {
       "versions": {

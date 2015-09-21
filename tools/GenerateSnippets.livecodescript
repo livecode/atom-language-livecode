@@ -13,7 +13,8 @@ on mouseUp
             tab & tab & "symbols:" & cr & \
             tab & tab & tab & "builtins:" & cr & \
             tab & tab & tab & tab & "suggestions: [" into theSnippets
-      
+
+
       # functions
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/function"
       repeat for each line theFile in the files
