@@ -62,7 +62,7 @@ module.exports =
   provideLinter: ->
     helpers = require('atom-linter')
     provider =
-      grammarScopes: ['source.livecodescript', 'source.iRev', 'source.lcb']
+      grammarScopes: ['source.livecodescript', 'source.lcb']
       scope: 'file'
       lintOnFly: true
       lint: (textEditor) =>
