@@ -62,7 +62,7 @@ module.exports =
 
   provideLinter: ->
     provider =
-      grammarScopes: ['source.livecodescript', 'source.lcb']
+      grammarScopes: ['source.livecodescript', 'source.iRev', 'source.lcb']
       scope: 'file'
       lintOnFly: true
       lint: (textEditor) =>
