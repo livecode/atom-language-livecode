@@ -8,12 +8,12 @@ end preOpenStack
 on mouseUp
    if the short name of the target is "Generate Snippets" then
       put  "# GENERATED SNIPPETS START" & cr & \
-            "'.source.livecodescript':" & cr & \
+            "'.source.livecodescript, .source.iRev':" & cr & \
             tab & "autocomplete:" & cr & \
             tab & tab & "symbols:" & cr & \
             tab & tab & tab & "builtins:" & cr & \
             tab & tab & tab & tab & "suggestions: [" into theSnippets
-      
+
       # functions
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/function"
       repeat for each line theFile in the files

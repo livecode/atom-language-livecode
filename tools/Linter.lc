@@ -52,63 +52,56 @@ command Lint
   local tErrors
   switch tScope
     case ".source.livecodescript"
-      -- test for server code
-      if matchChunk(tScript, "<\?rev|<\?lc|<\?livecode") then
-        -- can't lint a whole web app...
-        replace "include" with "# include" in tScript
-        replace "require" with "# require" in tScript
+      local tLineOffset = 0
 
-        -- ensure it throws an error so it's not exectuted
-        put return & quote after tScript
-        put the number of lines of tScript into sLastLine
-
-        SaveToTempFile tScript
-        include sTempFile
-      else
-        local tLineOffset = 0
-
-        -- check for script only
-        if word 1 of tScript is "script" then
-          put 1 into tLineOffset
-          delete line 1 of tScript
-        end if
-
-        set the script of stack "TestScript" to tScript
-
-        put the result into tErrors
-        split tErrors with return
-        repeat with tIndex = 1 to the number of elements in tErrors
-          if tErrors[tIndex] is not empty then
-            split tErrors[tIndex] with ","
-
-            local tMessage
-            put sErrorsList[tErrors[tIndex][1]] into tMessage
-
-            if tMessage is not empty then
-              if tErrors[tIndex][4] is not empty then
-                put " (" & item 4 of tErrors[tIndex][4] & ")" after tMessage
-              end if
-              write tErrors[tIndex][2] + tLineOffset, tErrors[tIndex][3], tMessage & linefeed to stdout
-            end if
-
-          end if
-        end repeat
+      -- check for script only
+      if word 1 of tScript is "script" then
+        put 1 into tLineOffset
       end if
-      break
+
+      if tLineOffset is 1 then
+        delete line 1 of tScript
+      end if
+
+      set the script of stack "TestScript" to tScript
+
+      put the result into tErrors
+      split tErrors with return
+      repeat with tIndex = 1 to the number of elements in tErrors
+        if tErrors[tIndex] is not empty then
+          split tErrors[tIndex] with ","
+          local tMessage
+          put sErrorsList[tErrors[tIndex][1]] into tMessage
+          if tMessage is not empty then
+            if tErrors[tIndex][4] is not empty then
+              put " (" & item 4 of tErrors[tIndex][4] & ")" after tMessage
+            end if
+            write tErrors[tIndex][2] + tLineOffset, tErrors[tIndex][3], tMessage & linefeed to stdout
+          end if
+        end if
+      end repeat
+    break
+    case ".source.iRev"
+        -- can't lint a whole web app...
+      replace "include" with "# include" in tScript
+      replace "require" with "# require" in tScript
+      -- ensure it throws an error so it's not exectuted
+      put return & quote after tScript
+      put the number of lines of tScript into sLastLine
+      SaveToTempFile tScript
+      include sTempFile
+    break
     case ".source.lcb"
       if there is not a folder tLCIDirectory then
         create folder tLCIDirectory
       end if
-
       SaveToTempFile tScript
       put shell(tLCCompile & tModulePaths & " -- " & sTempFile) into tErrors
       split tErrors with return
-
       repeat with tIndex = 1 to the number of elements of tErrors
         split tErrors[tIndex] with ":"
         write tErrors[tIndex][2], tErrors[tIndex][3], tErrors[tIndex][4] & linefeed to stdout
       end repeat
-
       DeleteTempFile
     break
  end switch
@@ -128,24 +121,20 @@ end DeleteTempFile
 
 command scriptExecutionError pStack, pFiles
   split pStack with return
-  
   local tIndex
   repeat with tIndex = 2 to the number of elements in pStack
     if item 1 of pStack[tIndex] is 730 then
       exit repeat
     end if
-
     if item 2 of pStack[tIndex] is not 0 and item 2 of pStack[tIndex] is not sLastLine then
       local tMessage
       put sErrorsList[item 1 of pStack[tIndex]] into tMessage
-
       if tMessage is not empty then
         if item 4 of pStack[tIndex] is not empty then
           put " (" & item 4 of pStack[tIndex] & ")" after tMessage
         end if
         write item 2 of pStack[tIndex], item 3 of pStack[tIndex], tMessage & linefeed to stdout
       end if
-
     end if
   end repeat
 
