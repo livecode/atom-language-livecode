@@ -13,6 +13,31 @@ module.exports =
       title: 'Explicit Variables'
       default: 'false'
       description: 'Get errors on undeclared variables'
+    lcCompilePath:
+      type: 'string'
+      title: 'Compiler Path For LiveCode Builder'
+      default: switch
+        when process.platform == 'darwin'
+        then '~/livecode/_build/mac/Debug/lc-compile'
+        when process.platform == 'linux'
+        then '~/livecode/build-linux-x86_64/livecode/out/Debug/lc-compile'
+        when process.platform == 'win32'
+        then '~/livecode/_build/Win32/Debug/lc-compile.exe'
+      description: 'Where is your lc-compile installed? ' +
+        'Default assumes it\'s on $PATH'
+    modulePaths:
+      type: 'string'
+      title: 'Module Paths For LiveCode Builder'
+      default: switch
+        when process.platform == 'darwin'
+        then '~/livecode/_build/mac/Debug/modules/lci/'
+        when process.platform == 'linux'
+        then '~/livecode/build-linux-x86_64/livecode/out/Debug/modules/lci/'
+        when process.platform == 'win32'
+        then '~/livecode/_build/Win32/Debug/modules/lci/'
+      description: 'Where are the modules installed? ' +
+        'Default is where they should be after building ' +
+        'a debug build of LiveCode. Delimit paths with `;`.'
 
   activate: ->
     @subscriptions = new CompositeDisposable
@@ -22,6 +47,12 @@ module.exports =
     @subscriptions.add atom.config.observe 'language-livecode.explicitVars',
       (explicitVars) =>
         @explicitVars = explicitVars
+    @subscriptions.add atom.config.observe 'language-livecode.lcCompilePath',
+      (lcCompilePath) =>
+        @lcCompilePath = lcCompilePath
+    @subscriptions.add atom.config.observe 'language-livecode.modulePaths',
+      (modulePaths) =>
+        @modulePaths = modulePaths
     path = require 'path'
     @linterPath = path.join(__dirname, '..', 'tools', 'Linter.lc')
     @notified = false
@@ -31,7 +62,7 @@ module.exports =
 
   provideLinter: ->
     provider =
-      grammarScopes: ['source.livecodescript', 'source.iRev']
+      grammarScopes: ['source.livecodescript', 'source.lcb']
       scope: 'file'
       lintOnFly: true
       lint: (textEditor) =>
@@ -44,6 +75,12 @@ module.exports =
         parameters.push(scope)
         explicitVariables = '-explicitVariables=' + @explicitVars
         parameters.push(explicitVariables)
+        lcCompile = '-lcCompile=' + @lcCompilePath
+        parameters.push(lcCompile)
+        lcCompileModulePaths = '-modulePaths=' + @modulePaths
+        parameters.push(lcCompileModulePaths)
+        editorFilePath = '-filepath=' + filePath
+        parameters.push(editorFilePath)
         text = textEditor.getText()
         return @exec(command, parameters, {stdin: text}).then (output) ->
           regex = /(\d+),(\d+),(.*)/g

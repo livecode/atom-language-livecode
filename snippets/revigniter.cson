@@ -36,7 +36,7 @@
     prefix: "arrayimplode"
     body: '''
       rigImplode(${1:array}, "${2:glue}")${0}
-      
+
     '''
   "Array Keys":
     prefix: "arraykeys"
@@ -67,7 +67,7 @@
       put "${5:0}" into t${2}["width"]
       put "${6:0}" into t${2}["height"]
       put rigImageAsset("${7:fileName}", t${2}${8:, "${9:module}"${10:, ${11:cacheBuster}}}) into ${12:var}${0}
-      
+
     '''
   "Asset Image URL":
     prefix: "imageurl"
@@ -280,14 +280,14 @@
       --| Requires: ${4:--}
       --|
       --| Summary: ${5:description}
-      --| 
+      --|
       --| Format:  ${1} ${6:params}
       --|
       --| Parameters: ${7:--}
       --|
       --| Return: ${8:empty}
       ----------------------------------------------------------------------*/
-      
+
       command ${1} ${9:params}
       	${10:# code...}
       end ${1}
@@ -297,28 +297,28 @@
     prefix: "ricont"
     body: '''
       <?rev
-      
+
       global gControllerHandlers, gData
-      
+
       put "${1:controllerName},index" into gControllerHandlers
-      
-      
+
+
       command ${1}
       	${0:# code...}
       end ${1}
-      
-      
+
+
       command index
       	# SET PAGE TITLE
       	put "${2:YourPageTitle}" into gData["pageTitle"]
-      
+
       	# LOAD THE VIEW FILE
       	get rigLoadView("${1:controllerName}View")
       end index
-      
-      
-      
-      
+
+
+
+
       --| END OF ${1}.lc
       --| Location: ./system/application/controllers/${1}.lc
       ----------------------------------------------------------------------
@@ -336,14 +336,14 @@
       --| Requires: ${4:--}
       --|
       --| Summary: ${5:description}
-      --| 
+      --|
       --| Format:  ${1}(${6:params})
       --|
       --| Parameters: ${7:--}
       --|
       --| Return: ${8:returnType}
       ----------------------------------------------------------------------*/
-      
+
       function ${1} ${9:params}
       	${10:# code...}
       end ${1}
@@ -354,17 +354,17 @@
     body: '''
       <?rev
       put gBASEPATH into gBASEPATH
-      
+
       if gBASEPATH is "gBASEPATH" then
       	put "No direct script access allowed."
       	exit to top
       end if
-      
-      
+
+
       ${0}
-      
-      
-      
+
+
+
       --| END OF ${1:modelName}.lc
       --| Location:  ./system/application/models/${1}.lc
       ----------------------------------------------------------------------
@@ -496,7 +496,7 @@
     prefix: "validemail"
     body: '''
       rigValidEmail("${1:address}")${0}
-      
+
     '''
   "Empty Table":
     prefix: "ridbempty"
@@ -526,13 +526,13 @@
     prefix: "riupdata"
     body: '''
       rigUploadData()
-      
+
     '''
   "File Upload Display Error":
     prefix: "riuperror"
     body: '''
       rigDisplayUploadErrors(${1:"<${2:p}>", "</${3:p}>"})${0}
-      
+
     '''
   "File Upload Do":
     prefix: "ridoup"
