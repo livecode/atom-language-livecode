@@ -89,8 +89,8 @@ fine the appropriate `*.lci` file in the `.lci` directory.
 
 * Ralf Bitter
 * Peter Brett
-* Adam Robertson
 * Monte Goulding
+* Adam Robertson
 
 ## Reporting bugs and contributing
 
