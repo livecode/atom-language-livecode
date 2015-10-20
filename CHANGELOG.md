@@ -1,3 +1,9 @@
+## 0.6.0 - Linting and script-only stacks
+* LiveCode Script grammar and snippets generated from documentation
+* Support for script-only stacks (`.livecodescript`)
+* Linting & syntax checking for LiveCode Script files
+* Initial linting support for LiveCode Builder source files
+
 ## 0.5.1 - Minor documentation updates
 
 ## 0.5.0 - Added LiveCode server support
