@@ -1,4 +1,7 @@
 ﻿script "GenerateSnippets"
+constant kBaseIndent = "      "
+constant kIndent = "  "
+
 on preOpenStack
    set the visible of me to true
    create btn "Generate Snippets"
@@ -7,22 +10,8 @@ end preOpenStack
 
 on mouseUp
    if the short name of the target is "Generate Snippets" then
-      put  "# GENERATED SNIPPETS START" & cr & \
-            "'.source.livecodescript, .source.iRev':" & cr & \
-            space & "autocomplete:" & cr & \
-            space & space & "symbols:" & cr & \
-            space & space & space & "function:"  & cr & \
-            space & space & space & space & "selector: '.function.name'"  & cr & \
-            space & space & space & space & "typePriority: 3" & cr & \
-            space & space & space & "variable:" & cr & \
-            space & space & space & space & "selector: '.variable'" & cr & \
-            space & space & space & space & "typePriority: 2" & cr & \
-            space & space & space & "'': # the catch-all" & cr & \
-            space & space & space & space & "selector: '.source'" & cr & \
-            space & space & space & space & "typePriority: 1" & cr & \
-            space & space & space & "builtins:" & cr & \
-            space & space & space & space & "suggestions: [" into theSnippets
-      
+      put kBaseIndent & "builtins:" & cr & \
+            kBaseIndent & kIndent & "suggestions: [" into theSnippets
       
       # functions
       set the folder to specialFolderPath("home") & "/livecode/docs/dictionary/function"
@@ -86,7 +75,7 @@ on mouseUp
                      -- trim
                      put word 1 to -1 of theOptions[theIndex] into theOptions[theIndex]
                      if theOptions[theIndex] is not empty then
-                        put space after theOptions[theIndex]
+                        put kIndent after theOptions[theIndex]
                      end if
                      AddSnippet theSnippets, theOptions[theIndex] & theFunctionName, theOptions[theIndex] & theFunctionName & theParameter, "function", theDescription, theFile
                   end repeat
@@ -273,18 +262,19 @@ on mouseUp
          end repeat
       end repeat
       
-      put cr & space & space & space & space & "]" & cr & \
+      put cr & kBaseIndent & kIndent & "]" & cr & \
             "# GENERATED SNIPPETS END" & cr after theSnippets
       
       put url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/settings/language-livecode.cson") into theCSON
-      put offset("# GENERATED SNIPPETS START",theCSON) into theStart
+      put offset(kBaseIndent & "builtins:",theCSON) into theStart
       put offset("# GENERATED SNIPPETS END",theCSON) into theEnd
       add length("# GENERATED SNIPPETS END") to theEnd
       if theStart > 0 and theEnd > 0 then
          put theSnippets into char theStart to theEnd of theCSON
       else if theStart > 0 then
          put theSnippets into char theStart to -1 of theCSON
-         -- put cr&theSnippets after theCSON
+      else
+         put cr&theSnippets after theCSON
       end if
       put theCSON into url ("binfile:"&specialFolderPath("home")&"/atom-language-livecode/settings/language-livecode.cson")
    end if
@@ -400,9 +390,9 @@ command AddSnippet @pSnippets, pName, pBody, pType, pDescription, pFile
       delete the last char of pName
    end if
 
-   put space & space & space & space & space into tspaceLevel
+   put kBaseIndent & kIndent & kIndent into tIndent
 
-   put tspaceLevel&"{" & cr into theSnippet
+   put tIndent&"{" & cr into theSnippet
 
    replace quote with "\"&quote in pBody
 
@@ -411,7 +401,7 @@ command AddSnippet @pSnippets, pName, pBody, pType, pDescription, pFile
       put cr & "'''" after pBody
 
       repeat with theIndex = 2 to the number of lines of pBody
-         put tspaceLevel & space before line theIndex of pBody
+         put tIndent & kIndent before line theIndex of pBody
       end repeat
    else
       put "'" & pBody & "'" into pBody
@@ -421,12 +411,12 @@ command AddSnippet @pSnippets, pName, pBody, pType, pDescription, pFile
    set the itemDelimiter to "."
    put "https://livecode.com/resources/api/#livecode_script/"&item 1 of pFile into theMoreURL
 
-   put tspaceLevel & space & "type: '" & pType & "'" & cr after theSnippet
-   put tspaceLevel & space & "snippet: " & pBody & cr after theSnippet
-   put tspaceLevel & space & "description: '" & pDescription & "'" & cr after theSnippet
-   put tspaceLevel & space & "descriptionMoreURL: '" & theMoreURL & "'" & cr after theSnippet
+   put tIndent & kIndent & "type: '" & pType & "'" & cr after theSnippet
+   put tIndent & kIndent & "snippet: " & pBody & cr after theSnippet
+   put tIndent & kIndent & "description: '" & pDescription & "'" & cr after theSnippet
+   put tIndent & kIndent & "descriptionMoreURL: '" & theMoreURL & "'" & cr after theSnippet
 
-   put tspaceLevel&"}" after theSnippet
+   put tIndent&"}" after theSnippet
 
    put cr & theSnippet after pSnippets
 
