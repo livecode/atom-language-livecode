@@ -1,89 +1,111 @@
-# LiveCode Language package for Atom
+# LiveCode language package for Atom
 
 ![LiveCode Community Logo](http://livecode.com/wp-content/uploads/2015/02/livecode-logo.png)
 
-This is a language package for Atom that provides support for editing
-[LiveCode](http://livecode.com/) source code.
+This is a language package that lets you edit [LiveCode](http://livecode.com/)
+source code in the Atom editor.  It adds support for:
 
-LiveCode is an open source platform provides a way to build applications for
-mobile, desktop and server platforms. The visual workflow allows the user to
-develop apps "live", using a powerful and uniquely-accessible language syntax.
+* LiveCode Builder source code (`.lcb`)
+* LiveCode server source code (`.lc` and `.irev`)
+* LiveCode script-only stacks (`.livecodescript`)
 
-The LiveCode server syntax and revIgniter snippets were converted from the
-TextMate bundles available from the [revIgniter](http://revigniter.com/)
-website.
+## Installing
 
-## Supported languages
+Using the Atom package manager:
 
-Currently, this package supports editing:
+* Visit Atom's "Settings" view, and go to the "Install" tab
+* Use the search field to search for the **language-livecode** package
+* Click "Install"
 
-* LiveCode Builder source code in `.lcb` files
-* LiveCode server source code in `.lc` and `.irev` files
-* LiveCode Script source code in `.livecodescript` files, where the shebang line
-contains `livecode` or the first line contains an Emacs mode comment
-`# -*- mode:livecodescript -*-`
+Using the command line: `apm install language-livecode`
 
-The package provides syntax highlighting, highlighting and indentation support
-for all the supported languages.
+See also the [Atom Packages](https://atom.io/docs/v1.0.19/using-atom-atom-packages)
+section in the Atom Flight Manual.
 
-It also provides snippets to enhance LiveCode server script and revIgniter
-script development.
+## Configuration
 
-For LiveCode Script there are quite a number of autocomplete snippets generated
-from the LiveCode documentation.
+The settings for LiveCode integration can also be modified using Atom's
+"Settings" view.  Go to the "Packages" tab, find the **language-livecode**
+package, and click its "Settings" button.
 
-## Installation
+See also the
+[Package Settings](https://atom.io/docs/v1.0.19/using-atom-atom-packages#package-settings)
+section in the Atom Flight Manual.
 
-Install the `language-livecode` package from the "Install Packages and Themes"
-view in Atom's "Settings" window.
+## Usage
 
-You may also wish to install the [revIgniter theme](https://atom.io/themes/revigniter-syntax)
-for Atom.
+**language-livecode** integrates LiveCode editing into the Atom editor.  Note
+that it doesn't make Atom behave like the LiveCode IDE, and it doesn't
+integrate with or replace the LiveCode IDE's script editor.
 
-## Script Error Checking
+### Syntax highlighting and indentation
 
-This package provides a linter for LiveCode Script, LiveCode Server and LiveCode
-Builder to highlight and describe script compilation errors on the fly.
+The package adds automatic syntax highlighting and indentation for all of the
+supported LiveCode language types.
 
-![Linter In Action](http://ecove.on-rev.com/linter.gif)
+The optional [revigniter-syntax](https://atom.io/themes/revigniter-syntax)
+can be installed to provide a colour theme that's tailored for LiveCode source
+code.
 
-Dependencies:
+### Autocompletion
 
- * The [linter package](https://atom.io/packages/linter) needs to be installed
- * LiveCode 7.1+ Server engine for the platform it is being run on must be
- accessible
+The package also includes autocompletion support for symbols in the current
+file, along with snippets for many common LiveCode Builder and LiveCode Script
+syntax elements.
 
-The default setting assumes you have installed the LiveCode Server engine somewhere
-on the current `$PATH` with the name `livecode-server`. However, you can enter any
-path or name you choose via the package settings.
+### Script error checking ("linting")
 
-For LiveCode Server the linter will only check for errors within the scope of
-the file being edited. If for example a variable re-declarition error is caused
-by the inclusion of another file that error won't be detected.
+If you have the [linter](https://atom.io/packages/linter) package installed,
+you can enable script error checking support.  This highlights and describes
+script compilation errors as you work.
 
-The linter supports an optional explicit variables mode which can be turned on
-via the package settings.
+![Linter in action](http://ecove.on-rev.com/linter.gif)
 
-### LiveCode Builder Linting
+#### LiveCode Script linting
 
-Linting of LiveCode Builder files should be considered experimental. This is
-particularly the case for projects that have complex interdependencies between
-files.
+You will need to
+[download LiveCode server](https://downloads.livecode.com/livecode) and install
+(by unzipping it somewhere appropriate).  LiveCode Server 7.1.0 or later is
+required.
 
-In order to lint LiveCode Builder files ensure the following:
+Next, go to the package settings and put the full path to the LiveCode server
+program that you just extracted (e.g. `/path/to/livecode-community-server`)
+into the "LiveCode Server Engine Path" setting.
 
- * lc-compile can be found at the location specified in settings
- * You have appropriately set the module paths to a directory with the standard
-`*.lci` files provided by LiveCode. You may add further paths delimited by `;`
+It's often useful to enable the "Explicit Variables" setting to get an error
+when you use a variable name that you haven't declared with `local` or
+`global`.
 
-The default settings assume you have a clone of the LiveCode repo in
-your home directory named livecode and you have built a debug build.
+**Note:** When checking LiveCode Server source files, the linter will only
+check for errors in the file currently being edited.  If, for example, the file
+you're editing includes another file and that inclusion causes a variable
+re-declaration error, the linter will not detect it.
 
-In the process of linting the LiveCode Builder file a `*.lci` file is created in
-a directory named `.lci` next to the file being edited. In the case of files
-that have dependencies you may receive a dependency error if you edit a
-file with the dependency before those it depends on because it won't be able to
-fine the appropriate `*.lci` file in the `.lci` directory.
+#### LiveCode Builder linting
+
+**Warning:** Linting for LiveCode Builder source code is **experimental**.
+
+You need LiveCode 8 installed to use LiveCode Builder linting.  The LiveCode
+IDE's installation location contains the LiveCode Builder compiler, called
+**lc-compile**.  In the package settings, set the "Compiler Path for LiveCode
+Builder" to the full path to the compiler (e.g. `/path/to/lc-compile`).
+
+The LiveCode Builder compiler also needs to know where to find the `.lci`
+interface files which provide the built-in modules' interface information.
+These are usually located in a `modules` directory near the **lc-compile**
+program in the LiveCode IDE's installation location.  You should put this
+path in the "Module Paths For LiveCode Builder" setting.
+
+If you are working on a complex project and you need **lc-compile** to look for
+`.lci` files in multiple places, you can put multiple paths in the "Module
+Paths for LiveCode Builder" setting, separated by `;` characters.
+
+**Notes:** The linting step will automatically create a `.lci` working
+directory in the directory where the LCB file is located.  The linter puts the
+interface files for the files that are being linted in that directory.  You may
+get dependency errors if you edit an LCB module which has dependencies before
+editing the module that it depends on, because the `.lci` working directory
+will have missing interface files.
 
 ## Authors
 
@@ -91,6 +113,10 @@ fine the appropriate `*.lci` file in the `.lci` directory.
 * Peter Brett
 * Monte Goulding
 * Adam Robertson
+
+The LiveCode server syntax and revIgniter snippets were converted from the
+TextMate bundles available from the [revIgniter](http://revigniter.com/)
+website.
 
 ## Reporting bugs and contributing
 
