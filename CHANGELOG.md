@@ -1,3 +1,14 @@
+## 0.6.1 - Improvements to documentation and LiveCode Script support
+
+* Revised, expanded and generally improved documentation (issue #19)
+* Improved LiveCode Script support
+  * Support for `if...then...else...` syntax
+  * Better indentation in `switch` blocks
+  * Restore completion of symbols from the current file (issue #18)
+  * Don't clobber autocomplete settings (issue #16)
+  * Improved variable & constant capturing
+* Restored support for linting revIgniter files
+
 ## 0.6.0 - Linting and script-only stacks
 * LiveCode Script grammar and snippets generated from documentation
 * Support for script-only stacks (`.livecodescript`)
