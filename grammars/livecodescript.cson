@@ -19,6 +19,10 @@ repository:
         match: "(?i)\\b(SIX|TEN|FORMFEED|NINE|ZERO|NONE|SPACE|FOUR|FALSE|COLON|CRLF|PI|COMMA|ENDOFFILE|EOF|EIGHT|FIVE|QUOTE|EMPTY|ONE|TRUE|((?<=\\w\\s)RETURN)|CR|LINEFEED|RIGHT|BACKSLASH|NULL|SEVEN|TAB|THREE|TWO)\\b"
         name: "constant.language.livecodescript"
       }
+      {
+        match: "\\bk[A-Z]{1}.*?\\b"
+        name: "constant.language.livecodescript"
+      }
     ]
   language:
     patterns: [
@@ -55,7 +59,7 @@ repository:
         'name': 'comment.line.livecodescript'
       }
       {
-        match: "\\b(after|byte(s)*|codepoint(s)*|codeunit(s)*|english|segment(s)*|sentence(s)*|paragraph|the|trueWord(s)*|until|word(s)*|http|forever|descending|using|line|real8|with|seventh|for|stdout|finally|element|word|fourth|before|black|ninth|sixth|characters|chars|stderr|uInt(1|1s|2|2s)|stdin|string|lines|relative|rel|any|fifth|items|from|middle|mid|at|else|of|catch|then|third|it|file|milli(seconds|second|secs|sec)|int(1|1s|4|4s|ernet|2|2s)|normal|text|item|last|long|detailed|effective|uInt4|uInt4s|se(conds|cond|cs|c)|repeat|end\\s+repeat|URL|in|end\\s+try|into|switch|end\\s+switch|to|words|https|token|binfile|each|tenth|as|ticks|tick|system|real4|by|dateItems|without|cha(r|racter)|ascending|eighth|whole|dateTime|numeric|short|first|ftp|integer|abbreviated|abb(r|rev)|private|case|while|if|end\\s+if)\\b"
+        match: "\\b(after|byte(s)*|codepoint(s)*|codeunit(s)*|english|segment(s)*|sentence(s)*|paragraph|the|trueWord(s)*|until|word(s)*|http|forever|descending|using|line|real8|with|seventh|for|stdout|finally|element|word|fourth|before|black|ninth|sixth|characters|chars|stderr|uInt(1|1s|2|2s)|stdin|string|lines|relative|rel|any|fifth|items|from|middle|mid|at|else|of|catch|then|third|it|file|milli(seconds|second|secs|sec)|int(1|1s|4|4s|ernet|2|2s)|normal|text|item|last|long|detailed|effective|uInt4|uInt4s|se(conds|cond|cs|c)|repeat|end\\s+repeat|URL|in|end\\s+try|into|switch|end\\s+switch|to|words|https|token|binfile|each|tenth|as|ticks|tick|system|real4|by|dateItems|without|cha(r|racter)|ascending|eighth|whole|dateTime|numeric|short|first|ftp|integer|abbreviated|abb(r|rev)|private|case|default|while|if|end\\s+if)\\b"
         name: "keyword.control.livecodescript"
       }
       {
@@ -165,29 +169,17 @@ repository:
       }
     ]
   var_global:
-    captures:
-      "1":
-        name: "punctuation.definition.variable.livecodescript"
-    match: "\\b(g)[A-Z]{1}.*?\\b"
+    match: "\\bg[A-Z]{1}.*?\\b"
     name: "variable.other.global.livecodescript"
   var_local:
-    captures:
-      "1":
-        name: "punctuation.definition.variable.livecodescript"
-    match: "\\b(t|the)[A-Z]{1}.*?\\b"
-    name: "variable.other.global.livecodescript"
+    match: "\\bt[he]*[A-Z]{1}.*?\\b"
+    name: "variable.other.local.livecodescript"
   var_parameter:
-    captures:
-      "1":
-        name: "punctuation.definition.variable.livecodescript"
-    match: "\\b(p)[A-Z]{1}.*?\\b"
-    name: "variable.parameter.livecodescript"
+    match: "\\bp[A-Z]{1}.*?\\b"
+    name: "variable.other.param.livecodescript"
   var_scriptLocal:
-    captures:
-      "1":
-        name: "punctuation.definition.variable.livecodescript"
-    match: "\\b(s)[A-Z]{1}.*?\\b"
-    name: "variable.other.global.livecodescript"
+    match: "\\bs[A-Z]{1}.*?\\b"
+    name: "variable.other.scriptlocal.livecodescript"
   var_server:
     match: "\\$_[A-Z]+"
     name: "variable.other.server.livecodescript"
