@@ -1,4 +1,4 @@
-".source.iRev":
+".text.html.iRev":
   "Accept Charset":
     prefix: "riagentcharset"
     body: "rigAcceptCharset()"

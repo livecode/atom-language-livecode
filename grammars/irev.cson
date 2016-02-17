@@ -5,43 +5,50 @@ fileTypes: [
 firstLineMatch: "^<\\?rev\\b|<\\?lc\\b|<\\?livecode\\b"
 foldingStartMarker: "(/\\*)|(^\\s*\\b(on|command|function|repeat|if|switch)\\s+(\\w+|\\(\\.*))|(^\\s+?try$)"
 foldingStopMarker: "(\\*/)|^\\s*\\b(end\\s+(?!if|repeat)\\w+|(end\\s+(repeat|if|switch|try)))"
+injections:
+  "text.html.iRev":
+    patterns: [
+      {
+        begin: "<\\?rev"
+        end: "\\?>"
+        patterns: [
+         {
+           include: "#language"
+         }
+        ]
+      }
+      {
+        begin: "(((?<=\\?>)<)|<)\\?(?i:rev)?"
+        beginCaptures:
+          "0":
+            name: "punctuation.section.embedded.begin.iRev"
+          "2":
+            name: "meta.consecutive-tags.iRev"
+        comment: "Catches embeded irev code."
+        end: "(\\?)>"
+        endCaptures:
+          "0":
+            name: "punctuation.section.embedded.end.iRev"
+          "1":
+            name: "source.iRev"
+        name: "source.iRev.embedded.line.html"
+        patterns: [
+          {
+            include: "#language"
+          }
+        ]
+      }
+    ]
 name: "iRev"
 patterns: [
   {
-    begin: "<\\?rev"
-    end: "\\?>"
-    patterns: [
-      {
-        include: "source.livecodescript"
-      }
-      {
-        include: "#revigniter"
-      }
-    ]
+    include: "text.html.basic"
   }
   {
-    begin: "(((?<=\\?>)<)|<)\\?(?i:rev)?"
-    beginCaptures:
-      "0":
-        name: "punctuation.section.embedded.begin.iRev"
-      "2":
-        name: "meta.consecutive-tags.iRev"
-    comment: "Catches embeded irev code."
-    end: "(\\?)>"
-    endCaptures:
-      "0":
-        name: "punctuation.section.embedded.end.iRev"
-      "1":
-        name: "source.iRev"
-    name: "source.iRev.embedded.line.html"
-    patterns: [
-      {
-        include: "source.livecodescript"
-      }
-      {
-        include: "#revigniter"
-      }
-    ]
+    include: "source.livecodescript"
+  }
+  {
+    include: "#revigniter"
   }
 ]
 repository:
@@ -56,4 +63,4 @@ repository:
         name: "support.function.iRev"
       }
     ]
-scopeName: "source.iRev"
+scopeName: "text.html.iRev"
