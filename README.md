@@ -17,10 +17,9 @@ Using the Atom package manager:
 * Use the search field to search for the **language-livecode** package
 * Click "Install"
 
-Using the command line: `apm install language-livecode`
-
 See also the [Atom Packages](https://atom.io/docs/v1.0.19/using-atom-atom-packages)
-section in the Atom Flight Manual.
+section in the Atom Flight Manual for more info, including how to install
+packages from the command line.
 
 ## Configuration
 
