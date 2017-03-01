@@ -54,8 +54,9 @@
 
 ".source.livecodescript, .source.iRev":
  	'editor':
-    'increaseIndentPattern': "(^on\\s+?.+)|(^command\\s+?.+)|(^function\\s+?.+)|(\\s*if\\s+?.+then$)|(^\\s*else$)|(\\s*repeat\\s+?.+)|(switch\\s+?.+)|(case\\s+?.+)|(\\s*default)|(\\s*(?<!end )try$)|(\\s*catch\\s+?.+)"
-    'decreaseIndentPattern': "(\\s*end\\s+?.+)|(case\\s+?.+)|(\\s*default)|(^\\s*else$)|(\\s*catch\\s+?.+)"
+    'increaseIndentPattern': "^\\s*?((on\\s+?.+)|((private\\s)?((command|function)\\s+?.+))|((else?\\s*)?(if\\s+?.+then\\s*?)((#|--).*?)?$)|(else\\s*?((#|--).*?)?$)|(repeat\\s+?.+)|(switch\\s?.+)|(case\\s+?.+)|(default.*)|(try\\s*?.*)|(catch\\s+?.+)|(finally\\s?.*)|((#|--|)\\s*?&lt;\\s*?[^/].*?&gt;))"
+    'decreaseIndentPattern': "^\\s*((end\\s+?.+)|(case\\s+?.+)|(default\\s*?.*)|(else.*)|(catch\\s+?.+)|(finally\\s*?.*)|((#|--|)\\s*?&lt;/.*?&gt;))"
+    'disableIndentNextLinePattern':"^\\s*?(if\\s+?.+?then\\s+?.+)"
     'tabLength': 3
     'foldEndPattern': '^\\s*end\\b'
   autocomplete:
