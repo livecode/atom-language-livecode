@@ -1,4 +1,4 @@
-".source.livecodescript":
+".source.livecodescript, .text.html.iRev":
   "COOKIE['...']":
     prefix: "$_"
     body: "$_COOKIE[\"${1:variable}\"]"
