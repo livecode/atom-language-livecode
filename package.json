@@ -2,7 +2,7 @@
   "name": "language-livecode",
   "version": "0.6.1",
   "description": "Support for editing LiveCode source code",
-  "repository": "https://github.com/peter-b/atom-language-livecode",
+  "repository": "https://github.com/livecode/atom-language-livecode",
   "license": "GPLv3",
   "engines": {
     "atom": "*"
