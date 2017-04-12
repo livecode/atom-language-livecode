@@ -119,4 +119,4 @@ website.
 
 ## Reporting bugs and contributing
 
-Please report any problems to the [GitHub issues tracker]( https://github.com/peter-b/atom-language-livecode/issues).
+Please report any problems to the [GitHub issues tracker]( https://github.com/livecode/atom-language-livecode/issues).
