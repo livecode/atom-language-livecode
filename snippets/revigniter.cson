@@ -192,6 +192,18 @@
   "Auth Users":
     prefix: "auth32"
     body: "rigAuthUsers(${1:groupIDs})${0}"
+  "Auth Clear OTP":
+    prefix: "auth34"
+    body: "rigAuthClearOTP(${1:userID})${0}"
+  "Auth Generate QR Code":
+    prefix: "auth35"
+    body: "rigAuthGenerateQR(${1:\"${2:account}\"})${0}"
+  "Auth OTP Keys Match":
+    prefix: "auth36"
+    body: "rigAuthOTPkeysMatch(${1:challenge})${0}"
+  "Auth User Has OTP":
+    prefix: "auth37"
+    body: "rigAuthUserHasOTP(${1:userID})${0}"
   "Authentication Library":
     prefix: "auth0"
     body: "rigLoaderLoadLibrary \"Authentication\""
@@ -1253,6 +1265,21 @@
   "Order By":
     prefix: "database40"
     body: "rigDbOrderBy \"${1:field}\", \"${2:direction}\"${0}"
+  "Load OTP Helper":
+    prefix: "otp0"
+    body: "rigLoadHelper \"otp\"${0}"
+  "OTP Compare Keys":
+    prefix: "otp1"
+    body: "rigOTPcompareKeys ${1:\"${2:challenge}\"}, ${3:\"${4:key}\"}${5:, ${6:tokenLength}${7:, ${8:\"${9:cryptoType}\"}${10:, ${11:cryptoNumBits}${12:, ${13:timeStep}${14:, ${15:timeWindow}}}}}}${0}"
+  "OTP Generate Password":
+    prefix: "otp2"
+    body: "rigOTPgenerate ${1:\"${2:secret}\"}${3:, ${4:tokenLength}${5:, ${6:\"${7:cryptoType}\"}${8:, ${9:cryptoNumBits}${10:, ${11:timeStep}${12:, ${13:\"${14:type}\"}}}}}}${0}"
+  "OTP Generate User Key":
+    prefix: "otp3"
+    body: "rigOTPgenerateUserKey ${1:\"${2:secret}\"}${0}"
+  "OTP QR Code":
+    prefix: "otp4"
+    body: "rigOTPqrCode(${1:\"${2:key}\"}, ${3:\"${4:account}\"}, ${5:\"${6:issuer}\"}${7:, ${8:\"${9:algo}\"}${10:, ${11:digits}${12:, ${13:period}${14:, ${15:\"${16:ecc}\"}${17:, ${18:size}${19:, ${20:mask}}}}}}})${0}"
   POST:
     prefix: "input4"
     body: "rigVarPost(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
