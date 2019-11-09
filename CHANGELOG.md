@@ -1,5 +1,12 @@
-## 0.6.1 - Improvements to documentation and LiveCode Script support
+## 0.7.0 - Upgrade to Linter V2
+* Linting is broken since the release of Linter 2. Adjusted
+  lib/main.coffee and package.json accordingly. (PR #37)
+* Corrected scope for highlighting in mixed (HTML/iRev)
+  environment. (PR #38)
+* Adjusted revIgniter grammar and snippets to revIgniter modifications
+  up to version 2.0.3. (PR #39)
 
+## 0.6.1 - Improvements to documentation and LiveCode Script support
 * Revised, expanded and generally improved documentation (issue #19)
 * Improved LiveCode Script support
   * Support for `if...then...else...` syntax

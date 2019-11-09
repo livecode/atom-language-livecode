@@ -65,6 +65,7 @@ module.exports =
       grammarScopes: ['source.livecodescript', 'source.iRev', 'source.lcb']
       scope: 'file'
       lintsOnChange: true
+      name: 'language-livecode'
       lint: (textEditor) =>
         filePath = textEditor.getPath()
         command = @executablePath
