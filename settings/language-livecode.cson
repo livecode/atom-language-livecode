@@ -52,7 +52,7 @@
 # LiveCode Script
 #################
 
-".source.livecodescript, .source.iRev":
+".source.livecodescript, .source.iRev, .text.html.iRev":
  	'editor':
     'increaseIndentPattern': "(^on\\s+?.+)|(^command\\s+?.+)|(^function\\s+?.+)|(\\s*if\\s+?.+then$)|(^\\s*else$)|(\\s*repeat\\s+?.+)|(switch\\s+?.+)|(case\\s+?.+)|(\\s*default)|(\\s*(?<!end )try$)|(\\s*catch\\s+?.+)"
     'decreaseIndentPattern': "(\\s*end\\s+?.+)|(case\\s+?.+)|(\\s*default)|(^\\s*else$)|(\\s*catch\\s+?.+)"
