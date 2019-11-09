@@ -64,7 +64,7 @@ module.exports =
     provider =
       grammarScopes: ['source.livecodescript', 'source.iRev', 'source.lcb']
       scope: 'file'
-      lintOnFly: true
+      lintsOnChange: true
       lint: (textEditor) =>
         filePath = textEditor.getPath()
         command = @executablePath
@@ -88,13 +88,20 @@ module.exports =
           while((match = regex.exec(output)) isnt null)
             line = match[1]-1
             messages.push
-              type: "Error"
-              filePath: filePath
-              range: [
-                [line, match[2]-0],
-                [line, textEditor.getBuffer().lineLengthForRow(line)]
-              ]
-              text: match[3]
+              severity: 'error'
+              location:
+                    file: filePath
+                    position: [
+                      [
+                        line
+                        match[2] - 0
+                      ]
+                      [
+                        line
+                        textEditor.getBuffer().lineLengthForRow(line)
+                      ]
+                    ]
+              excerpt: match[3]
           return messages
 
   exec: (command, args = [], options = {}) ->
