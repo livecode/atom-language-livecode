@@ -4,7 +4,8 @@
 * Corrected scope for highlighting in mixed (HTML/iRev)
   environment. (PR #38)
 * Adjusted revIgniter grammar and snippets to revIgniter modifications
-  up to version 2.0.3. (PR #39)
+  up to version 2.1.0. (PR #39)
+* Updated indent rules (PR #35)
 
 ## 0.6.1 - Improvements to documentation and LiveCode Script support
 * Revised, expanded and generally improved documentation (issue #19)
