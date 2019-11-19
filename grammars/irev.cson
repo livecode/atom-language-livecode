@@ -63,4 +63,4 @@ repository:
         name: "support.function.iRev"
       }
     ]
-scopeName: "text.html.iRev"
+scopeName: "source.iRev"
