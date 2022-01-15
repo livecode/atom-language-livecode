@@ -100,8 +100,14 @@ command Lint
       put shell(tLCCompile & tModulePaths & " -- " & sTempFile) into tErrors
       split tErrors with return
       repeat with tIndex = 1 to the number of elements of tErrors
-        split tErrors[tIndex] with ":"
-        write tErrors[tIndex][2], tErrors[tIndex][3], tErrors[tIndex][4] & linefeed to stdout
+         if the platform is "Win32" and char 2 to 3 of tErrors[tIndex] is ":/" then
+            split tErrors[tIndex] with ":"
+            write tErrors[tIndex][3], tErrors[tIndex][4], tErrors[tIndex][5] & linefeed to stdout
+         else
+            split tErrors[tIndex] with ":"
+            write tErrors[tIndex][2], tErrors[tIndex][3], tErrors[tIndex][4] & linefeed to stdout
+         end if
+
       end repeat
       DeleteTempFile
     break
