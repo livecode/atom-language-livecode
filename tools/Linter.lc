@@ -96,6 +96,7 @@ command Lint
         create folder tLCIDirectory
       end if
       SaveToTempFile tScript
+      set the hideConsoleWindows to true
       put shell(tLCCompile & tModulePaths & " -- " & sTempFile) into tErrors
       split tErrors with return
       repeat with tIndex = 1 to the number of elements of tErrors
