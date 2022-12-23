@@ -4,7 +4,7 @@
     body: "rigAcceptCharset()"
   "Accept Language":
     prefix: "useragent2"
-    body: "rigAcceptLang()"
+    body: "rigAcceptLang(\"${1:lang}\")${0}"
   "Add Table Row Array":
     prefix: "table2"
     body: "rigAddTableRow ${1:array}"
@@ -83,7 +83,7 @@
     body: "rigImageAsset(\"${1:imageName}\"${2:, ${3:attribs}${4:, \"${5:moduleName}\"${6:, ${7:cacheBuster}}}})${0}"
   "Asset JS":
     prefix: "asset7"
-    body: "rigJsAsset(\"${1:jsName}\"${2:, \"${3:moduleName}\"${4:, ${5:cacheBuster}${6:, \"${7:async defer}\"}}})${0}"
+    body: "rigJsAsset(\"${1:jsName}\"${2:, \"${3:moduleName}\"${4:, ${5:cacheBuster}${6:, \"${7:async defer}\"${8:, ${9:nonce}}}}})${0}"
   "Asset Write Manifest":
     prefix: "asset8"
     body: "rigWriteManifest \"${1:resourcespath}\", \"${2:name}\"${3:, ${4:absoluteuri}, ${5:network}, ${6:fallback}, \"${7:ignore}\"}${0}"
@@ -219,6 +219,18 @@
   CC:
     prefix: "email5"
     body: "rigMailCC \"${1:address(list)}\"${0}"
+  "CSP Add":
+    prefix: "csp0"
+    body: "rigCspAdd ${1:directive}, \"${2:value}\"${3:, \"${4|allow,report|}\"}${0}"
+  "CSP Get":
+    prefix: "csp1"
+    body: "rigCspGet(${1:directive}${2:, \"${3|allow,report|}\"})${0}"
+  "CSP Library":
+    prefix: "csp2"
+    body: "rigLoaderLoadLibrary \"Contentsecuritypolicy\""
+  "CSP Set":
+    prefix: "csp3"
+    body: "rigCspSet ${1:directive}, \"${2:value}\"${3:, \"${4|allow,report|}\"}${0}"
   "Mail From":
     prefix: "email9"
     body: "rigMailFrom \"${1:address}\", \"${2:name}\"${0}"
@@ -245,7 +257,7 @@
     body: "rigGetCaptchaNum()"
   "Captcha Style":
     prefix: "captcha4"
-    body: "rigCaptchaStyle()"
+    body: "rigCaptchaStyle(${1:nonce})"
   "Captcha Validate":
     prefix: "captcha7"
     body: "rigValidCaptchaUserInput(${1:captchaInput}, ${2:hiddenFieldValue})${0}"
@@ -336,7 +348,7 @@
           put "${2:YourPageTitle}" into gData["pageTitle"]
       
           # LOAD THE VIEW FILE
-          get rigLoadView("${1:controllerName}")
+          get rigLoadView("${1:controllerName}View")
       end index
       
       
@@ -592,7 +604,7 @@
     body: "rigLoaderLoadLibrary \"Email\""
   "Email Send":
     prefix: "email19"
-    body: "rigSendEmail(\"${1:recipient}\", \"${2:subject}\", \"${3:message}\", \"${4:sender}\"${7:, \"${8:cc}\"${9:, \"${10:bcc}\"}})${0}"
+    body: "rigSendEmail(\"${1:recipient}\", \"${2:subject}\", \"${3:message}\"${5:, \"${6:cc}\"${7:, \"${8:bcc}\"}})${0}"
   "Email Valid":
     prefix: "email18"
     body: '''
@@ -709,7 +721,7 @@
     body: "rigFormClose(${1:data})${0}"
   "Form Drop Down":
     prefix: "form9"
-    body: "rigFormDropDown(\"${1:name}\", ${2:options}, ${3:selectedValues}${4:, ${5:additionalData}})${0}"
+    body: "rigFormDropDown(\"${1:name}\", ${2:options}, ${3:selectedValues}${4:, ${5:additionalData}${6:, \"${7:asctext}\"}})${0}"
   "Form Error":
     prefix: "formvalidation3"
     body: "rigFormError(\"${1:fieldname}\"${2:, \"${3:delimStart}\", \"${4:delimEnd}\"})${0}"
@@ -793,10 +805,10 @@
     body: "rigVarGetPost(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
   "Galleria Data Dynamic":
     prefix: "galleria2"
-    body: "rigDynamicGalleriaData(${1:metadata}${2:, ${3:options}${4:, \"${5:id}\"${6:, \"${7:varname}\"${8:, ${9:cachebuster}}}}})${0}"
+    body: "rigDynamicGalleriaData(${1:metadata}${2:, ${3:options}${4:, \"${5:id}\"${6:, \"${7:varname}\"${8:, ${9:cachebuster}${10:, ${11:nonce}}}}}})${0}"
   "Galleria Data":
     prefix: "galleria1"
-    body: "rigGalleriaData(\"${1:path}\"${2:, ${3:options}${4:, \"${5:id}\"${6:, \"${7:varname}\"${8:, ${9:cachebuster}${10:, ${11:replacefile}${12:, ${13:returnreference}}}}}}})${0}"
+    body: "rigGalleriaData(\"${1:path}\"${2:, ${3:options}${4:, \"${5:id}\"${6:, \"${7:varname}\"${8:, ${9:cachebuster}${10:, ${11:replacefile}${12:, ${13:returnreference}${14:, ${15:nonce}}}}}}}})${0}"
   "Generate Table":
     prefix: "table4"
     body: "rigGenerateTable(${1:dataArray})${0}"
@@ -850,7 +862,7 @@
     body: "rigHtmlLinkTag(${1:attributesArray})${0}"
   "HTML Link Tag":
     prefix: "html5"
-    body: "rigHtmlLinkTag(\"${1:href}\", \"${2:rel}\", \"${3:type}\"${4:, \"${5:title}\", \"${6:media}\", ${7:bool}})${0}"
+    body: "rigHtmlLinkTag(\"${1:href}\", \"${2:rel}\", \"${3:type}\"${4:, \"${5:title}\", \"${6:media}\", ${7:index}, ${8:cors}})${0}"
   "HTML Meta Array":
     prefix: "html11"
     body: "rigHtmlMeta(${1:numberedArray})${0}"
@@ -890,9 +902,6 @@
   Rotate:
     prefix: "image7"
     body: "rigImageRotate()"
-  "IM Version":
-    prefix: "image8"
-    body: "rigIMversion()"
   "Pagination Initialize":
     prefix: "pagination2"
     body: "rigInitializePagination ${1:configArray}${0}"
@@ -1009,7 +1018,7 @@
     body: "rigLoaderLoadLibrary \"Jquery\"${1:, ${2:settings}}${0}"
   "Jquery Open":
     prefix: "jquery29"
-    body: "rigJQopen"
+    body: "rigJQopen${1: ${2:nonce}}"
   "Jquery Prompt":
     prefix: "jquery30"
     body: "rigJQprompt ${1:varName}, ${2:prompt}${3:, ${4:default}}${5:, ${6:global}}${0}"
@@ -1075,7 +1084,7 @@
     body: "rigLoadHelper \"asset\"${0}"
   "Load Config":
     prefix: "loader0"
-    body: "rigLoadConfig \"${1:fileName}\"${0}"
+    body: "rigLoadConfig \"${1:fileName}\"${2:, ${3:noCollisions}${4:, ${5:suppressErrors}${6:, \"${7:module}\"}}}${0}"
   "Load Cookie Helper":
     prefix: "cookie0"
     body: "rigLoadHelper \"cookie\"${0}"
@@ -1103,9 +1112,9 @@
   "Load Form-Mail Helper":
     prefix: "formmail0"
     body: "rigLoadHelper \"formmail\"${0}"
-  "Load Galleria Plugin":
+  "Load Galleria Helper":
     prefix: "galleria0"
-    body: "rigLoadPlugin \"galleria\"${0}"
+    body: "rigLoadHelper \"galleria\"${0}"
   "Load HTML Helper":
     prefix: "html0"
     body: "rigLoadHelper \"html\"${0}"
@@ -1119,43 +1128,43 @@
     prefix: "jwt2"
     body: "rigJWTencode(${1:${2:header}}, ${3:payload}${4:, ${5:256}})${0}"
   "Load Extension":
-    prefix: "loader11"
+    prefix: "loader10"
     body: "rigLoadExtension \"${1:name}\"${2:, \"${3:module}\"}${0}"
   "Load Helper":
     prefix: "loader3"
     body: "rigLoadHelper \"${1:name}\"${2:, \"${3:module}\"}${0}"
   "Loader Load Language":
     prefix: "loader4"
-    body: "rigLoadLanguage \"${1:fileName}\", \"${2:language}\"${0}"
+    body: "rigLoadLanguage \"${1:fileName}\", \"${2:language}\"${3:, \"${4:module}\"}${0}"
   "Load Language Helper":
     prefix: "language2"
     body: "rigLoadHelper \"language\"${0}"
   "Load Library":
     prefix: "loader5"
     body: "rigLoaderLoadLibrary \"${1:libraryName}\"${2:, ${3:configArray}${4:, \"${5:module}\"}}${0}"
-  "Load Markdown Plugin":
+  "Load Markdown Helper":
     prefix: "markdown0"
-    body: "rigLoadPlugin \"markdown\"${0}"
+    body: "rigLoadHelper \"markdown\"${0}"
   "Load Model":
     prefix: "loader6"
     body: "rigLoadModel \"${1:model}\"${2:, ${3:dbConnection}${4:, \"${5:module}\"}}${0}"
-  "Load Plugin":
-    prefix: "loader7"
-    body: "rigLoadPlugin \"${1:name}\"${2:, \"${3:module}\"}${0}"
-  "Load QuerytoJSON Plugin":
+  "Number Helper":
+    prefix: "number0"
+    body: "rigLoadHelper \"number\"${0}"
+  "Load QuerytoJSON Helper":
     prefix: "querytojson0"
-    body: "rigLoadPlugin \"querytojson\"${0}"
-  "Load Queryvalues Plugin":
+    body: "rigLoadHelper \"querytojson\"${0}"
+  "Load Queryvalues Helper":
     prefix: "queryvalues0"
-    body: "rigLoadPlugin \"queryvalues\"${0}"
+    body: "rigLoadHelper \"queryvalues\"${0}"
   "Load Scaffolding":
-    prefix: "loader8"
+    prefix: "loader7"
     body: "rigLoadScaffolding \"${1:table}\"${0}"
-  "Load Sitelinks Plugin":
+  "Load Sitelinks Helper":
     prefix: "sitelinks0"
-    body: "rigLoadPlugin \"sitelinks\"${0}"
+    body: "rigLoadHelper \"sitelinks\"${0}"
   "Load Stack":
-    prefix: "loader9"
+    prefix: "loader8"
     body: "rigLoadStack \"${1:stackName}\"${2:, ${3:configArray}${4:, \"${5:front}\"${6:, \"${7:module}\"}}}${0}"
   "Load String Helper":
     prefix: "string0"
@@ -1164,7 +1173,7 @@
     prefix: "url0"
     body: "rigLoadHelper \"url\"${0}"
   "Load View":
-    prefix: "loader10"
+    prefix: "loader9"
     body: "rigLoadView(\"${1:view}\"${2:, ${3:returnData}})${0}"
   "Load XML Helper":
     prefix: "xml0"
@@ -1202,6 +1211,9 @@
   Message:
     prefix: "email11"
     body: "rigMailMessage \"${1:string}\"${0}"
+  Mobile:
+    prefix: "useragent12"
+    body: "rigMobile()"
   "Modules Library":
     prefix: "module0"
     body: "rigLoaderLoadLibrary \"Modules\""
@@ -1223,12 +1235,27 @@
   "Not Like":
     prefix: "database37"
     body: "rigDbNotLike \"${1:field}\", \"${2:match}\"${3:, \"${4:wildcardPosition}\"}${0}"
+  "Number Formatted Num to Num":
+    prefix: "number1"
+    body: "rigFormattedNumToNum(${1:number}${2:, ${3:decimalSeparator}})${0}"
+  "Number Formatted Num":
+    prefix: "number2"
+    body: "rigFormattedNum(${1:number}${2:, ${3:numberCode}${4:, ${5:unit}}})${0}"
   "Number of Fields":
     prefix: "database38"
     body: "rigNumFields()"
   "Number of Rows":
     prefix: "database39"
     body: "rigNumRows()"
+  "Number to Amount":
+    prefix: "number3"
+    body: "rigNumberToAmount(${1:number}${2:, ${3:numberCode}${4:, ${5:precision}}})${0}"
+  "Number to Currency":
+    prefix: "number4"
+    body: "rigNumberToCurrency(${1:number}${2:, ${3:numberCode}${4:, ${5:symbol}}})${0}"
+  "Number to Size":
+    prefix: "number5"
+    body: "rigNumberToSize(${1:number}${2:, ${3:numberCode}${4:, ${5:precision}}})${0}"
   "Or Having Array":
     prefix: "database43"
     body: "rigDbOrHaving ${1:field}${0}"
@@ -1268,21 +1295,33 @@
   "Load OTP Helper":
     prefix: "otp0"
     body: "rigLoadHelper \"otp\"${0}"
+  "OTP Compare Keys Array":
+    prefix: "otp5"
+    body: "rigOTPcompareKeys ${1:attributesArray} ${0}"
   "OTP Compare Keys":
     prefix: "otp1"
     body: "rigOTPcompareKeys ${1:\"${2:challenge}\"}, ${3:\"${4:key}\"}${5:, ${6:tokenLength}${7:, ${8:\"${9:cryptoType}\"}${10:, ${11:cryptoNumBits}${12:, ${13:timeStep}${14:, ${15:timeWindow}}}}}}${0}"
+  "OTP Generate Password Array":
+    prefix: "otp6"
+    body: "rigOTPgenerate ${1:attributesArray} ${0}"
   "OTP Generate Password":
     prefix: "otp2"
     body: "rigOTPgenerate ${1:\"${2:secret}\"}${3:, ${4:tokenLength}${5:, ${6:\"${7:cryptoType}\"}${8:, ${9:cryptoNumBits}${10:, ${11:timeStep}${12:, ${13:\"${14:type}\"}}}}}}${0}"
   "OTP Generate User Key":
     prefix: "otp3"
     body: "rigOTPgenerateUserKey ${1:\"${2:secret}\"}${0}"
+  "OTP QR Code Array":
+    prefix: "otp7"
+    body: "rigOTPqrCode(${1:attributesArray})${0}"
   "OTP QR Code":
     prefix: "otp4"
     body: "rigOTPqrCode(${1:\"${2:key}\"}, ${3:\"${4:account}\"}, ${5:\"${6:issuer}\"}${7:, ${8:\"${9:algo}\"}${10:, ${11:digits}${12:, ${13:period}${14:, ${15:\"${16:ecc}\"}${17:, ${18:size}${19:, ${20:mask}}}}}}})${0}"
   POST:
     prefix: "input4"
     body: "rigVarPost(\"${1:item}\"${2:, ${3:xssFilter}})${0}"
+  "Pagination AJAX Code":
+    prefix: "pagination3"
+    body: "rigAjaxPaginationCode(${1:nonce})${0}"
   "Pagination Library":
     prefix: "pagination0"
     body: "rigLoaderLoadLibrary \"Pagination\""
@@ -1319,12 +1358,21 @@
   Referrer:
     prefix: "useragent9"
     body: "rigReferrer()"
+  "Browser Version":
+    prefix: "useragent10"
+    body: "rigBrowserVersion()"
+  Browser:
+    prefix: "useragent11"
+    body: "rigBrowser()"
   ReplyTo:
     prefix: "email12"
     body: "rigReplyTo \"${1:address}\", \"${2:name}\"${0}"
   Result:
     prefix: "database57"
     body: "rigDBresult()"
+  Robot:
+    prefix: "useragent13"
+    body: "rigRobot()"
   "Row Current":
     prefix: "database59"
     body: "rigDbCurrentRow()"
@@ -1616,12 +1664,15 @@
   "URL Current URL":
     prefix: "url4"
     body: "rigCurrentURL()${0}"
+  "URL Encode RFC":
+    prefix: "url16"
+    body: "rigUrlEncodeRFC(${1:URL})${0}"
   "URL Index":
     prefix: "url6"
     body: "rigIndexPage()${0}"
   "URL Mail to Safe":
     prefix: "url10"
-    body: "rigSafeMailToLink(${1:\"${2:address}\"${3:, \"${4:text}\"${5:, ${6:Attributes}}}})${0}"
+    body: "rigSafeMailToLink(${1:\"${2:address}\"${3:, \"${4:text}\"${5:, ${6:Attributes}${7:, ${8:nonce}}}}})${0}"
   "URL Mail to":
     prefix: "url9"
     body: "rigMailToLink(${1:\"${2:address}\"${3:, \"${4:text}\"${5:, ${6:Attributes}}}})${0}"
@@ -1655,6 +1706,9 @@
   Updatestring:
     prefix: "database83"
     body: "rigDbUpdateString(\"${1:table}\", ${2:data}, ${3:where})${0}"
+  "URL Decode RFC":
+    prefix: "url17"
+    body: "rigUrlDecodeRFC(${1:encodedURL})${0}"
   "User Agent Library":
     prefix: "useragent0"
     body: "rigLoaderLoadLibrary \"Useragent\""
@@ -1683,7 +1737,7 @@
     prefix: "database86"
     body: "rigDbVersion()"
   Watermark:
-    prefix: "image9"
+    prefix: "image8"
     body: "rigImageWatermark()"
   "Where Array":
     prefix: "database87"
